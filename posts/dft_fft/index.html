@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>DFT/FFT in theroy and with Python // Max Lindemann</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.82.1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Max Lindeman" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://lindemax.github.io/index.html/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DFT/FFT in theroy and with Python"/>
+<meta name="twitter:description" content="Theory I wrote an article about DFT and FFT some time ago. You can view it inside your browser by clicking the link below. Currrently it&rsquo;s only available in german. Please excuse this.
+Article about DFT/FFT
+Python The knowledge gained from the article can be used, to do something (actually not so) usefull. But you&rsquo;ll get the idea ;-).
+The script below will create four different sine functions. They&rsquo;ll have different circular frequencies and to one of them white gaussian noise is added."/>
+
+    <meta property="og:title" content="DFT/FFT in theroy and with Python" />
+<meta property="og:description" content="Theory I wrote an article about DFT and FFT some time ago. You can view it inside your browser by clicking the link below. Currrently it&rsquo;s only available in german. Please excuse this.
+Article about DFT/FFT
+Python The knowledge gained from the article can be used, to do something (actually not so) usefull. But you&rsquo;ll get the idea ;-).
+The script below will create four different sine functions. They&rsquo;ll have different circular frequencies and to one of them white gaussian noise is added." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lindemax.github.io/index.html/posts/dft_fft/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-12T19:21:00&#43;01:00" />
+<meta property="article:modified_time" content="2021-04-12T19:21:00&#43;01:00" />
+
+
+
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js">
+</script>
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://lindemax.github.io/index.html"><img class="app-header-avatar" src="/index.html/images/avatar/avatar_1.png" alt="Max Lindeman" /></a>
+      <h1>Max Lindemann</h1>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/index.html/posts/">Posts</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/index.html/linux/">Linux</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/index.html/muon/">MuON</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/index.html/tags/">Tags</a>
+      </nav>
+      <p>Electrical Engineering Student and Passionate Climber</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/lindeMAX/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>My Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">DFT/FFT in theroy and with Python</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 12, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://lindemax.github.io/index.html/tags/convolution/">convolution</a>
+              <a class="tag" href="https://lindemax.github.io/index.html/tags/fourier/">fourier</a>
+              <a class="tag" href="https://lindemax.github.io/index.html/tags/fft/">fft</a>
+              <a class="tag" href="https://lindemax.github.io/index.html/tags/dft/">dft</a>
+              <a class="tag" href="https://lindemax.github.io/index.html/tags/python/">python</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h2 id="theory">Theory</h2>
+<p>I wrote an article about DFT and FFT some time ago.
+You can view it inside your browser by clicking the link below.
+Currrently it&rsquo;s only available in german.
+Please excuse this.</p>
+<p><a href="/attachments/posts/dft_fft/article_dft_fft_german.pdf">Article about DFT/FFT</a></p>
+<h2 id="python">Python</h2>
+<p>The knowledge gained from the article can be used, to do something (actually not so) usefull. But you&rsquo;ll get the idea ;-).</p>
+<p>The script below will create four different sine functions.
+They&rsquo;ll have different circular frequencies and to one of them white gaussian noise is added.
+They do then get plotted in time and frequency domain.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+<span style="color:#f92672">import</span> matplotlib.ticker <span style="color:#f92672">as</span> tck
+<span style="color:#f92672">from</span> scipy.fft <span style="color:#f92672">import</span> fft, fftfreq
+
+<span style="color:#75715e"># Time period of the samples</span>
+<span style="color:#75715e"># This is directly related to the frequencies that can be dissolved!</span>
+<span style="color:#75715e"># Check Shannon-Nyquist sampling theorem for more information!</span>
+<span style="color:#75715e"># As one can see in the comment to the &#39;Signal length&#39;,</span>
+<span style="color:#75715e"># a to high sample rate will actually reduce the frequency resolution.</span>
+<span style="color:#75715e"># -&gt; Sample only as high, as you need to!</span>
+<span style="color:#75715e"># This seems counter intuituve, but so it is. Trust me ;-)</span>
+f_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span> <span style="color:#75715e"># in Hz</span>
+T <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> f_max)
+
+<span style="color:#75715e"># Signal length [s]</span>
+<span style="color:#75715e"># You&#39;ll need a long time interval for a good resolution in freequency domain!</span>
+<span style="color:#75715e"># The spacing of the frequencies (DFT!) is given by delta_f = 1/ml = 1/(N*T).</span>
+<span style="color:#75715e"># You can actually see that by reducing the singal length or increasing the sampling frequeny.</span>
+sl <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> <span style="color:#75715e"># Seconds</span>
+
+<span style="color:#75715e"># Total number of samples</span>
+N <span style="color:#f92672">=</span> int(sl <span style="color:#f92672">/</span> T)
+
+<span style="color:#75715e"># Time axis values</span>
+t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, sl, N)
+
+<span style="color:#75715e"># Circular frequencies</span>
+omega0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>pi <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>
+omega1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>pi <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>
+omega2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>pi <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>
+
+<span style="color:#75715e"># Signals in time domain</span>
+y0 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(omega0<span style="color:#f92672">*</span>t)
+y1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(omega0<span style="color:#f92672">*</span>t) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>sin(omega1<span style="color:#f92672">*</span>t) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>sin(omega2<span style="color:#f92672">*</span>t)
+y2 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(omega0<span style="color:#f92672">*</span>t) <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>sin(omega1<span style="color:#f92672">*</span>t) <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>sin(omega2<span style="color:#f92672">*</span>t)
+
+<span style="color:#75715e"># GWN:</span>
+<span style="color:#75715e"># - uniform power across the frequency band</span>
+<span style="color:#75715e"># - normaly distributed in time domain</span>
+noise <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">5</span>,N)
+y3 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(omega0<span style="color:#f92672">*</span>t) <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>sin(omega1<span style="color:#f92672">*</span>t) <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>sin(omega2<span style="color:#f92672">*</span>t) <span style="color:#f92672">+</span> noise
+
+<span style="color:#75715e"># Frequency spectra (FFT / DFT)</span>
+yf0 <span style="color:#f92672">=</span> fft(y0)
+yf1 <span style="color:#f92672">=</span> fft(y1)
+yf2 <span style="color:#f92672">=</span> fft(y2)
+yf3 <span style="color:#f92672">=</span> fft(y3)
+
+<span style="color:#75715e"># Frequency axis values</span>
+xf <span style="color:#f92672">=</span> fftfreq(y0<span style="color:#f92672">.</span>size, T)
+
+fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">15</span>))
+
+ax[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Time $[s]$ &#39;</span>)
+ax[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>set_major_formatter(tck<span style="color:#f92672">.</span>FormatStrFormatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%g</span><span style="color:#e6db74"> s&#39;</span>))
+ax[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>yaxis<span style="color:#f92672">.</span>set_major_locator(tck<span style="color:#f92672">.</span>MultipleLocator(base<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>))
+<span style="color:#75715e"># Plotting only the first second (visually nicer)</span>
+ax[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>plot(t[:int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T)], y0[:int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T)])
+ax[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>grid()
+
+ax[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Frequency $[Hz]$&#39;</span>)
+<span style="color:#75715e"># Plotting only the upper half of the freq-domain</span>
+<span style="color:#75715e"># Be careful with the y-axis scaling!</span>
+ax[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>plot(xf[:N<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>], <span style="color:#ae81ff">2.0</span><span style="color:#f92672">/</span>N <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>abs(yf0[:N<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>]))
+ax[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>grid()
+
+ax[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Time $[s]$ &#39;</span>)
+ax[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>set_major_formatter(tck<span style="color:#f92672">.</span>FormatStrFormatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%g</span><span style="color:#e6db74"> s&#39;</span>))
+ax[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>yaxis<span style="color:#f92672">.</span>set_major_locator(tck<span style="color:#f92672">.</span>MultipleLocator(base<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>))
+ax[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>plot(t[:int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T)], y1[:int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T)])
+ax[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>grid()
+
+ax[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Frequency $[Hz]$&#39;</span>)
+ax[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>plot(xf[:N<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>], <span style="color:#ae81ff">2.0</span><span style="color:#f92672">/</span>N <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>abs(yf1[<span style="color:#ae81ff">0</span>:N<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>]))
+ax[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>grid()
+
+ax[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Time $[s]$ &#39;</span>)
+ax[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>set_major_formatter(tck<span style="color:#f92672">.</span>FormatStrFormatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%g</span><span style="color:#e6db74"> s&#39;</span>))
+ax[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>yaxis<span style="color:#f92672">.</span>set_major_locator(tck<span style="color:#f92672">.</span>MultipleLocator(base<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
+ax[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>plot(t[:int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T)], y2[:int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T)])
+ax[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>grid()
+
+ax[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Frequency $[Hz]$&#39;</span>)
+ax[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>plot(xf[:N<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>], <span style="color:#ae81ff">2.0</span><span style="color:#f92672">/</span>N <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>abs(yf2[<span style="color:#ae81ff">0</span>:N<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>]))
+ax[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>grid()
+
+ax[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Time $[s]$ &#39;</span>)
+ax[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>xaxis<span style="color:#f92672">.</span>set_major_formatter(tck<span style="color:#f92672">.</span>FormatStrFormatter(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%g</span><span style="color:#e6db74"> s&#39;</span>))
+ax[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>yaxis<span style="color:#f92672">.</span>set_major_locator(tck<span style="color:#f92672">.</span>MultipleLocator(base<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
+ax[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>plot(t[:int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T)], y3[:int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T)])
+ax[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>grid()
+
+ax[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Frequency $[Hz]$&#39;</span>)
+ax[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>plot(xf[:N<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>], <span style="color:#ae81ff">2.0</span><span style="color:#f92672">/</span>N <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>abs(yf3[<span style="color:#ae81ff">0</span>:N<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>]))
+ax[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>grid()
+
+fig<span style="color:#f92672">.</span>tight_layout()
+</code></pre></div><p><img src="/images/posts/dft_fft/time_vs_frequency.png" alt="Plot: Time vs Frequency Domain"></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

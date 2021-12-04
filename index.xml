@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Max Lindemann</title>
+    <link>https://lindemax.github.io/index.html/</link>
+    <description>Recent content on Max Lindemann</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Apr 2021 19:21:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/index.html/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DFT/FFT in theroy and with Python</title>
+      <link>https://lindemax.github.io/index.html/posts/dft_fft/</link>
+      <pubDate>Mon, 12 Apr 2021 19:21:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/posts/dft_fft/</guid>
+      <description>Theory I wrote an article about DFT and FFT some time ago. You can view it inside your browser by clicking the link below. Currrently it&amp;rsquo;s only available in german. Please excuse this.
+Article about DFT/FFT
+Python The knowledge gained from the article can be used, to do something (actually not so) usefull. But you&amp;rsquo;ll get the idea ;-).
+The script below will create four different sine functions. They&amp;rsquo;ll have different circular frequencies and to one of them white gaussian noise is added.</description>
+    </item>
+    
+    <item>
+      <title>Convolution of Gaussian functions</title>
+      <link>https://lindemax.github.io/index.html/posts/convolution_gaussian/</link>
+      <pubDate>Mon, 12 Apr 2021 19:06:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/posts/convolution_gaussian/</guid>
+      <description>A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
+    </item>
+    
+    <item>
+      <title>Render LaTeX math expressions in Hugo with MathJax 3</title>
+      <link>https://lindemax.github.io/index.html/posts/latex_in_hugo/</link>
+      <pubDate>Mon, 12 Apr 2021 18:40:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/posts/latex_in_hugo/</guid>
+      <description>This is juast a simple test:
+$$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 \right )} $$
+$$ \begin{eqnarray} f_1(t) &amp;amp;=&amp;amp; e^{-\br{\frac{t}{\sigma}}^2} \newline f_2(t) &amp;amp;=&amp;amp; e^{-\br{\frac{t}{r}}^2} \newline (f_1 * f_2)(t) &amp;amp;=&amp;amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline &amp;amp;=&amp;amp; \int_{\mathbb{R}} e^{-\br{\frac{t-\tau}{\sigma}}^2} \cdot e^{-\br{\frac{\tau}{r}}^2} ~d\tau \newline \end{eqnarray} $$
+See how it is done!
+Things to mention:
+ For this hugo theme (m10c) the header is instead defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras.</description>
+    </item>
+    
+  </channel>
+</rss>

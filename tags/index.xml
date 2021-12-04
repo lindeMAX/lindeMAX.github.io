@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Max Lindemann</title>
+    <link>https://lindemax.github.io/index.html/tags/</link>
+    <description>Recent content in Tags on Max Lindemann</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Apr 2021 19:21:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/index.html/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>convolution</title>
+      <link>https://lindemax.github.io/index.html/tags/convolution/</link>
+      <pubDate>Mon, 12 Apr 2021 19:21:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/convolution/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dft</title>
+      <link>https://lindemax.github.io/index.html/tags/dft/</link>
+      <pubDate>Mon, 12 Apr 2021 19:21:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/dft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fft</title>
+      <link>https://lindemax.github.io/index.html/tags/fft/</link>
+      <pubDate>Mon, 12 Apr 2021 19:21:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/fft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fourier</title>
+      <link>https://lindemax.github.io/index.html/tags/fourier/</link>
+      <pubDate>Mon, 12 Apr 2021 19:21:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/fourier/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://lindemax.github.io/index.html/tags/python/</link>
+      <pubDate>Mon, 12 Apr 2021 19:21:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>function</title>
+      <link>https://lindemax.github.io/index.html/tags/function/</link>
+      <pubDate>Mon, 12 Apr 2021 19:06:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/function/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gaussian</title>
+      <link>https://lindemax.github.io/index.html/tags/gaussian/</link>
+      <pubDate>Mon, 12 Apr 2021 19:06:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/gaussian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://lindemax.github.io/index.html/tags/hugo/</link>
+      <pubDate>Mon, 12 Apr 2021 18:40:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>latex</title>
+      <link>https://lindemax.github.io/index.html/tags/latex/</link>
+      <pubDate>Mon, 12 Apr 2021 18:40:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/latex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mathjax</title>
+      <link>https://lindemax.github.io/index.html/tags/mathjax/</link>
+      <pubDate>Mon, 12 Apr 2021 18:40:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/index.html/tags/mathjax/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
