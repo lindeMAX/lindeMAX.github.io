@@ -13,16 +13,12 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hosting an OpenVPN Server"/>
-<meta name="twitter:description" content="OpenVPN is a nice tool to stay connected with who ever you want to.
-Could be some friends you want to play old LAN games with, your own server on which you want to acces a network file system, etc.
-I recently wrote a shell script that creates certificates (using easy-rsa), configuration files and the directory structure needed on the server side in a &lsquo;ready to be used&rsquo; manner.
-It will ask you for the name of the ca, the vpn-server, it&rsquo;s remote address and how many client certificates/keys you want to create."/>
+<meta name="twitter:description" content="OpenVPN is a nice tool to stay connected with who ever you want to. Could be some friends you want to play old LAN games with, your own server on which you want to acces a network file system, etc.
+I recently wrote a shell script that creates certificates (using easy-rsa), configuration files and the directory structure needed on the server side in a &lsquo;ready to be used&rsquo; manner. It will ask you for the name of the ca, the vpn-server, it&rsquo;s remote address and how many client certificates/keys you want to create."/>
 
     <meta property="og:title" content="Hosting an OpenVPN Server" />
-<meta property="og:description" content="OpenVPN is a nice tool to stay connected with who ever you want to.
-Could be some friends you want to play old LAN games with, your own server on which you want to acces a network file system, etc.
-I recently wrote a shell script that creates certificates (using easy-rsa), configuration files and the directory structure needed on the server side in a &lsquo;ready to be used&rsquo; manner.
-It will ask you for the name of the ca, the vpn-server, it&rsquo;s remote address and how many client certificates/keys you want to create." />
+<meta property="og:description" content="OpenVPN is a nice tool to stay connected with who ever you want to. Could be some friends you want to play old LAN games with, your own server on which you want to acces a network file system, etc.
+I recently wrote a shell script that creates certificates (using easy-rsa), configuration files and the directory structure needed on the server side in a &lsquo;ready to be used&rsquo; manner. It will ask you for the name of the ca, the vpn-server, it&rsquo;s remote address and how many client certificates/keys you want to create." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lindemax.github.io/linux/openvpn/" /><meta property="article:section" content="linux" />
 <meta property="article:published_time" content="2021-12-05T14:41:00&#43;01:00" />
@@ -99,12 +95,12 @@ It will ask you for the name of the ca, the vpn-server, it&rsquo;s remote addres
       </div>
     </header>
     <div class="post-content">
-      <p><a href="https://openvpn.net/">OpenVPN</a> is a nice tool to stay connected with who ever you want to.</p>
-<p>Could be some friends you want to play old LAN games with, your own server on which you want to acces a network file system, etc.</p>
-<p>I recently wrote a <a href="https://en.wikipedia.org/wiki/Shell_script">shell script</a> that creates certificates (using <a href="https://github.com/OpenVPN/easy-rsa">easy-rsa</a>), configuration files and the directory structure needed on the server side in a &lsquo;ready to be used&rsquo; manner.</p>
-<p>It will ask you for the name of the ca, the vpn-server, it&rsquo;s remote address and how many client certificates/keys you want to create.
-A zip compressed directory is then assambled for each individual client.</p>
-<p>The server.conf is edited in a way, that each client will get it&rsquo;s own IP-address, beginning with <em>10.8.0.101</em>.
+      <p><a href="https://openvpn.net/">OpenVPN</a> is a nice tool to stay connected with who ever you want to.
+Could be some friends you want to play old LAN games with, your own server on which you want to acces a network file system, etc.</p>
+<p>I recently wrote a <a href="https://en.wikipedia.org/wiki/Shell_script">shell script</a> that creates certificates (using <a href="https://github.com/OpenVPN/easy-rsa">easy-rsa</a>), configuration files and the directory structure needed on the server side in a &lsquo;ready to be used&rsquo; manner.
+It will ask you for the name of the ca, the vpn-server, it&rsquo;s remote address and how many client certificates/keys you want to create.
+A zip compressed directory is then assambled for each individual client.
+The server.conf is edited in a way, that each client will get it&rsquo;s own IP-address, beginning with <em>10.8.0.101</em>.
 Therefore the client config directory (ccd) is created, too.</p>
 <p>There is also <em>add_client.sh</em> to add more clients afterwards (e.g. hugo).<br>
 It let&rsquo;s you choose a specific IP for newly added clients.</p>
