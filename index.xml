@@ -67,12 +67,12 @@ Things to mention:
     </item>
     
     <item>
-      <title>Convolution of Gaussian functions</title>
+      <title>Convolution of Gaussians</title>
       <link>https://lindemax.github.io/sas/convolution_gaussian/</link>
       <pubDate>Sat, 04 Dec 2021 18:06:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/sas/convolution_gaussian/</guid>
-      <description>A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
+      <description>A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussians, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
     </item>
     
   </channel>

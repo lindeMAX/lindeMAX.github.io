@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title>Convolution of Gaussian functions // Max&#39; Blog</title>
+    <title>Convolution of Gaussians // Max&#39; Blog</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.82.1" />
@@ -12,11 +12,11 @@
 
     
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Convolution of Gaussian functions"/>
-<meta name="twitter:description" content="A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &lsquo;piece by piece&rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &lsquo;superposition&rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again."/>
+<meta name="twitter:title" content="Convolution of Gaussians"/>
+<meta name="twitter:description" content="A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &lsquo;piece by piece&rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &lsquo;superposition&rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussians, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again."/>
 
-    <meta property="og:title" content="Convolution of Gaussian functions" />
-<meta property="og:description" content="A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &lsquo;piece by piece&rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &lsquo;superposition&rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again." />
+    <meta property="og:title" content="Convolution of Gaussians" />
+<meta property="og:description" content="A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &lsquo;piece by piece&rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &lsquo;superposition&rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussians, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lindemax.github.io/sas/convolution_gaussian/" /><meta property="article:section" content="sas" />
 <meta property="article:published_time" content="2021-12-04T18:06:00&#43;01:00" />
@@ -86,7 +86,7 @@
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">Convolution of Gaussian functions</h1>
+      <h1 class ="post-title">Convolution of Gaussians</h1>
       <div class="post-meta">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
@@ -119,14 +119,14 @@
 <p>A convolution can be imagined as a weighting of one function with another.
 One of the functions is mirrored in the definition area and then pushed &lsquo;piece by piece&rsquo; (infinitissimally small pieces!) over the other.
 The result is again a function that returns the &lsquo;superposition&rsquo; of the two functions for each possible shift.
-If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</p>
+If one imagines the convolution of two Gaussians, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</p>
 <p>In the following i will show three different ways to solve the convolution mathematically.</p>
 <h2 id="convolution-in-time-domain">Convolution in Time Domain</h2>
 <p>$$
 \newcommand{\abs}[1]{\left\vert#1\right\vert}
 \newcommand{\br}[1]{\left ( #1 \right )}
 $$</p>
-<p>Let&rsquo;s assume two very simple gaussians:</p>
+<p>Let&rsquo;s assume two very simple Gaussians:</p>
 <p>$$
 \begin{eqnarray}
 f_1(t) &amp;=&amp; e^{-\br{\frac{t}{\sigma}}^2} \newline
@@ -172,7 +172,7 @@ $$</p>
 \Rightarrow (f_1 * f_2)(t) &amp;=&amp; e^{-\frac{t^2}{r^2 + \sigma^2}} \cdot \sqrt{\frac{(r\sigma)^2\pi}{r^2 + \sigma^2}}
 \end{eqnarray}
 $$</p>
-<p>The convolution of two gaussian function results in a scaled gaussian function.
+<p>The convolution of two Gaussians results in a scaled Gaussian.
 We guessed it already.
 The variance of the concolution is the sum of the variances of the two convoluted.</p>
 <p>In general, the following applies (for the convolution of normal distributions):</p>
@@ -181,7 +181,7 @@ The variance of the concolution is the sum of the variances of the two convolute
 \mathcal{N}(\mu_1, \sigma_1) * \mathcal{N}(\mu_2, \sigma_2) &amp;=&amp; \mathcal{N}(\mu_1 + \mu_2, \sqrt{\sigma_1 + \sigma_2})
 \end{eqnarray}
 $$</p>
-<h2 id="fourier-transformation-of-the-gaussian-function">Fourier-Transformation of the Gaussian Function</h2>
+<h2 id="fourier-transformation-of-the-gaussians">Fourier-Transformation of the Gaussians</h2>
 <p>$$
 \begin{eqnarray}
 \mathcal{F} {f_1(t)} &amp;=&amp; \int_{\mathbb{R}} f_1(t) \cdot e^{-i\omega t} ~dt  \newline
@@ -231,12 +231,12 @@ $$</p>
 \sqrt{\sigma^2\pi} \cdot e^{\br{\frac{i\omega \sigma^2}{2}}^2}  \newline
 \end{eqnarray}
 $$</p>
-<p>One can see here that the Fourier transform of a gaussian function is also a gaussian function.
+<p>One can see here that the Fourier transform of a Gaussian is also a Gaussian.
 The same applies to the inverse Fourier transformation.</p>
 <h2 id="convolute-by-multiplying-the-fourier-transformations">Convolute by multiplying the Fourier-Transformations</h2>
 <p>A convolution in the time domain corresponds to a multiplication in the frequency domain and vice versa.
-Since the exponents add up when e-functions are multiplied and the coefficients also multiply, multiplying two Gaussian functions also results in a gaussian function.
-Since the inverse Fourier transform of a Gaussian bell is also a Gaussian bell, the convolution of two Gaussian functions must also result in a Gaussian function again.</p>
+Since the exponents add up when e-functions are multiplied and the coefficients also multiply, multiplying two Gaussianss also results in a Gaussian.
+Since the inverse Fourier transform of a Gaussian is also a Gaussian, the convolution of two Gaussians must also result in a Gaussian again.</p>
 
     </div>
     <div class="post-footer">
