@@ -25,7 +25,9 @@
       <description>Fork Awesome is a fully open source fork of font awesome.
 Check out the icons and get started.
 I simply added
-&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css&amp;#34; integrity=&amp;#34;sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; into the head-section of /themes/m10c/layouts/_default/baseof.html and was ready to start .</description>
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css&amp;#34; integrity=&amp;#34;sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; into the head-section of /themes/m10c/layouts/_default/baseof.html and was nearly ready to start .
+One thing left to do is to enable rendering of plain html from within the markdown files. To do this add the following to your projects config.toml:
+[markup] [markup.goldmark] [markup.goldmark.renderer] unsafe = true # Enable rendering of plain html from within markdown files Cheers .</description>
     </item>
     
     <item>
