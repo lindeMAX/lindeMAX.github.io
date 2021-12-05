@@ -14,7 +14,7 @@
       
       <guid>https://lindemax.github.io/hugo/fork_awesome/</guid>
       <description>Fork Awesome is a fully open source fork of font awesome.
-Check out the icons and getting started.
+Check out the icons and get started.
 I simply added
 &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css&amp;#34; integrity=&amp;#34;sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; into the head-section of /themes/m10c/layouts/_default/baseof.html and was ready to start .</description>
     </item>

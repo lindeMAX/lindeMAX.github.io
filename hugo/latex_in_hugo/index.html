@@ -18,7 +18,7 @@ $$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 
 $$ \begin{eqnarray} f_1(t) &amp;=&amp; e^{-\br{\frac{t}{\sigma}}^2} \newline f_2(t) &amp;=&amp; e^{-\br{\frac{t}{r}}^2} \newline (f_1 * f_2)(t) &amp;=&amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline &amp;=&amp; \int_{\mathbb{R}} e^{-\br{\frac{t-\tau}{\sigma}}^2} \cdot e^{-\br{\frac{\tau}{r}}^2} ~d\tau \newline \end{eqnarray} $$
 See how it is done!
 Things to mention:
- For this hugo theme (m10c) the header is instead defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras."/>
+ In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras."/>
 
     <meta property="og:title" content="Render LaTeX math expressions in Hugo with MathJax 3" />
 <meta property="og:description" content="This is juast a simple test:
@@ -26,7 +26,7 @@ $$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 
 $$ \begin{eqnarray} f_1(t) &amp;=&amp; e^{-\br{\frac{t}{\sigma}}^2} \newline f_2(t) &amp;=&amp; e^{-\br{\frac{t}{r}}^2} \newline (f_1 * f_2)(t) &amp;=&amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline &amp;=&amp; \int_{\mathbb{R}} e^{-\br{\frac{t-\tau}{\sigma}}^2} \cdot e^{-\br{\frac{\tau}{r}}^2} ~d\tau \newline \end{eqnarray} $$
 See how it is done!
 Things to mention:
- For this hugo theme (m10c) the header is instead defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras." />
+ In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lindemax.github.io/hugo/latex_in_hugo/" /><meta property="article:section" content="hugo" />
 <meta property="article:published_time" content="2021-12-04T18:40:00&#43;01:00" />
@@ -137,7 +137,7 @@ $$</p>
 <p><a href="https://geoffruddock.com/math-typesetting-in-hugo/">See how it is done!</a></p>
 <p>Things to mention:</p>
 <ul>
-<li>For this hugo theme (m10c) the header is instead defined in <strong>themes/m10c/layouts/_default/baseof.html</strong>.</li>
+<li>In this hugo theme (m10c) the header is defined in <strong>themes/m10c/layouts/_default/baseof.html</strong>.</li>
 <li>The css stuff has to be added to <strong>assets/_extras.scss</strong>.</li>
 <li>Mathjax3 seems to not support <strong>\\\</strong>. Use <strong>\newline</strong> instead ;-)</li>
 </ul>
