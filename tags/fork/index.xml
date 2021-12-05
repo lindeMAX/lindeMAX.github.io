@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fork on Max&#39; Blog</title>
+    <link>https://lindemax.github.io/tags/fork/</link>
+    <description>Recent content in fork on Max&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Dec 2021 06:21:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/fork/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pretty Icons with Fork Awesome</title>
+      <link>https://lindemax.github.io/hugo/fork_awesome/</link>
+      <pubDate>Sun, 05 Dec 2021 06:21:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/hugo/fork_awesome/</guid>
+      <description>Fork Awesome is a fully open source fork of font awesome.
+Check out the icons and getting started.
+I simply added
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css&amp;#34; integrity=&amp;#34;sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; into the head-section of /themes/m10c/layouts/_default/baseof.html and was ready to start .</description>
+    </item>
+    
+  </channel>
+</rss>
