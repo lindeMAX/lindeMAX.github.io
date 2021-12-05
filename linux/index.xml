@@ -5,14 +5,18 @@
     <link>https://lindemax.github.io/linux/</link>
     <description>Recent content in Linux on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://lindemax.github.io/linux/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Dec 2021 14:41:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hosting a OpenVPN Server</title>
+      <title>Hosting an OpenVPN Server</title>
       <link>https://lindemax.github.io/linux/openvpn/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 05 Dec 2021 14:41:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/linux/openvpn/</guid>
-      <description>References </description>
+      <description>OpenVPN is a nice tool to stay connected with who ever you want to.
+Could be some friends you want to play old LAN games with, your own server on which you want to acces a network file system, etc.
+I recently wrote a shell script that creates certificates (using easy-rsa), configuration files and the directory structure needed on the server side in a &amp;lsquo;ready to be used&amp;rsquo; manner.
+It will ask you for the name of the ca, the vpn-server, it&amp;rsquo;s remote address and how many client certificates/keys you want to create.</description>
     </item>
     
   </channel>
