@@ -6,11 +6,11 @@
     <description>Recent content in latex on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Apr 2021 18:40:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 18:40:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Render LaTeX math expressions in Hugo with MathJax 3</title>
       <link>https://lindemax.github.io/hugo/latex_in_hugo/</link>
-      <pubDate>Mon, 12 Apr 2021 18:40:00 +0100</pubDate>
+      <pubDate>Sat, 04 Dec 2021 18:40:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/hugo/latex_in_hugo/</guid>
       <description>This is juast a simple test:

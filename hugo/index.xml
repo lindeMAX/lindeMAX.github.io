@@ -6,11 +6,20 @@
     <description>Recent content in Hugo on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 May 2021 06:21:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Dec 2021 06:56:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Great Hugo Tutorial</title>
+      <link>https://lindemax.github.io/hugo/tutorial/</link>
+      <pubDate>Sun, 05 Dec 2021 06:56:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/hugo/tutorial/</guid>
+      <description>This is the best hugo-beginners tutorial i have seen so far!</description>
+    </item>
+    
     <item>
       <title>Pretty Icons with Fork Awesome</title>
       <link>https://lindemax.github.io/hugo/fork_awesome/</link>
-      <pubDate>Wed, 12 May 2021 06:21:00 +0100</pubDate>
+      <pubDate>Sun, 05 Dec 2021 06:21:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/hugo/fork_awesome/</guid>
       <description>Fork Awesome is a fully open source fork of font awesome.
@@ -22,7 +31,7 @@ I simply added
     <item>
       <title>Render LaTeX math expressions in Hugo with MathJax 3</title>
       <link>https://lindemax.github.io/hugo/latex_in_hugo/</link>
-      <pubDate>Mon, 12 Apr 2021 18:40:00 +0100</pubDate>
+      <pubDate>Sat, 04 Dec 2021 18:40:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/hugo/latex_in_hugo/</guid>
       <description>This is juast a simple test:

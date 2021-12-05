@@ -6,11 +6,20 @@
     <description>Recent content in Overview on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 May 2021 06:21:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Dec 2021 06:56:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Great Hugo Tutorial</title>
+      <link>https://lindemax.github.io/hugo/tutorial/</link>
+      <pubDate>Sun, 05 Dec 2021 06:56:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/hugo/tutorial/</guid>
+      <description>This is the best hugo-beginners tutorial i have seen so far!</description>
+    </item>
+    
     <item>
       <title>Pretty Icons with Fork Awesome</title>
       <link>https://lindemax.github.io/hugo/fork_awesome/</link>
-      <pubDate>Wed, 12 May 2021 06:21:00 +0100</pubDate>
+      <pubDate>Sun, 05 Dec 2021 06:21:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/hugo/fork_awesome/</guid>
       <description>Fork Awesome is a fully open source fork of font awesome.
@@ -20,18 +29,9 @@ I simply added
     </item>
     
     <item>
-      <title>Convolution of Gaussian functions</title>
-      <link>https://lindemax.github.io/sas/convolution_gaussian/</link>
-      <pubDate>Wed, 12 May 2021 02:06:00 +0100</pubDate>
-      
-      <guid>https://lindemax.github.io/sas/convolution_gaussian/</guid>
-      <description>A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
-    </item>
-    
-    <item>
       <title>DFT/FFT in theroy and with Python</title>
       <link>https://lindemax.github.io/sas/dft_fft/</link>
-      <pubDate>Wed, 12 May 2021 02:05:00 +0100</pubDate>
+      <pubDate>Sat, 04 Dec 2021 19:05:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/sas/dft_fft/</guid>
       <description>Theory I wrote an article about DFT and FFT some time ago. You can view it inside your browser by clicking the link below. Currrently it&amp;rsquo;s only available in german. Please excuse this.
@@ -43,7 +43,7 @@ The script below will create two different sine functions. One with and one with
     <item>
       <title>Render LaTeX math expressions in Hugo with MathJax 3</title>
       <link>https://lindemax.github.io/hugo/latex_in_hugo/</link>
-      <pubDate>Mon, 12 Apr 2021 18:40:00 +0100</pubDate>
+      <pubDate>Sat, 04 Dec 2021 18:40:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/hugo/latex_in_hugo/</guid>
       <description>This is juast a simple test:
@@ -52,6 +52,15 @@ $$ \begin{eqnarray} f_1(t) &amp;amp;=&amp;amp; e^{-\br{\frac{t}{\sigma}}^2} \new
 See how it is done!
 Things to mention:
  For this hugo theme (m10c) the header is instead defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras.</description>
+    </item>
+    
+    <item>
+      <title>Convolution of Gaussian functions</title>
+      <link>https://lindemax.github.io/sas/convolution_gaussian/</link>
+      <pubDate>Sat, 04 Dec 2021 18:06:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/sas/convolution_gaussian/</guid>
+      <description>A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
     </item>
     
     <item>

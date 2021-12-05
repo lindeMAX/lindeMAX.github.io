@@ -6,26 +6,26 @@
     <description>Recent content in Systems and Signals on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 May 2021 02:06:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/sas/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Convolution of Gaussian functions</title>
-      <link>https://lindemax.github.io/sas/convolution_gaussian/</link>
-      <pubDate>Wed, 12 May 2021 02:06:00 +0100</pubDate>
-      
-      <guid>https://lindemax.github.io/sas/convolution_gaussian/</guid>
-      <description>A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
-    </item>
-    
+    <lastBuildDate>Sat, 04 Dec 2021 19:05:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/sas/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DFT/FFT in theroy and with Python</title>
       <link>https://lindemax.github.io/sas/dft_fft/</link>
-      <pubDate>Wed, 12 May 2021 02:05:00 +0100</pubDate>
+      <pubDate>Sat, 04 Dec 2021 19:05:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/sas/dft_fft/</guid>
       <description>Theory I wrote an article about DFT and FFT some time ago. You can view it inside your browser by clicking the link below. Currrently it&amp;rsquo;s only available in german. Please excuse this.
 Article about DFT/FFT
 Python The knowledge gained from the article can be used, to do something (actually not so) usefull. But you&amp;rsquo;ll get the idea ;-).
 The script below will create two different sine functions. One with and one without additive noise.</description>
+    </item>
+    
+    <item>
+      <title>Convolution of Gaussian functions</title>
+      <link>https://lindemax.github.io/sas/convolution_gaussian/</link>
+      <pubDate>Sat, 04 Dec 2021 18:06:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/sas/convolution_gaussian/</guid>
+      <description>A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussian function, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
     </item>
     
   </channel>
