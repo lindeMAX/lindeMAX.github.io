@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>convolution on Max&#39; Blog</title>
-    <link>https://lindemax.github.io/tags/convolution/</link>
-    <description>Recent content in convolution on Max&#39; Blog</description>
+    <title>Systems and Signals on Max&#39; Blog</title>
+    <link>https://lindemax.github.io/sas/</link>
+    <description>Recent content in Systems and Signals on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 May 2021 02:06:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/convolution/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 May 2021 02:06:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/sas/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Convolution of Gaussian functions</title>
       <link>https://lindemax.github.io/sas/convolution_gaussian/</link>
