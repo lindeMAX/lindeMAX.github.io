@@ -2,6 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lindemax.github.io/tags/charge/</loc>
+    <lastmod>2021-12-07T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/muon/q_mes_dect_v2/</loc>
+    <lastmod>2021-12-07T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/detector/</loc>
+    <lastmod>2021-12-07T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/measurement/</loc>
+    <lastmod>2021-12-07T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/muon/</loc>
+    <lastmod>2021-12-07T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/</loc>
+    <lastmod>2021-12-07T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/</loc>
+    <lastmod>2021-12-07T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/fourier/</loc>
+    <lastmod>2021-12-05T16:13:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/sas/fourier_series/</loc>
+    <lastmod>2021-12-05T16:13:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/sawtooth/</loc>
+    <lastmod>2021-12-05T16:13:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/series/</loc>
+    <lastmod>2021-12-05T16:13:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/square/</loc>
+    <lastmod>2021-12-05T16:13:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/sas/</loc>
+    <lastmod>2021-12-05T16:13:00+01:00</lastmod>
+  </url><url>
     <loc>https://lindemax.github.io/linux/openvpn/</loc>
     <lastmod>2021-12-05T14:41:00+01:00</lastmod>
   </url><url>
@@ -14,19 +53,22 @@
     <loc>https://lindemax.github.io/tags/openvpn/</loc>
     <lastmod>2021-12-05T14:41:00+01:00</lastmod>
   </url><url>
-    <loc>https://lindemax.github.io/</loc>
-    <lastmod>2021-12-05T14:41:00+01:00</lastmod>
-  </url><url>
     <loc>https://lindemax.github.io/tags/server/</loc>
     <lastmod>2021-12-05T14:41:00+01:00</lastmod>
   </url><url>
-    <loc>https://lindemax.github.io/tags/</loc>
-    <lastmod>2021-12-05T14:41:00+01:00</lastmod>
+    <loc>https://lindemax.github.io/tags/beginner/</loc>
+    <lastmod>2021-12-05T06:56:00+01:00</lastmod>
   </url><url>
     <loc>https://lindemax.github.io/hugo/tutorial/</loc>
     <lastmod>2021-12-05T06:56:00+01:00</lastmod>
   </url><url>
     <loc>https://lindemax.github.io/hugo/</loc>
+    <lastmod>2021-12-05T06:56:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/hugo/</loc>
+    <lastmod>2021-12-05T06:56:00+01:00</lastmod>
+  </url><url>
+    <loc>https://lindemax.github.io/tags/tutorial/</loc>
     <lastmod>2021-12-05T06:56:00+01:00</lastmod>
   </url><url>
     <loc>https://lindemax.github.io/tags/awesome/</loc>
@@ -50,17 +92,8 @@
     <loc>https://lindemax.github.io/tags/fft/</loc>
     <lastmod>2021-12-04T19:05:00+01:00</lastmod>
   </url><url>
-    <loc>https://lindemax.github.io/tags/fourier/</loc>
-    <lastmod>2021-12-04T19:05:00+01:00</lastmod>
-  </url><url>
     <loc>https://lindemax.github.io/tags/python/</loc>
     <lastmod>2021-12-04T19:05:00+01:00</lastmod>
-  </url><url>
-    <loc>https://lindemax.github.io/sas/</loc>
-    <lastmod>2021-12-04T19:05:00+01:00</lastmod>
-  </url><url>
-    <loc>https://lindemax.github.io/tags/hugo/</loc>
-    <lastmod>2021-12-04T18:40:00+01:00</lastmod>
   </url><url>
     <loc>https://lindemax.github.io/tags/latex/</loc>
     <lastmod>2021-12-04T18:40:00+01:00</lastmod>
@@ -83,7 +116,5 @@
     <loc>https://lindemax.github.io/about/</loc>
   </url><url>
     <loc>https://lindemax.github.io/categories/</loc>
-  </url><url>
-    <loc>https://lindemax.github.io/muon/</loc>
   </url>
 </urlset>

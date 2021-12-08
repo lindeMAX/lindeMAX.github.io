@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Max Lindeman" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="https://lindemax.github.io/css/main.min.d07978072273555f3092cf5190ed7f58fcb838bfa5d03d305c4e71894d806b97.css" />
+    <link rel="stylesheet" href="https://lindemax.github.io/css/main.min.51c0881354df54d693832e34755c9d354b71275763b0d184113ebd0e5ce372a3.css" />
 
     
     <meta name="twitter:card" content="summary"/>
@@ -44,13 +44,12 @@
   
   </script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
   </head>
-  <body>
+  <body id="body">
     <header class="app-header">
-      <a href="https://lindemax.github.io/"><img class="app-header-avatar" src="/images/avatar/avatar_1.png" alt="Max Lindeman" /></a>
+      <a href="https://lindemax.github.io/"><img class="app-header-avatar" src="/images/avatar/avatar.jpg" alt="Max Lindeman" /></a>
       <h1>Max&#39; Blog</h1>
       <nav class="app-header-menu">
           <a class="app-header-menu-item" href="/hugo/">Hugo</a>
@@ -71,6 +70,8 @@
           <a class="app-header-menu-item" href="/about/">About</a>
       </nav>
       <p>I hope the Stuff i am posting here is usefull for you.</p>
+      <p>Creating good content is time consuming. You can support me by clicking the donation button ;-)</p>
+      <p></p>
       <div class="app-header-social">
         
           <a href="https://github.com/lindeMAX/" target="_blank" rel="noreferrer noopener">
@@ -80,6 +81,11 @@
 </svg>
           </a>
         
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="AD9HGBSS9WDAY" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
+</form>
       </div>
     </header>
     <main class="app-container">
@@ -114,8 +120,9 @@
         </div>
       </div>
     </header>
+    <hr> </hr>
     <div class="post-content">
-      <p><img src="/images/posts/convolution_gaussian/convolution.jpg" alt="Convolution of two Gaussians"></p>
+      <p><img class="plot" alt="Convolution of two Gaussians" src="/images/posts/sas/convolution_gaussian/convolution.jpg"></src></p>
 <p>A convolution can be imagined as a weighting of one function with another.
 One of the functions is mirrored in the definition area and then pushed &lsquo;piece by piece&rsquo; (infinitissimally small pieces!) over the other.
 The result is again a function that returns the &lsquo;superposition&rsquo; of the two functions for each possible shift.
@@ -141,17 +148,13 @@ However, it makes more sense to separate the exponents of the e-functions in suc
 \begin{eqnarray}
 (f_1 * f_2)(t)
 &amp;=&amp; \int_{\mathbb{R}} e^{-\br{\br{\frac{t-\tau}{\sigma}}^2 + \br{\frac{\tau}{r}}^2}} ~d\tau \newline
--\br{\br{\frac{t-\tau}{\sigma}}^2 + \br{\frac{\tau}{r}}^2}
-&amp;=&amp; -\frac{1}{\br{\sigma r}^2} \br{\sigma^2\tau^2 + r^2(t-\tau)^2} \newline
-\text{(Multiply out)}
+-\br{\br{\frac{t-\tau}{\sigma}}^2 + \br{\frac{\tau}{r}}^2}&amp;=&amp; -\frac{1}{\br{\sigma r}^2} \br{\sigma^2\tau^2 + r^2(t-\tau)^2} \newline
 &amp;=&amp; \frac{1}{\br{\sigma r}^2} \br{-\sigma^2\tau^2 - r^2 t^2 + r^2 2t\tau - r^2 \tau^2} \newline
 \text{(Square Addition)}
 &amp;=&amp; \frac{1}{\br{\sigma r}^2} \br{-r^2 t^2 + \frac{r^4 t^2}{r^2 + \sigma^2} - \frac{r^4 t^2}{r^2 + \sigma^2} + r^2 2t\tau - \br{r^2+\sigma^2} \tau^2} \newline
-\text{(exclude } r^2+\sigma^2 \text{)}
-&amp;=&amp; \frac{1}{\br{\sigma r}^2} \br{-r^2 t^2 + \frac{r^4 t^2}{r^2 + \sigma^2} -\br{r^2+\sigma^2} \br{\underbrace{\frac{r^4 t^2}{\br{r^2 + \sigma^2}^2}}_{:=b} - \frac{r^2 2t\tau}{r^2+\sigma^2} + \underbrace{\tau^2}_{:=a}}} \newline
-\br{\br{b^2 - 2ab + a^2} = \br{a - b}^2}
-&amp;=&amp; \frac{1}{\br{\sigma r}^2} \br{-\frac{r^2\sigma^2t^2}{r^2+\sigma^2} - \br{r^2+\sigma^2}\br{\tau-\frac{r^2 t}{r^2+\sigma^2}}^2} \newline
-&amp;=&amp; -\frac{t^2}{r^2+\sigma^2} - \frac{\br{r^2+\sigma^2}}{\br{r\sigma}^2}\br{\tau-\frac{r^2 t}{r^2+\sigma^2}}^2
+&amp;=&amp; \frac{1}{\br{\sigma r}^2} \br{-r^2 t^2 + \frac{r^4 t^2}{r^2 + \sigma^2} -\br{r^2+\sigma^2} \br{r^4 t^2 - \frac{r^2 2t\tau}{r^2+\sigma^2} + \tau^2}} \newline
+&amp;=&amp; \frac{1}{\br{\sigma r}^2} \br{-\frac{r^2\sigma^2t^2}{r^2+\sigma^2} - \br{r^2+\sigma^2} \br{\tau-\frac{r^2 t}{r^2+\sigma^2}}^2} \newline
+&amp;=&amp; -\frac{t^2}{r^2+\sigma^2} - \frac{\br{r^2+\sigma^2}}{\br{r\sigma}^2} \br{\tau-\frac{r^2 t}{r^2+\sigma^2}}^2
 \end{eqnarray}
 $$</p>
 <p>$$
@@ -237,10 +240,22 @@ The same applies to the inverse Fourier transformation.</p>
 <p>A convolution in the time domain corresponds to a multiplication in the frequency domain and vice versa.
 Since the exponents add up when e-functions are multiplied and the coefficients also multiply, multiplying two Gaussianss also results in a Gaussian.
 Since the inverse Fourier transform of a Gaussian is also a Gaussian, the convolution of two Gaussians must also result in a Gaussian again.</p>
+<link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+<br>
+<hr> </hr>
+<h3>Comments <i class="fa fa-comments fa-2x" aria-hidden="true"></i> </h3> 
+<div id="comment-section"></div>
+<script>
+initComments({
+  node: document.getElementById("comment-section"),
+  defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+  serverName: "cactus.chat",
+  siteName: "MaxBlog",
+  commentSectionId: "convGaussian"
+})
+</script> 
 
-    </div>
-    <div class="post-footer">
-      
     </div>
   </article>
 

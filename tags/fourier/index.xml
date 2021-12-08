@@ -6,7 +6,18 @@
     <description>Recent content in fourier on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Dec 2021 19:05:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/fourier/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Dec 2021 16:13:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/fourier/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fourier Series in theory and with Python (Sawtooth and Square Waves)</title>
+      <link>https://lindemax.github.io/sas/fourier_series/</link>
+      <pubDate>Sun, 05 Dec 2021 16:13:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/sas/fourier_series/</guid>
+      <description>In this post i will showing you how obtain the fourier coefficients of the complex fourier series for sawtooth and square waves. The approximation done by the fourier series (with a finite number of coefficients) is then compared to the original signal using a python script.
+Sawtooth waves The coefficients can be obtained this way:
+$$ \begin{eqnarray} c_k &amp;amp;=&amp;amp; \frac{1}{T} \int_0^T f(t) \cdot e^{-j2 \pi k \frac{t}{T}} ~ dt \newline f(t) &amp;amp;=&amp;amp; t ~~~~\text{for $0 &amp;lt; t \le T$} \end{eqnarray} $$</description>
+    </item>
+    
     <item>
       <title>DFT/FFT in theroy and with Python</title>
       <link>https://lindemax.github.io/sas/dft_fft/</link>
