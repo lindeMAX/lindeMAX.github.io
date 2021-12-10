@@ -6,7 +6,22 @@
     <description>Recent content in Overview on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Dec 2021 15:06:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Dec 2021 17:00:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Collection of useful PCB-Design articles</title>
+      <link>https://lindemax.github.io/pcb/collection/</link>
+      <pubDate>Fri, 10 Dec 2021 17:00:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/pcb/collection/</guid>
+      <description>Grounding Grounding Data Converters and Solving the Mystery of AGND and DGND 
+Staying Well Grounded
+Decoupling / Bypass Bypass Capacitor Selection for High-Speed Designs
+Decoupling Techniques
+Multi-Layer Four or more layer PCB design for beginners using EAGLE
+HF Parasitic Inductance of Multilayer Ceramic Capacitors
+Using Via Fences for Crosstalk Reduction in PCB Circuits</description>
+    </item>
+    
     <item>
       <title>Keep your Linux clean</title>
       <link>https://lindemax.github.io/linux/cleanup/</link>
