@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scematics on Max&#39; Blog</title>
+    <link>https://lindemax.github.io/tags/scematics/</link>
+    <description>Recent content in Scematics on Max&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Dec 2021 19:00:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/scematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Charge Measurement on upcoming Muon Detectors - Scematics and electrical Simulation</title>
+      <link>https://lindemax.github.io/muon/q_mes_v2_sim/</link>
+      <pubDate>Thu, 09 Dec 2021 19:00:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/muon/q_mes_v2_sim/</guid>
+      <description>I chose a voltage readout approach since i&amp;rsquo;ve already made some experiences with it.
+This means that the SiPM&amp;rsquo;s photcurrent is driven through a resistor, which&amp;rsquo;s voltage drop is amplified by an voltage amplifier. After amplification there sits an integrator next to a comparator. The comparator will give us a short pulse, which is used to create timestamps for the event. The integrator will output a voltage, that is somehow related to the particles energy.</description>
+    </item>
+    
+  </channel>
+</rss>

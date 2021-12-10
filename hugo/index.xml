@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 05 Dec 2021 06:56:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Great Hugo Tutorial</title>
-      <link>https://lindemax.github.io/hugo/tutorial/</link>
+      <link>https://lindemax.github.io/hugo/hugo_tutorial/</link>
       <pubDate>Sun, 05 Dec 2021 06:56:00 +0100</pubDate>
       
-      <guid>https://lindemax.github.io/hugo/tutorial/</guid>
+      <guid>https://lindemax.github.io/hugo/hugo_tutorial/</guid>
       <description>This is the best hugo-beginners tutorial i have seen so far!
    Comments     initComments({ node: document.getElementById(&#34;comment-section&#34;), defaultHomeserverUrl: &#34;https://matrix.cactus.chat:8448&#34;, serverName: &#34;cactus.chat&#34;, siteName: &#34;MaxBlog&#34;, commentSectionId: &#34;hugoTutorial&#34; })  </description>
     </item>
@@ -39,10 +39,10 @@ One thing left to do is to enable rendering of plain html from within the markdo
       <guid>https://lindemax.github.io/hugo/latex_in_hugo/</guid>
       <description>This is juast a simple test:
 $$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 \right )} $$
-$$ \begin{eqnarray} f_1(t) &amp;amp;=&amp;amp; e^{-\br{\frac{t}{\sigma}}^2} \newline f_2(t) &amp;amp;=&amp;amp; e^{-\br{\frac{t}{r}}^2} \newline (f_1 * f_2)(t) &amp;amp;=&amp;amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline &amp;amp;=&amp;amp; \int_{\mathbb{R}} e^{-\br{\frac{t-\tau}{\sigma}}^2} \cdot e^{-\br{\frac{\tau}{r}}^2} ~d\tau \newline \end{eqnarray} $$
+$$ \begin{eqnarray} (f_1 * f_2)(t) &amp;amp;=&amp;amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline \end{eqnarray} $$
 See how it is done!
 Things to mention:
- In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras.</description>
+ In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras.scss. Mathjax3 seems to not support \\\. Use \newline instead ;-)     Comments     initComments({ node: document.</description>
     </item>
     
   </channel>

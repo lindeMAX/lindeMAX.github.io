@@ -6,11 +6,11 @@
     <description>Recent content in Tags on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Dec 2021 19:00:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Dec 2021 19:00:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Charge</title>
       <link>https://lindemax.github.io/tags/charge/</link>
-      <pubDate>Tue, 07 Dec 2021 19:00:00 +0100</pubDate>
+      <pubDate>Thu, 09 Dec 2021 19:00:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/tags/charge/</guid>
       <description></description>
@@ -19,7 +19,7 @@
     <item>
       <title>Detector</title>
       <link>https://lindemax.github.io/tags/detector/</link>
-      <pubDate>Tue, 07 Dec 2021 19:00:00 +0100</pubDate>
+      <pubDate>Thu, 09 Dec 2021 19:00:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/tags/detector/</guid>
       <description></description>
@@ -28,9 +28,27 @@
     <item>
       <title>Measurement</title>
       <link>https://lindemax.github.io/tags/measurement/</link>
-      <pubDate>Tue, 07 Dec 2021 19:00:00 +0100</pubDate>
+      <pubDate>Thu, 09 Dec 2021 19:00:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/tags/measurement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scematics</title>
+      <link>https://lindemax.github.io/tags/scematics/</link>
+      <pubDate>Thu, 09 Dec 2021 19:00:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/tags/scematics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Simulation</title>
+      <link>https://lindemax.github.io/tags/simulation/</link>
+      <pubDate>Thu, 09 Dec 2021 19:00:00 +0100</pubDate>
+      
+      <guid>https://lindemax.github.io/tags/simulation/</guid>
       <description></description>
     </item>
     

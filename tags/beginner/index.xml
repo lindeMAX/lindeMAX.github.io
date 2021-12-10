@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 05 Dec 2021 06:56:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/beginner/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Great Hugo Tutorial</title>
-      <link>https://lindemax.github.io/hugo/tutorial/</link>
+      <link>https://lindemax.github.io/hugo/hugo_tutorial/</link>
       <pubDate>Sun, 05 Dec 2021 06:56:00 +0100</pubDate>
       
-      <guid>https://lindemax.github.io/hugo/tutorial/</guid>
+      <guid>https://lindemax.github.io/hugo/hugo_tutorial/</guid>
       <description>This is the best hugo-beginners tutorial i have seen so far!
    Comments     initComments({ node: document.getElementById(&#34;comment-section&#34;), defaultHomeserverUrl: &#34;https://matrix.cactus.chat:8448&#34;, serverName: &#34;cactus.chat&#34;, siteName: &#34;MaxBlog&#34;, commentSectionId: &#34;hugoTutorial&#34; })  </description>
     </item>
