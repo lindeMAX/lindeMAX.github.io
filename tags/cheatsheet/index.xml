@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cheatsheet on Max&#39; Blog</title>
+    <link>https://lindemax.github.io/tags/cheatsheet/</link>
+    <description>Recent content in cheatsheet on Max&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Aug 2022 16:32:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/tags/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vim Cheatsheet</title>
+      <link>https://lindemax.github.io/linux/vim/</link>
+      <pubDate>Mon, 01 Aug 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/vim/</guid>
+      <description>Search &amp;amp; Replace /pattern Search for pattern ?pattern Search backward for pattern n Repeat search in same direction N Repeat search in opposite direction :%s/old/new/g Replace all old with new throughout file (gn is better though) :%s/old/new/gc Replace all old with new throughout file with confirmations </description>
+    </item>
+    
+    <item>
+      <title>Linux Cheatsheet</title>
+      <link>https://lindemax.github.io/linux/cheatsheet/</link>
+      <pubDate>Sat, 30 Jul 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/cheatsheet/</guid>
+      <description>Have a look at this open book for more information:
+Shell Redirections Redirect STDOUT to file: ls 1&amp;gt; file
+Append STDOUT to existing file: ls 1&amp;gt;&amp;gt; file
+Redirect STDERR to file: ls 2&amp;gt; file
+Redirect STDERR to STDOUT: ls 2&amp;gt;&amp;amp;1
+Suppress STDERR: ls 2&amp;gt;/dev/null
+Pipelines Pipe output into another program: ls -l | grep &amp;#34;something&amp;#34;
+FIFOs FIFOs (First In First Out) are like pipeline but can be used by multiple programs simultaneously.</description>
+    </item>
+    
+  </channel>
+</rss>

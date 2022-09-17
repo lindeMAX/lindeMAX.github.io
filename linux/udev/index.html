@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Hotplug events with UDEV // Max&#39; Blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.102.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Max Lindeman" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://lindemax.github.io/css/main.min.d1ddc0c14b1594344efdb7f790a3853979e9834d0eb645cb6e9d04e0400a8f26.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hotplug events with UDEV"/>
+<meta name="twitter:description" content="As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.
+I wanted two things to happen:
+Turn off the notebooks internal screen while it is docked to it&rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
+a script that manages the monitor settings a udev-rule that executes that script The script has to be called with a command line argument."/>
+
+    <meta property="og:title" content="Hotplug events with UDEV" />
+<meta property="og:description" content="As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.
+I wanted two things to happen:
+Turn off the notebooks internal screen while it is docked to it&rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
+a script that manages the monitor settings a udev-rule that executes that script The script has to be called with a command line argument." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lindemax.github.io/linux/udev/" /><meta property="article:section" content="linux" />
+<meta property="article:published_time" content="2022-09-17T17:57:37+02:00" />
+<meta property="article:modified_time" content="2022-09-17T17:57:37+02:00" />
+
+
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body id="body">
+    <div id="fadeshow">
+      <header class="app-header">
+        <a href="https://lindemax.github.io/"><img class="app-header-avatar" src="/images/avatar/avatar.jpg" alt="Max Lindeman" /></a>
+        <h1>Max&#39; Blog</h1>
+        <nav class="app-header-menu">
+            <a class="app-header-menu-item" href="/">Home</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/hugo/">Hugo</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/linux/">Linux</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/muon/">MuON</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/pcb/">PCB-Design</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/sas/">SaS</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/about/">About</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/tags/">Tags</a>
+        </nav>
+        <p>I hope the Stuff i am posting here is useful for you.</p>
+        <p>Creating good content is time consuming and not always easy. You can support me by clicking the donation button ;-)</p>
+        <p></p>
+        <div class="app-header-social">
+          
+            <a href="https://github.com/lindeMAX/" target="_blank" rel="noreferrer noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>My Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+            </a>
+          
+          <form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="AD9HGBSS9WDAY" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
+</form>
+        </div>
+        <div id="theme">
+        <input type="checkbox" id="themeToggle"></input>
+        <label for="themeToggle" class="themeToggle"><i class="fa fa-adjust fa-2x" aria-hidden="true"></i></label>
+      </div>
+      </header>
+    </div>
+    <main class="app-container">
+      <div id="burger">
+        <input type="checkbox" id="hamburger" >
+        <label for="hamburger" class="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </label>
+      </div>
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Hotplug events with UDEV</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Sep 17, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://lindemax.github.io/tags/linux/">linux</a>
+              <a class="tag" href="https://lindemax.github.io/tags/udev/">udev</a>
+              <a class="tag" href="https://lindemax.github.io/tags/hotplug/">hotplug</a>
+              <a class="tag" href="https://lindemax.github.io/tags/monitor/">monitor</a>
+              <a class="tag" href="https://lindemax.github.io/tags/swaywm/">swaywm</a>
+        </div>
+      </div>
+    </header>
+    <hr> </hr>
+    <br>
+    <div class="post-content">
+      <p>As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.<br>
+I wanted two things to happen:<br></p>
+<ol>
+<li>Turn off the notebooks internal screen while it is docked to it&rsquo;s docking station</li>
+<li>Turn on the external keyboards backlight when connected</li>
+</ol>
+<p>To achieve the first goal one needs two things:</p>
+<ol>
+<li>a script that manages the monitor settings</li>
+<li>a udev-rule that executes that script</li>
+</ol>
+<p>The script has to be called with a command line argument.
+If this is <em><strong>docked</strong></em> the notebook&rsquo;s internal monitor becomes disabled and two other monitors enabled.
+If it is <em><strong>undocked</strong></em> the notebook&rsquo;s internal monitors is enabled.<br>
+I am using <a href="https://swaywm.org/" target="_blank">swaywm</a> as my window manager and scripts called by udev are not executed as <em><strong>guid 1000</strong></em>, or in other words <em><strong>as your user</strong></em>, the <em><strong>SWAYSOCK</strong></em> variable has to be exported first.<br>
+For some reason there where two sway-sockets listed under <em><strong>/run/user/1000/</strong></em> on my system. In my case the one to be used was the second one (&hellip; | sed -n 2p).</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span><span style="color:#78787e"># !/bin/bash</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># The sway-socket needs to be exported here because the script is not run as uid 1000 </span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">export</span> <span style="color:#ff5c57">SWAYSOCK</span><span style="color:#ff6ac1">=</span><span style="color:#ff6ac1">$(</span>ls /run/user/1000/sway-ipc*.sock | sed -n 2p<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Arange monitors</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> <span style="color:#ff6ac1">[</span> <span style="color:#ff5c57">$1</span> <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;docked&#34;</span> <span style="color:#ff6ac1">]</span>; <span style="color:#ff6ac1">then</span>
+</span></span><span style="display:flex;"><span>   swaymsg output DP-1 pos <span style="color:#ff9f43">0</span> <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span>   swaymsg output HDMI-A-1 pos <span style="color:#ff9f43">1920</span> <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span>   swaymsg output eDP-1 disable
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">elif</span> <span style="color:#ff6ac1">[</span> <span style="color:#ff5c57">$1</span> <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;undocked&#34;</span> <span style="color:#ff6ac1">]</span>; <span style="color:#ff6ac1">then</span>
+</span></span><span style="display:flex;"><span>   swaymsg output eDP-1 <span style="color:#ff5c57">enable</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff5c57">echo</span> <span style="color:#5af78e">&#34;Please provide an argument.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">fi</span></span></span></code></pre></div>
+<p>The udev rule simply calls the script either the argument <em><strong>docked</strong></em>, if the docking station is attached, or with <em><strong>undeocked</strong></em>, if the docking station is detached.
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span><span style="color:#ff5c57">ACTION</span><span style="color:#ff6ac1">==</span><span style="color:#5af78e">&#34;add&#34;</span>, <span style="color:#ff5c57">SUBSYSTEMS</span><span style="color:#ff6ac1">==</span><span style="color:#5af78e">&#34;usb&#34;</span>, ATTR<span style="color:#ff6ac1">{</span>idVendor<span style="color:#ff6ac1">}==</span><span style="color:#5af78e">&#34;&lt;vendor id&gt;&#34;</span>, ATTR<span style="color:#ff6ac1">{</span>idProduct<span style="color:#ff6ac1">}==</span><span style="color:#5af78e">&#34;&lt;product id&gt;&#34;</span>, <span style="color:#ff5c57">MODE</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;0660&#34;</span>, <span style="color:#ff5c57">RUN</span><span style="color:#ff6ac1">+=</span><span style="color:#5af78e">&#34;/bin/bash &lt;path to script&gt; docked&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">ACTION</span><span style="color:#ff6ac1">==</span><span style="color:#5af78e">&#34;remove&#34;</span>, <span style="color:#ff5c57">SUBSYSTEMS</span><span style="color:#ff6ac1">==</span><span style="color:#5af78e">&#34;usb&#34;</span>, ATTR<span style="color:#ff6ac1">{</span>idVendor<span style="color:#ff6ac1">}==</span><span style="color:#5af78e">&#34;&lt;vendor id&gt;&#34;</span>, ATTR<span style="color:#ff6ac1">{</span>idProduct<span style="color:#ff6ac1">}==</span><span style="color:#5af78e">&#34;&lt;product id&gt;&#34;</span>, <span style="color:#ff5c57">MODE</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;0660&#34;</span>, <span style="color:#ff5c57">RUN</span><span style="color:#ff6ac1">+=</span><span style="color:#5af78e">&#34;/bin/bash &lt;path to script&gt; undocked&#34;</span></span></span></code></pre></div></p>
+<p>The udev rule has to be placed at <em><strong>/etc/udev/rules.d/</strong></em>. Make shure to give the prper suffix to it (e.g. <em><strong>docking.rules</strong></em>).<br>
+To enable it one has to execute the following line:
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>sudo udevadm control --reload <span style="color:#ff6ac1">&amp;&amp;</span> sudo udevadm trigger</span></span></code></pre></div></p>
+
+    </div>
+  </article>
+
+    </main>
+    <script src="/base.js"></script>
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>

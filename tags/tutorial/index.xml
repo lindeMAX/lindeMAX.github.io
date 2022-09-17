@@ -14,7 +14,7 @@
       
       <guid>https://lindemax.github.io/hugo/hugo_tutorial/</guid>
       <description>This is the best hugo-beginners tutorial i have seen so far!
-   Comments     initComments({ node: document.getElementById(&#34;comment-section&#34;), defaultHomeserverUrl: &#34;https://matrix.cactus.chat:8448&#34;, serverName: &#34;cactus.chat&#34;, siteName: &#34;MaxBlog&#34;, commentSectionId: &#34;hugoTutorial&#34; })  </description>
+Comments </description>
     </item>
     
   </channel>

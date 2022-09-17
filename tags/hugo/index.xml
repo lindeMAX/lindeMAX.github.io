@@ -14,7 +14,7 @@
       
       <guid>https://lindemax.github.io/hugo/hugo_tutorial/</guid>
       <description>This is the best hugo-beginners tutorial i have seen so far!
-   Comments     initComments({ node: document.getElementById(&#34;comment-section&#34;), defaultHomeserverUrl: &#34;https://matrix.cactus.chat:8448&#34;, serverName: &#34;cactus.chat&#34;, siteName: &#34;MaxBlog&#34;, commentSectionId: &#34;hugoTutorial&#34; })  </description>
+Comments </description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@ $$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 
 $$ \begin{eqnarray} (f_1 * f_2)(t) &amp;amp;=&amp;amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline \end{eqnarray} $$
 See how it is done!
 Things to mention:
- In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras.scss. Mathjax3 seems to not support \\\. Use \newline instead ;-)     Comments     initComments({ node: document.</description>
+In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras.scss. Mathjax3 seems to not support \\\. Use \newline instead ;-) Comments </description>
     </item>
     
   </channel>

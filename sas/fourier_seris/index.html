@@ -4,11 +4,11 @@
     <title>Fourier Series in theory and with Python (Sawtooth and Square Waves) // Max&#39; Blog</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.89.4" />
+    <meta name="generator" content="Hugo 0.102.3" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Max Lindeman" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="https://lindemax.github.io/css/main.min.05e627ef0b33155dd87d6104dce4fbc2e42d4316ebb587a0cfd143cf50aa9ec1.css" />
+    <link rel="stylesheet" href="https://lindemax.github.io/css/main.min.d1ddc0c14b1594344efdb7f790a3853979e9834d0eb645cb6e9d04e0400a8f26.css" />
 
     
     <meta name="twitter:card" content="summary"/>
@@ -99,6 +99,10 @@ $$ \begin{eqnarray} c_k &amp;=&amp; \frac{1}{T} \int_0^T f(t) \cdot e^{-j2 \pi k
 <img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
 </form>
         </div>
+        <div id="theme">
+        <input type="checkbox" id="themeToggle"></input>
+        <label for="themeToggle" class="themeToggle"><i class="fa fa-adjust fa-2x" aria-hidden="true"></i></label>
+      </div>
       </header>
     </div>
     <main class="app-container">
@@ -157,8 +161,8 @@ $$</p>
 <p>By partial integration and correct substitution, we can solve the integral.</p>
 <p>$$
 \begin{eqnarray}
-u &amp;=&amp; t, ~ u' = 1 \newline
-v' &amp;=&amp; e^{-j2 \pi k \frac{t}{T}}, ~ v = \frac{-T}{j2 \pi k} \cdot e^{-j2 \pi k \frac{t}{T}}<br>
+u &amp;=&amp; t, ~ u&rsquo; = 1 \newline
+v&rsquo; &amp;=&amp; e^{-j2 \pi k \frac{t}{T}}, ~ v = \frac{-T}{j2 \pi k} \cdot e^{-j2 \pi k \frac{t}{T}}<br>
 \end{eqnarray}
 $$</p>
 <p>$$
@@ -215,46 +219,46 @@ We have to calculate the coefficients for postive and negative indices.
 
     </div>
 </div>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#ff6ac1">import</span> numpy <span style="color:#ff6ac1">as</span> np
-<span style="color:#ff6ac1">import</span> matplotlib.pyplot <span style="color:#ff6ac1">as</span> plt
-<span style="color:#ff6ac1">import</span> matplotlib.ticker <span style="color:#ff6ac1">as</span> tck
-<span style="color:#ff6ac1">from</span> scipy <span style="color:#ff6ac1">import</span> signal
-
-time <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>linspace(<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">4</span>, <span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">1e3</span>))
-
-<span style="color:#78787e"># Time Period</span>
-T <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span>
-<span style="color:#78787e"># The actual saw tooth wave</span>
-saw_wave <span style="color:#ff6ac1">=</span> (signal<span style="color:#ff6ac1">.</span>sawtooth(<span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>pi <span style="color:#ff6ac1">*</span> <span style="color:#ff9f43">1</span><span style="color:#ff6ac1">/</span>T <span style="color:#ff6ac1">*</span> time) <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">1</span>)<span style="color:#ff6ac1">/</span><span style="color:#ff9f43">2</span>
-
-<span style="color:#78787e"># Calc the complex fourier coefficients</span>
-<span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">ck</span>(k):
-    <span style="color:#ff6ac1">if</span> k <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">0</span>:
-        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">1</span><span style="color:#ff6ac1">/</span><span style="color:#ff9f43">2</span>
-    <span style="color:#ff6ac1">else</span>:
-        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">/</span> (<span style="color:#ff9f43">1</span>j<span style="color:#ff6ac1">*</span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">*</span>k)
-
-<span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">f</span>(t, K):
-    f <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>array([ck(k) <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>exp(<span style="color:#ff9f43">1</span>j<span style="color:#ff6ac1">*</span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">*</span>k<span style="color:#ff6ac1">*</span>t) <span style="color:#ff6ac1">for</span> k <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff6ac1">-</span>K, K)])
-    <span style="color:#ff6ac1">return</span> f<span style="color:#ff6ac1">.</span>sum()
-
-<span style="color:#78787e"># Number of coefficients to use.</span>
-<span style="color:#78787e"># Because of range(-K,K) we will actually get n*2+1 coefficients</span>
-n <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
-fourier_series <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>array([f(t, n)<span style="color:#ff6ac1">.</span>real <span style="color:#ff6ac1">for</span> t <span style="color:#ff6ac1">in</span> time])
-       
-fig, ax <span style="color:#ff6ac1">=</span> plt<span style="color:#ff6ac1">.</span>subplots(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>, figsize<span style="color:#ff6ac1">=</span>(<span style="color:#ff9f43">20</span>,<span style="color:#ff9f43">5</span>))
-
-ax<span style="color:#ff6ac1">.</span>set_xlabel(<span style="color:#5af78e">&#39;Time $[s]$ &#39;</span>)
-ax<span style="color:#ff6ac1">.</span>xaxis<span style="color:#ff6ac1">.</span>set_major_formatter(tck<span style="color:#ff6ac1">.</span>FormatStrFormatter(<span style="color:#5af78e">&#39;</span><span style="color:#5af78e">%g</span><span style="color:#5af78e"> s&#39;</span>))
-ax<span style="color:#ff6ac1">.</span>yaxis<span style="color:#ff6ac1">.</span>set_major_locator(tck<span style="color:#ff6ac1">.</span>MultipleLocator(base<span style="color:#ff6ac1">=</span><span style="color:#ff9f43">4</span>))
-ax<span style="color:#ff6ac1">.</span>plot(time, saw_wave)
-ax<span style="color:#ff6ac1">.</span>plot(time, fourier_series)
-ax<span style="color:#ff6ac1">.</span>grid()
-
-fig<span style="color:#ff6ac1">.</span>tight_layout()
-fig<span style="color:#ff6ac1">.</span>savefig(<span style="color:#5af78e">&#39;fourier_series_saw.png&#39;</span>)
-</code></pre></div><h2 id="square-waves">Square waves</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> numpy <span style="color:#ff6ac1">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> matplotlib.pyplot <span style="color:#ff6ac1">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> matplotlib.ticker <span style="color:#ff6ac1">as</span> tck
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">from</span> scipy <span style="color:#ff6ac1">import</span> signal
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>time <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>linspace(<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">4</span>, <span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">1e3</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Time Period</span>
+</span></span><span style="display:flex;"><span>T <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># The actual saw tooth wave</span>
+</span></span><span style="display:flex;"><span>saw_wave <span style="color:#ff6ac1">=</span> (signal<span style="color:#ff6ac1">.</span>sawtooth(<span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>pi <span style="color:#ff6ac1">*</span> <span style="color:#ff9f43">1</span><span style="color:#ff6ac1">/</span>T <span style="color:#ff6ac1">*</span> time) <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">1</span>)<span style="color:#ff6ac1">/</span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Calc the complex fourier coefficients</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">ck</span>(k):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> k <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">1</span><span style="color:#ff6ac1">/</span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">/</span> (<span style="color:#ff9f43">1</span>j<span style="color:#ff6ac1">*</span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">*</span>k)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">f</span>(t, K):
+</span></span><span style="display:flex;"><span>    f <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>array([ck(k) <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>exp(<span style="color:#ff9f43">1</span>j<span style="color:#ff6ac1">*</span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">*</span>k<span style="color:#ff6ac1">*</span>t) <span style="color:#ff6ac1">for</span> k <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff6ac1">-</span>K, K)])
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> f<span style="color:#ff6ac1">.</span>sum()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Number of coefficients to use.</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Because of range(-K,K) we will actually get n*2+1 coefficients</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span>fourier_series <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>array([f(t, n)<span style="color:#ff6ac1">.</span>real <span style="color:#ff6ac1">for</span> t <span style="color:#ff6ac1">in</span> time])
+</span></span><span style="display:flex;"><span>       
+</span></span><span style="display:flex;"><span>fig, ax <span style="color:#ff6ac1">=</span> plt<span style="color:#ff6ac1">.</span>subplots(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>, figsize<span style="color:#ff6ac1">=</span>(<span style="color:#ff9f43">20</span>,<span style="color:#ff9f43">5</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#ff6ac1">.</span>set_xlabel(<span style="color:#5af78e">&#39;Time $[s]$ &#39;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#ff6ac1">.</span>xaxis<span style="color:#ff6ac1">.</span>set_major_formatter(tck<span style="color:#ff6ac1">.</span>FormatStrFormatter(<span style="color:#5af78e">&#39;</span><span style="color:#5af78e">%g</span><span style="color:#5af78e"> s&#39;</span>))
+</span></span><span style="display:flex;"><span>ax<span style="color:#ff6ac1">.</span>yaxis<span style="color:#ff6ac1">.</span>set_major_locator(tck<span style="color:#ff6ac1">.</span>MultipleLocator(base<span style="color:#ff6ac1">=</span><span style="color:#ff9f43">4</span>))
+</span></span><span style="display:flex;"><span>ax<span style="color:#ff6ac1">.</span>plot(time, saw_wave)
+</span></span><span style="display:flex;"><span>ax<span style="color:#ff6ac1">.</span>plot(time, fourier_series)
+</span></span><span style="display:flex;"><span>ax<span style="color:#ff6ac1">.</span>grid()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#ff6ac1">.</span>tight_layout()
+</span></span><span style="display:flex;"><span>fig<span style="color:#ff6ac1">.</span>savefig(<span style="color:#5af78e">&#39;fourier_series_saw.png&#39;</span>)
+</span></span></code></pre></div><h2 id="square-waves">Square waves</h2>
 <h3 id="periodicity-by-convolution">Periodicity by Convolution</h3>
 <p>Non periodical signals can be mathematically expressed preiodically by convoluting them with a series of Dirac delta functions.
 We will use this for the square wave to get the actual wave from a single sqaure.</p>
@@ -312,17 +316,17 @@ Be aware of the difference between T and T'
 </div>
 <p>$$
 \begin{eqnarray}
-\text{Base Function:} \quad x_0(t) &amp;=&amp; \alpha \cdot rect(\frac{t}{T'}) \newline
-x(t) ~ \xrightarrow{\mathscr{F}} ~ X(f) &amp;=&amp; \alpha 2T' \cdot si(\omega T') \cdot \frac{1}{T} \sum_{k\in\mathbb{Z}} \delta(f-\frac{k}{T}) \newline
-&amp;=&amp; \alpha \frac{2T'}{T} \cdot si(2 \pi f T') \cdot \sum_{k\in\mathbb{Z}} \delta(f-\frac{k}{T}) \newline
-&amp;=&amp; \sum_{k\in\mathbb{Z}} \alpha \frac{2T'}{T} \cdot si(2\pi \frac{T'}{T} k) \cdot  \delta(f-\frac{k}{T}) \newline
+\text{Base Function:} \quad x_0(t) &amp;=&amp; \alpha \cdot rect(\frac{t}{T&rsquo;}) \newline
+x(t) ~ \xrightarrow{\mathscr{F}} ~ X(f) &amp;=&amp; \alpha 2T&rsquo; \cdot si(\omega T&rsquo;) \cdot \frac{1}{T} \sum_{k\in\mathbb{Z}} \delta(f-\frac{k}{T}) \newline
+&amp;=&amp; \alpha \frac{2T&rsquo;}{T} \cdot si(2 \pi f T&rsquo;) \cdot \sum_{k\in\mathbb{Z}} \delta(f-\frac{k}{T}) \newline
+&amp;=&amp; \sum_{k\in\mathbb{Z}} \alpha \frac{2T&rsquo;}{T} \cdot si(2\pi \frac{T&rsquo;}{T} k) \cdot  \delta(f-\frac{k}{T}) \newline
 \end{eqnarray}
 $$</p>
 <p>$$
 \begin{eqnarray}
-\Rightarrow c_k &amp;=&amp; \alpha \frac{2T'}{T} \cdot si(2\pi \frac{T'}{T} k) \newline
-&amp;=&amp; \alpha \frac{2T'}{T} \cdot \frac{sin(2\pi \frac{T'}{T} k)}{2\pi \frac{T'}{T} k} \newline
-&amp;=&amp; \frac{\alpha}{\pi} \cdot \frac{sin(2\pi \frac{T'}{T} k)}{k}
+\Rightarrow c_k &amp;=&amp; \alpha \frac{2T&rsquo;}{T} \cdot si(2\pi \frac{T&rsquo;}{T} k) \newline
+&amp;=&amp; \alpha \frac{2T&rsquo;}{T} \cdot \frac{sin(2\pi \frac{T&rsquo;}{T} k)}{2\pi \frac{T&rsquo;}{T} k} \newline
+&amp;=&amp; \frac{\alpha}{\pi} \cdot \frac{sin(2\pi \frac{T&rsquo;}{T} k)}{k}
 \end{eqnarray}
 $$</p>
 
@@ -349,91 +353,91 @@ $$</p>
 </figure>
 <p>This image was created using the python script below.
 It shows a periodic sqaure wave, it&rsquo;s frequency spectrum, the envelope of it&rsquo;s spectrum ($si()$ the fourier transfomration of a singe square) and the reconstruction of the square wave with the complex fourier series using only 20 coefficients.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#ff6ac1">import</span> numpy <span style="color:#ff6ac1">as</span> np
-<span style="color:#ff6ac1">import</span> matplotlib.pyplot <span style="color:#ff6ac1">as</span> plt
-<span style="color:#ff6ac1">import</span> matplotlib.ticker <span style="color:#ff6ac1">as</span> tck
-<span style="color:#ff6ac1">from</span> scipy.fft <span style="color:#ff6ac1">import</span> fft, fftfreq
-<span style="color:#ff6ac1">from</span> scipy <span style="color:#ff6ac1">import</span> signal
-
-f_max <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">25</span> <span style="color:#78787e"># in Hz</span>
-Ts <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span><span style="color:#ff6ac1">/</span>(<span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">*</span> f_max)
-
-<span style="color:#78787e"># Signal length [s]</span>
-sl <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1000</span>
-
-<span style="color:#78787e"># Total number of samples</span>
-N <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">int</span>(sl <span style="color:#ff6ac1">/</span> Ts)
-
-time <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>linspace(<span style="color:#ff9f43">0</span>, sl, N)
-
-<span style="color:#78787e"># Amplitude of the square wave</span>
-a <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span>
-<span style="color:#78787e"># Time period of the square wave [s]</span>
-Tp <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1.5</span>
-<span style="color:#78787e"># Width of the square [s]</span>
-Tw <span style="color:#ff6ac1">=</span> Tp<span style="color:#ff6ac1">/</span><span style="color:#ff9f43">4</span>
-<span style="color:#78787e"># Shift the sqaure wave up, left, scale it to 1 and set the proper duty cycle</span>
-square_wave <span style="color:#ff6ac1">=</span> a <span style="color:#ff6ac1">*</span> (signal<span style="color:#ff6ac1">.</span>square(<span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">/</span>Tp<span style="color:#ff6ac1">*</span>(time<span style="color:#ff6ac1">+</span>Tw<span style="color:#ff6ac1">/</span><span style="color:#ff9f43">2</span>), duty<span style="color:#ff6ac1">=</span>(Tw<span style="color:#ff6ac1">/</span>Tp)) <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">1</span>) <span style="color:#ff6ac1">/</span> <span style="color:#ff9f43">2</span>
-
-<span style="color:#78787e"># Why do i need to do this?</span>
-<span style="color:#78787e"># Did i get something wrong with the definition of the sqaure?</span>
-Tw <span style="color:#ff6ac1">=</span> Tw<span style="color:#ff6ac1">/</span><span style="color:#ff9f43">2</span>
-
-<span style="color:#78787e"># Calc the complex fourier coefficients</span>
-<span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">ck</span>(k):
-    <span style="color:#ff6ac1">if</span> k <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">0</span>:
-        <span style="color:#78787e"># si(0) = 1</span>
-        <span style="color:#ff6ac1">return</span> a <span style="color:#ff6ac1">/</span> np<span style="color:#ff6ac1">.</span>pi
-    <span style="color:#ff6ac1">else</span>:
-        <span style="color:#ff6ac1">return</span> a <span style="color:#ff6ac1">/</span> np<span style="color:#ff6ac1">.</span>pi <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>sin(<span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">*</span>Tw<span style="color:#ff6ac1">/</span>Tp<span style="color:#ff6ac1">*</span>k) <span style="color:#ff6ac1">/</span> (k)
-
-<span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">f</span>(t, K):
-    <span style="color:#78787e"># We need coefficients positive &#39;k&#39;s only</span>
-    f <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>array([ck(k) <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>exp(<span style="color:#ff9f43">1</span>j<span style="color:#ff6ac1">*</span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">*</span>k<span style="color:#ff6ac1">*</span>t<span style="color:#ff6ac1">/</span>Tp) <span style="color:#ff6ac1">for</span> k <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">1</span>, K<span style="color:#ff6ac1">+</span><span style="color:#ff9f43">1</span>)])
-    <span style="color:#ff6ac1">return</span> f<span style="color:#ff6ac1">.</span>sum()
-
-<span style="color:#78787e"># Number of coefficients to use</span>
-n <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">20</span>
-fourier_series <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>array([f(t, n)<span style="color:#ff6ac1">.</span>real <span style="color:#ff6ac1">for</span> t <span style="color:#ff6ac1">in</span> time])
-<span style="color:#78787e"># Why is this not scaling correctly?</span>
-<span style="color:#78787e"># Because we are only calculating the upper HALF of the coefficients!</span>
-fourier_series <span style="color:#ff6ac1">*=</span> <span style="color:#ff9f43">2</span>
-<span style="color:#78787e"># The DC-part is somehow scaling correctly...</span>
-<span style="color:#78787e"># Of course. It is the coefficiant sitting on the coordinate origin (point of symmetry)</span>
-fourier_series <span style="color:#ff6ac1">+=</span> ck(<span style="color:#ff9f43">0</span>)
-
-<span style="color:#78787e"># Frequency spectrum</span>
-yf0 <span style="color:#ff6ac1">=</span> fft(square_wave)
-<span style="color:#78787e"># Scale it correctly</span>
-yf0 <span style="color:#ff6ac1">/=</span> N
-
-<span style="color:#78787e"># Frequency axis values</span>
-xf <span style="color:#ff6ac1">=</span> fftfreq(N, Ts)
-
-<span style="color:#78787e"># Fourier transformation of a rect is a sinc()</span>
-w <span style="color:#ff6ac1">=</span>  <span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>pi <span style="color:#ff6ac1">*</span> xf
-yf1 <span style="color:#ff6ac1">=</span> a <span style="color:#ff6ac1">*</span> <span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>Tw<span style="color:#ff6ac1">/</span>Tp <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>sin(w<span style="color:#ff6ac1">*</span>Tw)<span style="color:#ff6ac1">/</span>(w<span style="color:#ff6ac1">*</span>Tw)
-       
-fig, ax <span style="color:#ff6ac1">=</span> plt<span style="color:#ff6ac1">.</span>subplots(<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">1</span>, figsize<span style="color:#ff6ac1">=</span>(<span style="color:#ff9f43">20</span>,<span style="color:#ff9f43">10</span>))
-
-ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>set_xlabel(<span style="color:#5af78e">&#39;Time $[s]$ &#39;</span>)
-ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>xaxis<span style="color:#ff6ac1">.</span>set_major_formatter(tck<span style="color:#ff6ac1">.</span>FormatStrFormatter(<span style="color:#5af78e">&#39;</span><span style="color:#5af78e">%g</span><span style="color:#5af78e"> s&#39;</span>))
-ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>yaxis<span style="color:#ff6ac1">.</span>set_major_locator(tck<span style="color:#ff6ac1">.</span>MultipleLocator(base<span style="color:#ff6ac1">=</span><span style="color:#ff9f43">4</span>))
-<span style="color:#78787e"># Plotting only the first second (visually nicer)</span>
-ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>plot(time[:<span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">3</span><span style="color:#ff6ac1">/</span>Ts)], square_wave[:<span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">3</span><span style="color:#ff6ac1">/</span>Ts)])
-ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>plot(time[:<span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">3</span><span style="color:#ff6ac1">/</span>Ts)], fourier_series[:<span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">3</span><span style="color:#ff6ac1">/</span>Ts)])
-ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>grid()
-
-ax[<span style="color:#ff9f43">1</span>]<span style="color:#ff6ac1">.</span>set_xlabel(<span style="color:#5af78e">&#39;Frequency $[Hz]$&#39;</span>)
-<span style="color:#78787e"># Plotting only the upper half of the freq-domain</span>
-<span style="color:#78787e"># Be careful with the y-axis scaling!</span>
-ax[<span style="color:#ff9f43">1</span>]<span style="color:#ff6ac1">.</span>plot(xf[:N<span style="color:#ff6ac1">//</span><span style="color:#ff9f43">2</span>], np<span style="color:#ff6ac1">.</span>abs(yf0[:N<span style="color:#ff6ac1">//</span><span style="color:#ff9f43">2</span>]))
-ax[<span style="color:#ff9f43">1</span>]<span style="color:#ff6ac1">.</span>plot(xf[:N<span style="color:#ff6ac1">//</span><span style="color:#ff9f43">2</span>], np<span style="color:#ff6ac1">.</span>abs(yf1[:N<span style="color:#ff6ac1">//</span><span style="color:#ff9f43">2</span>]), linestyle<span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#39;dotted&#39;</span>, color<span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#39;red&#39;</span>)
-ax[<span style="color:#ff9f43">1</span>]<span style="color:#ff6ac1">.</span>grid()
-
-fig<span style="color:#ff6ac1">.</span>tight_layout()
-fig<span style="color:#ff6ac1">.</span>savefig(<span style="color:#5af78e">&#39;fourier_series_rect.png&#39;</span>)
-</code></pre></div><link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> numpy <span style="color:#ff6ac1">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> matplotlib.pyplot <span style="color:#ff6ac1">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> matplotlib.ticker <span style="color:#ff6ac1">as</span> tck
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">from</span> scipy.fft <span style="color:#ff6ac1">import</span> fft, fftfreq
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">from</span> scipy <span style="color:#ff6ac1">import</span> signal
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>f_max <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">25</span> <span style="color:#78787e"># in Hz</span>
+</span></span><span style="display:flex;"><span>Ts <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span><span style="color:#ff6ac1">/</span>(<span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">*</span> f_max)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Signal length [s]</span>
+</span></span><span style="display:flex;"><span>sl <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Total number of samples</span>
+</span></span><span style="display:flex;"><span>N <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">int</span>(sl <span style="color:#ff6ac1">/</span> Ts)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>time <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>linspace(<span style="color:#ff9f43">0</span>, sl, N)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Amplitude of the square wave</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Time period of the square wave [s]</span>
+</span></span><span style="display:flex;"><span>Tp <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1.5</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Width of the square [s]</span>
+</span></span><span style="display:flex;"><span>Tw <span style="color:#ff6ac1">=</span> Tp<span style="color:#ff6ac1">/</span><span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Shift the sqaure wave up, left, scale it to 1 and set the proper duty cycle</span>
+</span></span><span style="display:flex;"><span>square_wave <span style="color:#ff6ac1">=</span> a <span style="color:#ff6ac1">*</span> (signal<span style="color:#ff6ac1">.</span>square(<span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">/</span>Tp<span style="color:#ff6ac1">*</span>(time<span style="color:#ff6ac1">+</span>Tw<span style="color:#ff6ac1">/</span><span style="color:#ff9f43">2</span>), duty<span style="color:#ff6ac1">=</span>(Tw<span style="color:#ff6ac1">/</span>Tp)) <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">1</span>) <span style="color:#ff6ac1">/</span> <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Why do i need to do this?</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Did i get something wrong with the definition of the sqaure?</span>
+</span></span><span style="display:flex;"><span>Tw <span style="color:#ff6ac1">=</span> Tw<span style="color:#ff6ac1">/</span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Calc the complex fourier coefficients</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">ck</span>(k):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> k <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># si(0) = 1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> a <span style="color:#ff6ac1">/</span> np<span style="color:#ff6ac1">.</span>pi
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> a <span style="color:#ff6ac1">/</span> np<span style="color:#ff6ac1">.</span>pi <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>sin(<span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">*</span>Tw<span style="color:#ff6ac1">/</span>Tp<span style="color:#ff6ac1">*</span>k) <span style="color:#ff6ac1">/</span> (k)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">f</span>(t, K):
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># We need coefficients positive &#39;k&#39;s only</span>
+</span></span><span style="display:flex;"><span>    f <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>array([ck(k) <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>exp(<span style="color:#ff9f43">1</span>j<span style="color:#ff6ac1">*</span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>np<span style="color:#ff6ac1">.</span>pi<span style="color:#ff6ac1">*</span>k<span style="color:#ff6ac1">*</span>t<span style="color:#ff6ac1">/</span>Tp) <span style="color:#ff6ac1">for</span> k <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">1</span>, K<span style="color:#ff6ac1">+</span><span style="color:#ff9f43">1</span>)])
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> f<span style="color:#ff6ac1">.</span>sum()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Number of coefficients to use</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">20</span>
+</span></span><span style="display:flex;"><span>fourier_series <span style="color:#ff6ac1">=</span> np<span style="color:#ff6ac1">.</span>array([f(t, n)<span style="color:#ff6ac1">.</span>real <span style="color:#ff6ac1">for</span> t <span style="color:#ff6ac1">in</span> time])
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Why is this not scaling correctly?</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Because we are only calculating the upper HALF of the coefficients!</span>
+</span></span><span style="display:flex;"><span>fourier_series <span style="color:#ff6ac1">*=</span> <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># The DC-part is somehow scaling correctly...</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Of course. It is the coefficiant sitting on the coordinate origin (point of symmetry)</span>
+</span></span><span style="display:flex;"><span>fourier_series <span style="color:#ff6ac1">+=</span> ck(<span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Frequency spectrum</span>
+</span></span><span style="display:flex;"><span>yf0 <span style="color:#ff6ac1">=</span> fft(square_wave)
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Scale it correctly</span>
+</span></span><span style="display:flex;"><span>yf0 <span style="color:#ff6ac1">/=</span> N
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Frequency axis values</span>
+</span></span><span style="display:flex;"><span>xf <span style="color:#ff6ac1">=</span> fftfreq(N, Ts)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Fourier transformation of a rect is a sinc()</span>
+</span></span><span style="display:flex;"><span>w <span style="color:#ff6ac1">=</span>  <span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>pi <span style="color:#ff6ac1">*</span> xf
+</span></span><span style="display:flex;"><span>yf1 <span style="color:#ff6ac1">=</span> a <span style="color:#ff6ac1">*</span> <span style="color:#ff9f43">2</span><span style="color:#ff6ac1">*</span>Tw<span style="color:#ff6ac1">/</span>Tp <span style="color:#ff6ac1">*</span> np<span style="color:#ff6ac1">.</span>sin(w<span style="color:#ff6ac1">*</span>Tw)<span style="color:#ff6ac1">/</span>(w<span style="color:#ff6ac1">*</span>Tw)
+</span></span><span style="display:flex;"><span>       
+</span></span><span style="display:flex;"><span>fig, ax <span style="color:#ff6ac1">=</span> plt<span style="color:#ff6ac1">.</span>subplots(<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">1</span>, figsize<span style="color:#ff6ac1">=</span>(<span style="color:#ff9f43">20</span>,<span style="color:#ff9f43">10</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>set_xlabel(<span style="color:#5af78e">&#39;Time $[s]$ &#39;</span>)
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>xaxis<span style="color:#ff6ac1">.</span>set_major_formatter(tck<span style="color:#ff6ac1">.</span>FormatStrFormatter(<span style="color:#5af78e">&#39;</span><span style="color:#5af78e">%g</span><span style="color:#5af78e"> s&#39;</span>))
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>yaxis<span style="color:#ff6ac1">.</span>set_major_locator(tck<span style="color:#ff6ac1">.</span>MultipleLocator(base<span style="color:#ff6ac1">=</span><span style="color:#ff9f43">4</span>))
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Plotting only the first second (visually nicer)</span>
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>plot(time[:<span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">3</span><span style="color:#ff6ac1">/</span>Ts)], square_wave[:<span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">3</span><span style="color:#ff6ac1">/</span>Ts)])
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>plot(time[:<span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">3</span><span style="color:#ff6ac1">/</span>Ts)], fourier_series[:<span style="color:#ff5c57">int</span>(<span style="color:#ff9f43">3</span><span style="color:#ff6ac1">/</span>Ts)])
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">0</span>]<span style="color:#ff6ac1">.</span>grid()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">1</span>]<span style="color:#ff6ac1">.</span>set_xlabel(<span style="color:#5af78e">&#39;Frequency $[Hz]$&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Plotting only the upper half of the freq-domain</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Be careful with the y-axis scaling!</span>
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">1</span>]<span style="color:#ff6ac1">.</span>plot(xf[:N<span style="color:#ff6ac1">//</span><span style="color:#ff9f43">2</span>], np<span style="color:#ff6ac1">.</span>abs(yf0[:N<span style="color:#ff6ac1">//</span><span style="color:#ff9f43">2</span>]))
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">1</span>]<span style="color:#ff6ac1">.</span>plot(xf[:N<span style="color:#ff6ac1">//</span><span style="color:#ff9f43">2</span>], np<span style="color:#ff6ac1">.</span>abs(yf1[:N<span style="color:#ff6ac1">//</span><span style="color:#ff9f43">2</span>]), linestyle<span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#39;dotted&#39;</span>, color<span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#39;red&#39;</span>)
+</span></span><span style="display:flex;"><span>ax[<span style="color:#ff9f43">1</span>]<span style="color:#ff6ac1">.</span>grid()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#ff6ac1">.</span>tight_layout()
+</span></span><span style="display:flex;"><span>fig<span style="color:#ff6ac1">.</span>savefig(<span style="color:#5af78e">&#39;fourier_series_rect.png&#39;</span>)
+</span></span></code></pre></div><link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
 <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
 <br>
 <hr> </hr>
@@ -453,22 +457,7 @@ initComments({
   </article>
 
     </main>
-    <script>
-      hamburger.onclick = function () {
-        this.classList.toggle ("checked");
-        if (hamburger.checked) {
-          
-          
-          fadeshow.style.display = "block";
-        }
-        else {
-          
-          
-          fadeshow.style.display = "none";
-        }
-      }
-    </script>
-    
+    <script src="/base.js"></script>
     <script src="//code.jquery.com/jquery-latest.js"></script>
     <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
   </body>

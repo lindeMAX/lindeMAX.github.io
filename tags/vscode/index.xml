@@ -15,7 +15,7 @@
       <guid>https://lindemax.github.io/linux/cleanup/</guid>
       <description>Today i found vscode using much space (about 8 GB) in my .config directory. It seems to save all kind of workspace configuration there. It needed to be cleaned up, so i wrote a little script that is easy to extend.
 One can call this via crontabs or a systemd timer.
-#!/bin/sh  # Colored output GREEN=&amp;#39;\033[0;32m&amp;#39; RED=&amp;#39;\033[0;31m&amp;#39; NC=&amp;#39;\033[0m&amp;#39; # No Color # Call with two arguments: # - Path to directory which shall be cleaned # - Time wich defines &amp;#39;depricated&amp;#39; delete_depricated () { echo &amp;#34;Deleting everything older than $GREEN$2$NCdays from $GREEN$1$NC&amp;#34; found=$(find $1 -mtime $2) echo &amp;#34;Found $RED$found$NC&amp;#34; for path in &amp;#34;$found&amp;#34;; do rm -rf &amp;#34;$path&amp;#34;; done } # Remove vscode workspaces older than 30 days delete_depricated &amp;#34;/home/max/.</description>
+#!/bin/sh # Colored output GREEN=&amp;#39;\033[0;32m&amp;#39; RED=&amp;#39;\033[0;31m&amp;#39; NC=&amp;#39;\033[0m&amp;#39; # No Color # Call with two arguments: # - Path to directory which shall be cleaned # - Time wich defines &amp;#39;depricated&amp;#39; delete_depricated () { echo &amp;#34;Deleting everything older than $GREEN $2 $NC days from $GREEN $1 $NC&amp;#34; found=$(find $1 -mtime $2) echo &amp;#34;Found $RED $found $NC&amp;#34; for path in &amp;#34;$found&amp;#34;; do rm -rf &amp;#34;$path&amp;#34;; done } # Remove vscode workspaces older than 30 days delete_depricated &amp;#34;/home/max/.</description>
     </item>
     
   </channel>

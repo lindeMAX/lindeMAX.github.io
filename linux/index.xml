@@ -6,7 +6,44 @@
     <description>Recent content in Linux on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Dec 2021 15:06:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Sep 2022 17:57:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hotplug events with UDEV</title>
+      <link>https://lindemax.github.io/linux/udev/</link>
+      <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/udev/</guid>
+      <description>As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.
+I wanted two things to happen:
+Turn off the notebooks internal screen while it is docked to it&amp;rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
+a script that manages the monitor settings a udev-rule that executes that script The script has to be called with a command line argument.</description>
+    </item>
+    
+    <item>
+      <title>Vim Cheatsheet</title>
+      <link>https://lindemax.github.io/linux/vim/</link>
+      <pubDate>Mon, 01 Aug 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/vim/</guid>
+      <description>Search &amp;amp; Replace /pattern Search for pattern ?pattern Search backward for pattern n Repeat search in same direction N Repeat search in opposite direction :%s/old/new/g Replace all old with new throughout file (gn is better though) :%s/old/new/gc Replace all old with new throughout file with confirmations </description>
+    </item>
+    
+    <item>
+      <title>Linux Cheatsheet</title>
+      <link>https://lindemax.github.io/linux/cheatsheet/</link>
+      <pubDate>Sat, 30 Jul 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/cheatsheet/</guid>
+      <description>Have a look at this open book for more information:
+Shell Redirections Redirect STDOUT to file: ls 1&amp;gt; file
+Append STDOUT to existing file: ls 1&amp;gt;&amp;gt; file
+Redirect STDERR to file: ls 2&amp;gt; file
+Redirect STDERR to STDOUT: ls 2&amp;gt;&amp;amp;1
+Suppress STDERR: ls 2&amp;gt;/dev/null
+Pipelines Pipe output into another program: ls -l | grep &amp;#34;something&amp;#34;
+FIFOs FIFOs (First In First Out) are like pipeline but can be used by multiple programs simultaneously.</description>
+    </item>
+    
     <item>
       <title>Keep your Linux clean</title>
       <link>https://lindemax.github.io/linux/cleanup/</link>
@@ -15,7 +52,7 @@
       <guid>https://lindemax.github.io/linux/cleanup/</guid>
       <description>Today i found vscode using much space (about 8 GB) in my .config directory. It seems to save all kind of workspace configuration there. It needed to be cleaned up, so i wrote a little script that is easy to extend.
 One can call this via crontabs or a systemd timer.
-#!/bin/sh  # Colored output GREEN=&amp;#39;\033[0;32m&amp;#39; RED=&amp;#39;\033[0;31m&amp;#39; NC=&amp;#39;\033[0m&amp;#39; # No Color # Call with two arguments: # - Path to directory which shall be cleaned # - Time wich defines &amp;#39;depricated&amp;#39; delete_depricated () { echo &amp;#34;Deleting everything older than $GREEN$2$NCdays from $GREEN$1$NC&amp;#34; found=$(find $1 -mtime $2) echo &amp;#34;Found $RED$found$NC&amp;#34; for path in &amp;#34;$found&amp;#34;; do rm -rf &amp;#34;$path&amp;#34;; done } # Remove vscode workspaces older than 30 days delete_depricated &amp;#34;/home/max/.</description>
+#!/bin/sh # Colored output GREEN=&amp;#39;\033[0;32m&amp;#39; RED=&amp;#39;\033[0;31m&amp;#39; NC=&amp;#39;\033[0m&amp;#39; # No Color # Call with two arguments: # - Path to directory which shall be cleaned # - Time wich defines &amp;#39;depricated&amp;#39; delete_depricated () { echo &amp;#34;Deleting everything older than $GREEN $2 $NC days from $GREEN $1 $NC&amp;#34; found=$(find $1 -mtime $2) echo &amp;#34;Found $RED $found $NC&amp;#34; for path in &amp;#34;$found&amp;#34;; do rm -rf &amp;#34;$path&amp;#34;; done } # Remove vscode workspaces older than 30 days delete_depricated &amp;#34;/home/max/.</description>
     </item>
     
     <item>

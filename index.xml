@@ -6,15 +6,51 @@
     <description>Recent content in Overview on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Dec 2021 17:00:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Sep 2022 17:57:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hotplug events with UDEV</title>
+      <link>https://lindemax.github.io/linux/udev/</link>
+      <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/udev/</guid>
+      <description>As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.
+I wanted two things to happen:
+Turn off the notebooks internal screen while it is docked to it&amp;rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
+a script that manages the monitor settings a udev-rule that executes that script The script has to be called with a command line argument.</description>
+    </item>
+    
+    <item>
+      <title>Vim Cheatsheet</title>
+      <link>https://lindemax.github.io/linux/vim/</link>
+      <pubDate>Mon, 01 Aug 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/vim/</guid>
+      <description>Search &amp;amp; Replace /pattern Search for pattern ?pattern Search backward for pattern n Repeat search in same direction N Repeat search in opposite direction :%s/old/new/g Replace all old with new throughout file (gn is better though) :%s/old/new/gc Replace all old with new throughout file with confirmations </description>
+    </item>
+    
+    <item>
+      <title>Linux Cheatsheet</title>
+      <link>https://lindemax.github.io/linux/cheatsheet/</link>
+      <pubDate>Sat, 30 Jul 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/cheatsheet/</guid>
+      <description>Have a look at this open book for more information:
+Shell Redirections Redirect STDOUT to file: ls 1&amp;gt; file
+Append STDOUT to existing file: ls 1&amp;gt;&amp;gt; file
+Redirect STDERR to file: ls 2&amp;gt; file
+Redirect STDERR to STDOUT: ls 2&amp;gt;&amp;amp;1
+Suppress STDERR: ls 2&amp;gt;/dev/null
+Pipelines Pipe output into another program: ls -l | grep &amp;#34;something&amp;#34;
+FIFOs FIFOs (First In First Out) are like pipeline but can be used by multiple programs simultaneously.</description>
+    </item>
+    
     <item>
       <title>Collection of useful PCB-Design articles</title>
       <link>https://lindemax.github.io/pcb/collection/</link>
       <pubDate>Fri, 10 Dec 2021 17:00:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/pcb/collection/</guid>
-      <description>Grounding Grounding Data Converters and Solving the Mystery of AGND and DGND 
-Staying Well Grounded
+      <description>Grounding Grounding Data Converters and Solving the Mystery of AGND and DGND Staying Well Grounded
 Decoupling / Bypass Bypass Capacitor Selection for High-Speed Designs
 Decoupling Techniques
 Multi-Layer Four or more layer PCB design for beginners using EAGLE
@@ -30,7 +66,7 @@ Using Via Fences for Crosstalk Reduction in PCB Circuits</description>
       <guid>https://lindemax.github.io/linux/cleanup/</guid>
       <description>Today i found vscode using much space (about 8 GB) in my .config directory. It seems to save all kind of workspace configuration there. It needed to be cleaned up, so i wrote a little script that is easy to extend.
 One can call this via crontabs or a systemd timer.
-#!/bin/sh  # Colored output GREEN=&amp;#39;\033[0;32m&amp;#39; RED=&amp;#39;\033[0;31m&amp;#39; NC=&amp;#39;\033[0m&amp;#39; # No Color # Call with two arguments: # - Path to directory which shall be cleaned # - Time wich defines &amp;#39;depricated&amp;#39; delete_depricated () { echo &amp;#34;Deleting everything older than $GREEN$2$NCdays from $GREEN$1$NC&amp;#34; found=$(find $1 -mtime $2) echo &amp;#34;Found $RED$found$NC&amp;#34; for path in &amp;#34;$found&amp;#34;; do rm -rf &amp;#34;$path&amp;#34;; done } # Remove vscode workspaces older than 30 days delete_depricated &amp;#34;/home/max/.</description>
+#!/bin/sh # Colored output GREEN=&amp;#39;\033[0;32m&amp;#39; RED=&amp;#39;\033[0;31m&amp;#39; NC=&amp;#39;\033[0m&amp;#39; # No Color # Call with two arguments: # - Path to directory which shall be cleaned # - Time wich defines &amp;#39;depricated&amp;#39; delete_depricated () { echo &amp;#34;Deleting everything older than $GREEN $2 $NC days from $GREEN $1 $NC&amp;#34; found=$(find $1 -mtime $2) echo &amp;#34;Found $RED $found $NC&amp;#34; for path in &amp;#34;$found&amp;#34;; do rm -rf &amp;#34;$path&amp;#34;; done } # Remove vscode workspaces older than 30 days delete_depricated &amp;#34;/home/max/.</description>
     </item>
     
     <item>
@@ -50,8 +86,8 @@ This means that the SiPM&amp;rsquo;s photcurrent is driven through a resistor, w
       
       <guid>https://lindemax.github.io/muon/q_mes_v2_mot/</guid>
       <description>Our currently working detector prototype has one big flaw over the new upcoming one: It&amp;rsquo;s counting pulses from a Silicon Photomultiplier (SiPM), generated by ionizing radiation hitting an scintillator, that we define as &amp;lsquo;high enough&amp;rsquo;.
- What is &amp;lsquo;high enough&amp;rsquo;?
-      Very first Prototype (SiPM &amp;#43; 5x5x1 cm^3 Scintillator)            &amp;#39;High Pulse&amp;#39;        Since the detector is using a BC-408 scintillator it should be able to detect every kind of charged particles, X-rays (&amp;lt; 100 keV), alphas and betas.</description>
+What is &amp;lsquo;high enough&amp;rsquo;?
+Very first Prototype (SiPM &amp;#43; 5x5x1 cm^3 Scintillator) &amp;#39;High Pulse&amp;#39; Since the detector is using a BC-408 scintillator it should be able to detect every kind of charged particles, X-rays (&amp;lt; 100 keV), alphas and betas.</description>
     </item>
     
     <item>
@@ -82,7 +118,7 @@ I recently wrote a shell script that creates certificates (using easy-rsa), conf
       
       <guid>https://lindemax.github.io/hugo/hugo_tutorial/</guid>
       <description>This is the best hugo-beginners tutorial i have seen so far!
-   Comments     initComments({ node: document.getElementById(&#34;comment-section&#34;), defaultHomeserverUrl: &#34;https://matrix.cactus.chat:8448&#34;, serverName: &#34;cactus.chat&#34;, siteName: &#34;MaxBlog&#34;, commentSectionId: &#34;hugoTutorial&#34; })  </description>
+Comments </description>
     </item>
     
     <item>
@@ -122,7 +158,7 @@ $$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 
 $$ \begin{eqnarray} (f_1 * f_2)(t) &amp;amp;=&amp;amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline \end{eqnarray} $$
 See how it is done!
 Things to mention:
- In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras.scss. Mathjax3 seems to not support \\\. Use \newline instead ;-)     Comments     initComments({ node: document.</description>
+In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/baseof.html. The css stuff has to be added to assets/_extras.scss. Mathjax3 seems to not support \\\. Use \newline instead ;-) Comments </description>
     </item>
     
     <item>
@@ -131,7 +167,7 @@ Things to mention:
       <pubDate>Sat, 04 Dec 2021 18:06:00 +0100</pubDate>
       
       <guid>https://lindemax.github.io/sas/convolution_gaussians/</guid>
-      <description>Convolution of two Gaussians      A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussians, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
+      <description>Convolution of two Gaussians A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussians, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
     </item>
     
   </channel>
