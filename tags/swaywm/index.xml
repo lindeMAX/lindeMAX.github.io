@@ -13,7 +13,7 @@
       <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
       
       <guid>https://lindemax.github.io/linux/udev/</guid>
-      <description>As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.
+      <description>As I am using a notebook as my main device now, I needed to automate some stuff when changing workplaces.
 I wanted two things to happen:
 Turn off the notebooks internal screen while it is docked to it&amp;rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
 a script that manages the monitor settings a udev-rule that executes that script The script has to be called with a command line argument.</description>

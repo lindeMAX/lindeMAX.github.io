@@ -6,26 +6,30 @@
     <description>Recent content in Linux on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Sep 2022 17:57:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Oct 2022 16:32:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Neovim Config and Cheatsheet</title>
+      <link>https://lindemax.github.io/linux/vim/</link>
+      <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/vim/</guid>
+      <description>My config This is my neovim config. It includes configurations for all plugins listed below.
+If you want to use it you will have to install vim-plug first and then extract the nvim_cfg.zip into ~/.config/nvim/. At lleast at linux systems.
+Here are some screenshots to get an idea of how it could look like:
+Plugins This is a list of the most important plugins I&amp;rsquo;m using quite often:
+coc: Autocompletion</description>
+    </item>
+    
     <item>
       <title>Hotplug events with UDEV</title>
       <link>https://lindemax.github.io/linux/udev/</link>
       <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
       
       <guid>https://lindemax.github.io/linux/udev/</guid>
-      <description>As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.
+      <description>As I am using a notebook as my main device now, I needed to automate some stuff when changing workplaces.
 I wanted two things to happen:
 Turn off the notebooks internal screen while it is docked to it&amp;rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
 a script that manages the monitor settings a udev-rule that executes that script The script has to be called with a command line argument.</description>
-    </item>
-    
-    <item>
-      <title>Vim Cheatsheet</title>
-      <link>https://lindemax.github.io/linux/vim/</link>
-      <pubDate>Mon, 01 Aug 2022 16:32:37 +0200</pubDate>
-      
-      <guid>https://lindemax.github.io/linux/vim/</guid>
-      <description>Search &amp;amp; Replace /pattern Search for pattern ?pattern Search backward for pattern n Repeat search in same direction N Repeat search in opposite direction :%s/old/new/g Replace all old with new throughout file (gn is better though) :%s/old/new/gc Replace all old with new throughout file with confirmations </description>
     </item>
     
     <item>

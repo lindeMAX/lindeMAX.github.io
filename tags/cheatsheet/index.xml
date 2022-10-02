@@ -6,14 +6,18 @@
     <description>Recent content in cheatsheet on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Aug 2022 16:32:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/tags/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Oct 2022 16:32:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/tags/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Vim Cheatsheet</title>
+      <title>Neovim Config and Cheatsheet</title>
       <link>https://lindemax.github.io/linux/vim/</link>
-      <pubDate>Mon, 01 Aug 2022 16:32:37 +0200</pubDate>
+      <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
       
       <guid>https://lindemax.github.io/linux/vim/</guid>
-      <description>Search &amp;amp; Replace /pattern Search for pattern ?pattern Search backward for pattern n Repeat search in same direction N Repeat search in opposite direction :%s/old/new/g Replace all old with new throughout file (gn is better though) :%s/old/new/gc Replace all old with new throughout file with confirmations </description>
+      <description>My config This is my neovim config. It includes configurations for all plugins listed below.
+If you want to use it you will have to install vim-plug first and then extract the nvim_cfg.zip into ~/.config/nvim/. At lleast at linux systems.
+Here are some screenshots to get an idea of how it could look like:
+Plugins This is a list of the most important plugins I&amp;rsquo;m using quite often:
+coc: Autocompletion</description>
     </item>
     
     <item>

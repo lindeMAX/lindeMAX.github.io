@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>neovim on Max&#39; Blog</title>
+    <link>https://lindemax.github.io/tags/neovim/</link>
+    <description>Recent content in neovim on Max&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Oct 2022 16:32:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/tags/neovim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Neovim Config and Cheatsheet</title>
+      <link>https://lindemax.github.io/linux/vim/</link>
+      <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/linux/vim/</guid>
+      <description>My config This is my neovim config. It includes configurations for all plugins listed below.
+If you want to use it you will have to install vim-plug first and then extract the nvim_cfg.zip into ~/.config/nvim/. At lleast at linux systems.
+Here are some screenshots to get an idea of how it could look like:
+Plugins This is a list of the most important plugins I&amp;rsquo;m using quite often:
+coc: Autocompletion</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,22 +6,58 @@
     <description>Recent content in Tags on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Sep 2022 17:57:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Oct 2022 16:32:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>hotplug</title>
-      <link>https://lindemax.github.io/tags/hotplug/</link>
-      <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
+      <title>cheatsheet</title>
+      <link>https://lindemax.github.io/tags/cheatsheet/</link>
+      <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
       
-      <guid>https://lindemax.github.io/tags/hotplug/</guid>
+      <guid>https://lindemax.github.io/tags/cheatsheet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>config</title>
+      <link>https://lindemax.github.io/tags/config/</link>
+      <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/tags/config/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
       <link>https://lindemax.github.io/tags/linux/</link>
-      <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
+      <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
       
       <guid>https://lindemax.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>neovim</title>
+      <link>https://lindemax.github.io/tags/neovim/</link>
+      <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/tags/neovim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>https://lindemax.github.io/tags/vim/</link>
+      <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hotplug</title>
+      <link>https://lindemax.github.io/tags/hotplug/</link>
+      <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
+      
+      <guid>https://lindemax.github.io/tags/hotplug/</guid>
       <description></description>
     </item>
     
@@ -49,24 +85,6 @@
       <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
       
       <guid>https://lindemax.github.io/tags/udev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>cheatsheet</title>
-      <link>https://lindemax.github.io/tags/cheatsheet/</link>
-      <pubDate>Mon, 01 Aug 2022 16:32:37 +0200</pubDate>
-      
-      <guid>https://lindemax.github.io/tags/cheatsheet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vim</title>
-      <link>https://lindemax.github.io/tags/vim/</link>
-      <pubDate>Mon, 01 Aug 2022 16:32:37 +0200</pubDate>
-      
-      <guid>https://lindemax.github.io/tags/vim/</guid>
       <description></description>
     </item>
     

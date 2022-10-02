@@ -4,7 +4,7 @@
     <title>Hotplug events with UDEV // Max&#39; Blog</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.102.3" />
+    <meta name="generator" content="Hugo 0.104.1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Max Lindeman" />
     <meta name="description" content="" />
@@ -13,13 +13,13 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hotplug events with UDEV"/>
-<meta name="twitter:description" content="As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.
+<meta name="twitter:description" content="As I am using a notebook as my main device now, I needed to automate some stuff when changing workplaces.
 I wanted two things to happen:
 Turn off the notebooks internal screen while it is docked to it&rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
 a script that manages the monitor settings a udev-rule that executes that script The script has to be called with a command line argument."/>
 
     <meta property="og:title" content="Hotplug events with UDEV" />
-<meta property="og:description" content="As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.
+<meta property="og:description" content="As I am using a notebook as my main device now, I needed to automate some stuff when changing workplaces.
 I wanted two things to happen:
 Turn off the notebooks internal screen while it is docked to it&rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
 a script that manages the monitor settings a udev-rule that executes that script The script has to be called with a command line argument." />
@@ -63,7 +63,7 @@ a script that manages the monitor settings a udev-rule that executes that script
             
             <a class="app-header-menu-item" href="/tags/">Tags</a>
         </nav>
-        <p>I hope the Stuff i am posting here is useful for you.</p>
+        <p>I hope the Stuff I am posting here is useful for you.</p>
         <p>Creating good content is time consuming and not always easy. You can support me by clicking the donation button ;-)</p>
         <p></p>
         <div class="app-header-social">
@@ -131,7 +131,7 @@ a script that manages the monitor settings a udev-rule that executes that script
     <hr> </hr>
     <br>
     <div class="post-content">
-      <p>As i am using a notebook as my main device now, i needed to automate some stuff when changing workplaces.<br>
+      <p>As I am using a notebook as my main device now, I needed to automate some stuff when changing workplaces.<br>
 I wanted two things to happen:<br></p>
 <ol>
 <li>Turn off the notebooks internal screen while it is docked to it&rsquo;s docking station</li>
@@ -165,7 +165,17 @@ For some reason there where two sway-sockets listed under <em><strong>/run/user/
 <p>The udev rule simply calls the script either the argument <em><strong>docked</strong></em>, if the docking station is attached, or with <em><strong>undeocked</strong></em>, if the docking station is detached.
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span><span style="color:#ff5c57">ACTION</span><span style="color:#ff6ac1">==</span><span style="color:#5af78e">&#34;add&#34;</span>, <span style="color:#ff5c57">SUBSYSTEMS</span><span style="color:#ff6ac1">==</span><span style="color:#5af78e">&#34;usb&#34;</span>, ATTR<span style="color:#ff6ac1">{</span>idVendor<span style="color:#ff6ac1">}==</span><span style="color:#5af78e">&#34;&lt;vendor id&gt;&#34;</span>, ATTR<span style="color:#ff6ac1">{</span>idProduct<span style="color:#ff6ac1">}==</span><span style="color:#5af78e">&#34;&lt;product id&gt;&#34;</span>, <span style="color:#ff5c57">MODE</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;0660&#34;</span>, <span style="color:#ff5c57">RUN</span><span style="color:#ff6ac1">+=</span><span style="color:#5af78e">&#34;/bin/bash &lt;path to script&gt; docked&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff5c57">ACTION</span><span style="color:#ff6ac1">==</span><span style="color:#5af78e">&#34;remove&#34;</span>, <span style="color:#ff5c57">SUBSYSTEMS</span><span style="color:#ff6ac1">==</span><span style="color:#5af78e">&#34;usb&#34;</span>, ATTR<span style="color:#ff6ac1">{</span>idVendor<span style="color:#ff6ac1">}==</span><span style="color:#5af78e">&#34;&lt;vendor id&gt;&#34;</span>, ATTR<span style="color:#ff6ac1">{</span>idProduct<span style="color:#ff6ac1">}==</span><span style="color:#5af78e">&#34;&lt;product id&gt;&#34;</span>, <span style="color:#ff5c57">MODE</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;0660&#34;</span>, <span style="color:#ff5c57">RUN</span><span style="color:#ff6ac1">+=</span><span style="color:#5af78e">&#34;/bin/bash &lt;path to script&gt; undocked&#34;</span></span></span></code></pre></div></p>
-<p>The udev rule has to be placed at <em><strong>/etc/udev/rules.d/</strong></em>. Make shure to give the prper suffix to it (e.g. <em><strong>docking.rules</strong></em>).<br>
+
+<div class="notice_container">
+    <div class="notices note">
+        <div class="label"></div>
+The remove-action does not always work with all attributes as these might not be accasseble by the time of removal any more.
+One can run the following line of code to find out which attributes will work with a remove-action.
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>udevadm monitor --environment --udev &gt; udev_monitor.log</span></span></code></pre></div>
+
+    </div>
+</div>
+<p>The udev rule has to be placed at <em><strong>/etc/udev/rules.d/</strong></em>. Make shure to give the proper suffix to it (e.g. <em><strong>docking.rules</strong></em>).<br>
 To enable it one has to execute the following line:
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>sudo udevadm control --reload <span style="color:#ff6ac1">&amp;&amp;</span> sudo udevadm trigger</span></span></code></pre></div></p>
 
