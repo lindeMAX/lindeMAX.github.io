@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cheatsheet on Max&#39; Blog</title>
-    <link>https://lindemax.ddns.net/tags/cheatsheet/</link>
+    <link>https://lindemax.github.io/tags/cheatsheet/</link>
     <description>Recent content in cheatsheet on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Oct 2022 21:50:00 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/tags/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Oct 2022 21:50:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>m11c theme cheatsheet</title>
-      <link>https://lindemax.ddns.net/hugo/m11c_cheatsheet/</link>
+      <link>https://lindemax.github.io/hugo/m11c_cheatsheet/</link>
       <pubDate>Sat, 01 Oct 2022 21:50:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/hugo/m11c_cheatsheet/</guid>
+      <guid>https://lindemax.github.io/hugo/m11c_cheatsheet/</guid>
       <description>Code Highlighting {{&amp;lt; highlight Bash &amp;gt;}} {{&amp;lt; /highlight &amp;gt;}} Escaping shortcodes {{&amp;lt;/* highlight Bash */&amp;gt;}} {{&amp;lt;/* /highlight */&amp;gt;}} Mathjax for LateX Math Just enable Mathjax in the index.md files header: --- title: &amp;#34;m11c theme cheatsheet&amp;#34; date: 2022-10-01T21:50:00+01:00 tags: [&amp;#34;hugo&amp;#34;, &amp;#34;cheatsheet&amp;#34;, &amp;#34;m11c&amp;#34;, &amp;#34;theme&amp;#34;] mathjax: true ---
 Images &amp;lt;div class=&amp;#34;image_container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;two_images&amp;#34;&amp;gt; {{\&amp;lt; img &amp;#34;images/all_parts.jpg&amp;#34; &amp;#34;Overview of the used parts&amp;#34; &amp;#34;Fit&amp;#34; &amp;#34;500x300&amp;#34;/&amp;gt;}} &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;two_images&amp;#34;&amp;gt; {{\&amp;lt; img &amp;#34;images/microfc-60035.jpg&amp;#34; &amp;#34;MicroFC 60035 soldered to a PCB&amp;#34; &amp;#34;Fit&amp;#34; &amp;#34;500x300&amp;#34; /&amp;gt;}} &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; </description>
     </item>
     
     <item>
       <title>Neovim Config and Cheatsheet</title>
-      <link>https://lindemax.ddns.net/linux/vim/</link>
+      <link>https://lindemax.github.io/linux/vim/</link>
       <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/vim/</guid>
+      <guid>https://lindemax.github.io/linux/vim/</guid>
       <description>My config This is my neovim config. It includes configurations for all plugins listed below.
 If you want to use it you will have to install vim-plug first and then extract the nvim_cfg.zip into ~/.config/nvim/. At lleast at linux systems.
 Here are some screenshots to get an idea of how it could look like:
@@ -32,10 +32,10 @@ coc: Autocompletion</description>
     
     <item>
       <title>Linux Cheatsheet</title>
-      <link>https://lindemax.ddns.net/linux/cheatsheet/</link>
+      <link>https://lindemax.github.io/linux/cheatsheet/</link>
       <pubDate>Sat, 30 Jul 2022 16:32:37 +0200</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/cheatsheet/</guid>
+      <guid>https://lindemax.github.io/linux/cheatsheet/</guid>
       <description>Have a look at this open book for more information:
 Shell Redirections Redirect STDOUT to file: ls 1&amp;gt; file
 Append STDOUT to existing file: ls 1&amp;gt;&amp;gt; file

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>input on Max&#39; Blog</title>
-    <link>https://lindemax.ddns.net/tags/input/</link>
+    <link>https://lindemax.github.io/tags/input/</link>
     <description>Recent content in input on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Dec 2022 03:30:22 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/tags/input/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Dec 2022 03:30:22 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/input/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Toggle keyboard backlight using linux input events</title>
-      <link>https://lindemax.ddns.net/linux/backlight_toggle_c/</link>
+      <link>https://lindemax.github.io/linux/backlight_toggle_c/</link>
       <pubDate>Fri, 30 Dec 2022 03:30:22 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/backlight_toggle_c/</guid>
+      <guid>https://lindemax.github.io/linux/backlight_toggle_c/</guid>
       <description>In my previous post i wrote about toggling the keyboard backlight after a certain idle time using swayidle. One major flaw of this attempt is that swayidle is not inhibited while watching movies or videos via web browsers. Firefox and Chromium are sending dbus messages that request screensaver inhibit. But for some reason the swaywm-developers decided to not listen to these :/ One has to invoke &amp;ldquo;/bin/swayidle-inhibit&amp;rdquo; manually to prevent swayidle from doing it&amp;rsquo;s work.</description>
     </item>
     

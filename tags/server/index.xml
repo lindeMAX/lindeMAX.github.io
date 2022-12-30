@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>server on Max&#39; Blog</title>
-    <link>https://lindemax.ddns.net/tags/server/</link>
+    <link>https://lindemax.github.io/tags/server/</link>
     <description>Recent content in server on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Oct 2022 00:04:00 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/tags/server/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Oct 2022 00:04:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/server/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hosting a Webpage with Nginx</title>
-      <link>https://lindemax.ddns.net/linux/nginx/</link>
+      <link>https://lindemax.github.io/linux/nginx/</link>
       <pubDate>Sun, 02 Oct 2022 00:04:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/nginx/</guid>
+      <guid>https://lindemax.github.io/linux/nginx/</guid>
       <description>Setting up Nginx Install ngingx: apt install nginx
 Enable and start the systemd service: systemctl enable nginx.service systemctl start nginx.service
 Configure and enable the webpage: Under /etc/nginx/ should be two directories listed.
@@ -23,10 +23,10 @@ Create a config file (e.g. example.com.conf) in sites-available with the followi
     
     <item>
       <title>Hosting an OpenVPN Server</title>
-      <link>https://lindemax.ddns.net/linux/openvpn/</link>
+      <link>https://lindemax.github.io/linux/openvpn/</link>
       <pubDate>Sun, 05 Dec 2021 14:41:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/openvpn/</guid>
+      <guid>https://lindemax.github.io/linux/openvpn/</guid>
       <description>OpenVPN is a nice tool to stay connected privately. Could be to play old LAN games with friends , or accessing a network file system on your own server, etc.
 I recently wrote a shell script that creates certificates (using easy-rsa), configuration files and the directory structure needed on the server side in a &amp;lsquo;ready to be used&amp;rsquo; manner. It will ask you for the name of the CA, the VPN-Server, it&amp;rsquo;s remote address and how many client certificates/keys you want to create.</description>
     </item>

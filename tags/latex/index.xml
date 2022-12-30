@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>latex on Max&#39; Blog</title>
-    <link>https://lindemax.ddns.net/tags/latex/</link>
+    <link>https://lindemax.github.io/tags/latex/</link>
     <description>Recent content in latex on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Dec 2021 18:40:00 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 18:40:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Render LaTeX math expressions in Hugo with MathJax 3</title>
-      <link>https://lindemax.ddns.net/hugo/latex_in_hugo/</link>
+      <link>https://lindemax.github.io/hugo/latex_in_hugo/</link>
       <pubDate>Sat, 04 Dec 2021 18:40:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/hugo/latex_in_hugo/</guid>
+      <guid>https://lindemax.github.io/hugo/latex_in_hugo/</guid>
       <description>This is juast a simple test:
 $$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 \right )} $$
 $$ \begin{eqnarray} (f_1 * f_2)(t) &amp;amp;=&amp;amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline \end{eqnarray} $$

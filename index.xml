@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Overview on Max&#39; Blog</title>
-    <link>https://lindemax.ddns.net/</link>
+    <link>https://lindemax.github.io/</link>
     <description>Recent content in Overview on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Dec 2022 15:30:51 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Dec 2022 15:30:51 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Embedded Comments with cactus</title>
-      <link>https://lindemax.ddns.net/hugo/comments/</link>
+      <link>https://lindemax.github.io/hugo/comments/</link>
       <pubDate>Fri, 30 Dec 2022 15:30:51 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/hugo/comments/</guid>
+      <guid>https://lindemax.github.io/hugo/comments/</guid>
       <description>If you&amp;rsquo;re interested in adding a comment section to your own website, take a look at the cactus chat website.
 I followed their quick start guide to write myself a hugo shortcode which looks like this:
 &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://latest.cactus.chat/style.css&amp;#34; type=&amp;#34;text/css&amp;#34;&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;https://latest.cactus.chat/cactus.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;br&amp;gt; &amp;lt;hr&amp;gt; &amp;lt;/hr&amp;gt; &amp;lt;h3&amp;gt;Comments &amp;lt;i class=&amp;#34;fa fa-comments fa-2x&amp;#34; aria-hidden=&amp;#34;true&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;/h3&amp;gt; &amp;lt;div id=&amp;#34;comment-section&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; initComments({ node: document.getElementById(&amp;#34;comment-section&amp;#34;), defaultHomeserverUrl: &amp;#34;https://matrix.cactus.chat:8448&amp;#34;, serverName: &amp;#34;cactus.chat&amp;#34;, siteName: &amp;#34;MaxBlog&amp;#34;, commentSectionId: &amp;#34;{{ index .Params 0}}&amp;#34; }) &amp;lt;/script&amp;gt; It is named chat.</description>
@@ -20,29 +20,29 @@ I followed their quick start guide to write myself a hugo shortcode which looks 
     
     <item>
       <title>Toggle keyboard backlight using linux input events</title>
-      <link>https://lindemax.ddns.net/linux/backlight_toggle_c/</link>
+      <link>https://lindemax.github.io/linux/backlight_toggle_c/</link>
       <pubDate>Fri, 30 Dec 2022 03:30:22 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/backlight_toggle_c/</guid>
+      <guid>https://lindemax.github.io/linux/backlight_toggle_c/</guid>
       <description>In my previous post i wrote about toggling the keyboard backlight after a certain idle time using swayidle. One major flaw of this attempt is that swayidle is not inhibited while watching movies or videos via web browsers. Firefox and Chromium are sending dbus messages that request screensaver inhibit. But for some reason the swaywm-developers decided to not listen to these :/ One has to invoke &amp;ldquo;/bin/swayidle-inhibit&amp;rdquo; manually to prevent swayidle from doing it&amp;rsquo;s work.</description>
     </item>
     
     <item>
       <title>Toggle keyboard backlight with swayidle</title>
-      <link>https://lindemax.ddns.net/linux/backlight_toggle/</link>
+      <link>https://lindemax.github.io/linux/backlight_toggle/</link>
       <pubDate>Wed, 28 Dec 2022 03:06:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/backlight_toggle/</guid>
+      <guid>https://lindemax.github.io/linux/backlight_toggle/</guid>
       <description>The keyboard backlight of my notebook can be toggled via the &amp;lsquo;Fn&amp;rsquo;-key. But it will stay on until turned off manually. This is quite annoying when watching movies because it dazzles in dark scenes. Another good reason to automatically turn it off after a certain idle time is to save some energy. Therefore i wrote a script using brightnessctl to toggle the manually set brightness value.
 #!/bin/sh FILE=&amp;#34;brightness.txt&amp;#34; if [[ $1 == &amp;#34;on&amp;#34; ]]; then brightnessctl -d tpacpi::kbd_backlight set $(cat $FILE) fi if [[ $1 == &amp;#34;off&amp;#34; ]]; then brightnessctl -d tpacpi::kbd_backlight get &amp;gt; $FILE brightnessctl -d tpacpi::kbd_backlight set 0 fi As I&amp;rsquo;m using swaywm as window manager, the easiest way to call this script is to call it via swayidle.</description>
     </item>
     
     <item>
       <title>Spice Simulation of (not only) Silicon Photomultipliers and Design of a small sized Scintillation Detection Unit</title>
-      <link>https://lindemax.ddns.net/muon/modelling_sipm/</link>
+      <link>https://lindemax.github.io/muon/modelling_sipm/</link>
       <pubDate>Mon, 03 Oct 2022 16:35:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/muon/modelling_sipm/</guid>
+      <guid>https://lindemax.github.io/muon/modelling_sipm/</guid>
       <description>The idea behind this post is to show you how I build a basic detection unit for ionizing radiation which i then used to derive a spice model from it. The spice model shell then be used to develop additional electronics for further investigation of the detected ionizing radiation.
 But before going into topic, let&amp;rsquo;s get some basics first.
 Plastic Scintillators Scintillators are materials that emit light when hit by ionizing radiation or high energy particles.</description>
@@ -50,10 +50,10 @@ Plastic Scintillators Scintillators are materials that emit light when hit by io
     
     <item>
       <title>Hosting a Webpage with Nginx</title>
-      <link>https://lindemax.ddns.net/linux/nginx/</link>
+      <link>https://lindemax.github.io/linux/nginx/</link>
       <pubDate>Sun, 02 Oct 2022 00:04:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/nginx/</guid>
+      <guid>https://lindemax.github.io/linux/nginx/</guid>
       <description>Setting up Nginx Install ngingx: apt install nginx
 Enable and start the systemd service: systemctl enable nginx.service systemctl start nginx.service
 Configure and enable the webpage: Under /etc/nginx/ should be two directories listed.
@@ -64,20 +64,20 @@ Create a config file (e.g. example.com.conf) in sites-available with the followi
     
     <item>
       <title>m11c theme cheatsheet</title>
-      <link>https://lindemax.ddns.net/hugo/m11c_cheatsheet/</link>
+      <link>https://lindemax.github.io/hugo/m11c_cheatsheet/</link>
       <pubDate>Sat, 01 Oct 2022 21:50:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/hugo/m11c_cheatsheet/</guid>
+      <guid>https://lindemax.github.io/hugo/m11c_cheatsheet/</guid>
       <description>Code Highlighting {{&amp;lt; highlight Bash &amp;gt;}} {{&amp;lt; /highlight &amp;gt;}} Escaping shortcodes {{&amp;lt;/* highlight Bash */&amp;gt;}} {{&amp;lt;/* /highlight */&amp;gt;}} Mathjax for LateX Math Just enable Mathjax in the index.md files header: --- title: &amp;#34;m11c theme cheatsheet&amp;#34; date: 2022-10-01T21:50:00+01:00 tags: [&amp;#34;hugo&amp;#34;, &amp;#34;cheatsheet&amp;#34;, &amp;#34;m11c&amp;#34;, &amp;#34;theme&amp;#34;] mathjax: true ---
 Images &amp;lt;div class=&amp;#34;image_container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;two_images&amp;#34;&amp;gt; {{\&amp;lt; img &amp;#34;images/all_parts.jpg&amp;#34; &amp;#34;Overview of the used parts&amp;#34; &amp;#34;Fit&amp;#34; &amp;#34;500x300&amp;#34;/&amp;gt;}} &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;two_images&amp;#34;&amp;gt; {{\&amp;lt; img &amp;#34;images/microfc-60035.jpg&amp;#34; &amp;#34;MicroFC 60035 soldered to a PCB&amp;#34; &amp;#34;Fit&amp;#34; &amp;#34;500x300&amp;#34; /&amp;gt;}} &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; </description>
     </item>
     
     <item>
       <title>Neovim Config and Cheatsheet</title>
-      <link>https://lindemax.ddns.net/linux/vim/</link>
+      <link>https://lindemax.github.io/linux/vim/</link>
       <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/vim/</guid>
+      <guid>https://lindemax.github.io/linux/vim/</guid>
       <description>My config This is my neovim config. It includes configurations for all plugins listed below.
 If you want to use it you will have to install vim-plug first and then extract the nvim_cfg.zip into ~/.config/nvim/. At lleast at linux systems.
 Here are some screenshots to get an idea of how it could look like:
@@ -87,10 +87,10 @@ coc: Autocompletion</description>
     
     <item>
       <title>Hotplug events with UDEV</title>
-      <link>https://lindemax.ddns.net/linux/udev/</link>
+      <link>https://lindemax.github.io/linux/udev/</link>
       <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/udev/</guid>
+      <guid>https://lindemax.github.io/linux/udev/</guid>
       <description>As I am using a notebook as my main device now, I needed to automate some stuff when changing workplaces.
 I wanted two things to happen:
 Turn off the notebooks internal screen while it is docked to it&amp;rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
@@ -99,10 +99,10 @@ a script that manages the monitor settings a udev-rule that executes that script
     
     <item>
       <title>Linux Cheatsheet</title>
-      <link>https://lindemax.ddns.net/linux/cheatsheet/</link>
+      <link>https://lindemax.github.io/linux/cheatsheet/</link>
       <pubDate>Sat, 30 Jul 2022 16:32:37 +0200</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/cheatsheet/</guid>
+      <guid>https://lindemax.github.io/linux/cheatsheet/</guid>
       <description>Have a look at this open book for more information:
 Shell Redirections Redirect STDOUT to file: ls 1&amp;gt; file
 Append STDOUT to existing file: ls 1&amp;gt;&amp;gt; file
@@ -115,10 +115,10 @@ FIFOs FIFOs (First In First Out) are like pipeline but can be used by multiple p
     
     <item>
       <title>Collection of useful PCB-Design articles</title>
-      <link>https://lindemax.ddns.net/pcb/collection/</link>
+      <link>https://lindemax.github.io/pcb/collection/</link>
       <pubDate>Fri, 10 Dec 2021 17:00:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/pcb/collection/</guid>
+      <guid>https://lindemax.github.io/pcb/collection/</guid>
       <description>Grounding Grounding Data Converters and Solving the Mystery of AGND and DGND Staying Well Grounded
 Decoupling / Bypass Bypass Capacitor Selection for High-Speed Designs
 Decoupling Techniques
@@ -129,10 +129,10 @@ Using Via Fences for Crosstalk Reduction in PCB Circuits</description>
     
     <item>
       <title>Charge Measurement on upcoming Muon Detectors - Motivation</title>
-      <link>https://lindemax.ddns.net/muon/q_mes_v2_mot/</link>
+      <link>https://lindemax.github.io/muon/q_mes_v2_mot/</link>
       <pubDate>Tue, 07 Dec 2021 19:00:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/muon/q_mes_v2_mot/</guid>
+      <guid>https://lindemax.github.io/muon/q_mes_v2_mot/</guid>
       <description>Our currently working detector prototype has one big flaw over the new upcoming one: It&amp;rsquo;s counting pulses from a Silicon Photomultiplier (SiPM), generated by ionizing radiation hitting an scintillator, that we define as &amp;lsquo;high enough&amp;rsquo;.
 What is &amp;lsquo;high enough&amp;rsquo;?
 Very first Prototype (SiPM &amp;#43; 5x5x1 cm^3 Scintillator) &amp;#39;High Pulse&amp;#39; Since the detector is using a BC-408 scintillator it should be able to detect every kind of charged particles, X-rays (&amp;lt; 100 keV), alphas and betas.</description>
@@ -140,10 +140,10 @@ Very first Prototype (SiPM &amp;#43; 5x5x1 cm^3 Scintillator) &amp;#39;High Puls
     
     <item>
       <title>Fourier Series in theory and with Python (Sawtooth and Square Waves)</title>
-      <link>https://lindemax.ddns.net/sas/fourier_seris/</link>
+      <link>https://lindemax.github.io/sas/fourier_seris/</link>
       <pubDate>Sun, 05 Dec 2021 16:13:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/sas/fourier_seris/</guid>
+      <guid>https://lindemax.github.io/sas/fourier_seris/</guid>
       <description>In this post i&amp;rsquo;m giong to showing you how obtain the fourier coefficients of the complex fourier series for sawtooth and square waves. The approximation done by the fourier series (with a finite number of coefficients) is then compared to the original signal using a python script.
 Sawtooth waves The coefficients can be obtained this way:
 $$ \begin{eqnarray} c_k &amp;amp;=&amp;amp; \frac{1}{T} \int_0^T f(t) \cdot e^{-j2 \pi k \frac{t}{T}} ~ dt \newline f(t) &amp;amp;=&amp;amp; t ~~~~\text{for $0 &amp;lt; t \le T$} \end{eqnarray} $$</description>
@@ -151,30 +151,30 @@ $$ \begin{eqnarray} c_k &amp;amp;=&amp;amp; \frac{1}{T} \int_0^T f(t) \cdot e^{-
     
     <item>
       <title>Hosting an OpenVPN Server</title>
-      <link>https://lindemax.ddns.net/linux/openvpn/</link>
+      <link>https://lindemax.github.io/linux/openvpn/</link>
       <pubDate>Sun, 05 Dec 2021 14:41:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/linux/openvpn/</guid>
+      <guid>https://lindemax.github.io/linux/openvpn/</guid>
       <description>OpenVPN is a nice tool to stay connected privately. Could be to play old LAN games with friends , or accessing a network file system on your own server, etc.
 I recently wrote a shell script that creates certificates (using easy-rsa), configuration files and the directory structure needed on the server side in a &amp;lsquo;ready to be used&amp;rsquo; manner. It will ask you for the name of the CA, the VPN-Server, it&amp;rsquo;s remote address and how many client certificates/keys you want to create.</description>
     </item>
     
     <item>
       <title>Great Hugo Tutorial</title>
-      <link>https://lindemax.ddns.net/hugo/hugo_tutorial/</link>
+      <link>https://lindemax.github.io/hugo/hugo_tutorial/</link>
       <pubDate>Sun, 05 Dec 2021 06:56:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/hugo/hugo_tutorial/</guid>
+      <guid>https://lindemax.github.io/hugo/hugo_tutorial/</guid>
       <description>This is the best hugo-beginners tutorial i have seen so far!
 Comments </description>
     </item>
     
     <item>
       <title>Pretty Icons with Fork Awesome</title>
-      <link>https://lindemax.ddns.net/hugo/fork_awesome/</link>
+      <link>https://lindemax.github.io/hugo/fork_awesome/</link>
       <pubDate>Sun, 05 Dec 2021 06:21:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/hugo/fork_awesome/</guid>
+      <guid>https://lindemax.github.io/hugo/fork_awesome/</guid>
       <description>Fork Awesome is a fully open source fork of font awesome.
 Check out the icons and get started.
 I simply added
@@ -185,10 +185,10 @@ One thing left to do is to enable rendering of plain html from within the markdo
     
     <item>
       <title>DFT/FFT in theroy and with Python</title>
-      <link>https://lindemax.ddns.net/sas/dft_fft/</link>
+      <link>https://lindemax.github.io/sas/dft_fft/</link>
       <pubDate>Sat, 04 Dec 2021 19:05:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/sas/dft_fft/</guid>
+      <guid>https://lindemax.github.io/sas/dft_fft/</guid>
       <description>Theory I wrote an article about DFT and FFT some time ago. You can view it inside your browser by clicking the link below. Currrently it&amp;rsquo;s only available in german. Please excuse this.
 Article about DFT/FFT
 Python The knowledge gained from the article can be used, to do something (actually not so) usefull. But you&amp;rsquo;ll get the idea ;-).
@@ -197,10 +197,10 @@ The script below will create two different sine functions. One with and one with
     
     <item>
       <title>Render LaTeX math expressions in Hugo with MathJax 3</title>
-      <link>https://lindemax.ddns.net/hugo/latex_in_hugo/</link>
+      <link>https://lindemax.github.io/hugo/latex_in_hugo/</link>
       <pubDate>Sat, 04 Dec 2021 18:40:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/hugo/latex_in_hugo/</guid>
+      <guid>https://lindemax.github.io/hugo/latex_in_hugo/</guid>
       <description>This is juast a simple test:
 $$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 \right )} $$
 $$ \begin{eqnarray} (f_1 * f_2)(t) &amp;amp;=&amp;amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline \end{eqnarray} $$
@@ -211,10 +211,10 @@ In this hugo theme (m10c) the header is defined in themes/m10c/layouts/_default/
     
     <item>
       <title>Convolution of Gaussians</title>
-      <link>https://lindemax.ddns.net/sas/convolution_gaussians/</link>
+      <link>https://lindemax.github.io/sas/convolution_gaussians/</link>
       <pubDate>Sat, 04 Dec 2021 18:06:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/sas/convolution_gaussians/</guid>
+      <guid>https://lindemax.github.io/sas/convolution_gaussians/</guid>
       <description>Convolution of two Gaussians A convolution can be imagined as a weighting of one function with another. One of the functions is mirrored in the definition area and then pushed &amp;lsquo;piece by piece&amp;rsquo; (infinitissimally small pieces!) over the other. The result is again a function that returns the &amp;lsquo;superposition&amp;rsquo; of the two functions for each possible shift. If one imagines the convolution of two Gaussians, one can guess that the result must be a Gaussian funvtion (with slightly differed shape) again.</description>
     </item>
     

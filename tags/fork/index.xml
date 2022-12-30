@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>fork on Max&#39; Blog</title>
-    <link>https://lindemax.ddns.net/tags/fork/</link>
+    <link>https://lindemax.github.io/tags/fork/</link>
     <description>Recent content in fork on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Dec 2021 06:21:00 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/tags/fork/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Dec 2021 06:21:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/fork/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pretty Icons with Fork Awesome</title>
-      <link>https://lindemax.ddns.net/hugo/fork_awesome/</link>
+      <link>https://lindemax.github.io/hugo/fork_awesome/</link>
       <pubDate>Sun, 05 Dec 2021 06:21:00 +0100</pubDate>
       
-      <guid>https://lindemax.ddns.net/hugo/fork_awesome/</guid>
+      <guid>https://lindemax.github.io/hugo/fork_awesome/</guid>
       <description>Fork Awesome is a fully open source fork of font awesome.
 Check out the icons and get started.
 I simply added
