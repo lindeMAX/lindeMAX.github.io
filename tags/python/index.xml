@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on Max&#39; Blog</title>
-    <link>https://lindemax.github.io/tags/python/</link>
+    <link>https://lindemax.ddns.net/tags/python/</link>
     <description>Recent content in python on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Dec 2021 19:05:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 19:05:00 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DFT/FFT in theroy and with Python</title>
-      <link>https://lindemax.github.io/sas/dft_fft/</link>
+      <link>https://lindemax.ddns.net/sas/dft_fft/</link>
       <pubDate>Sat, 04 Dec 2021 19:05:00 +0100</pubDate>
       
-      <guid>https://lindemax.github.io/sas/dft_fft/</guid>
+      <guid>https://lindemax.ddns.net/sas/dft_fft/</guid>
       <description>Theory I wrote an article about DFT and FFT some time ago. You can view it inside your browser by clicking the link below. Currrently it&amp;rsquo;s only available in german. Please excuse this.
 Article about DFT/FFT
 Python The knowledge gained from the article can be used, to do something (actually not so) usefull. But you&amp;rsquo;ll get the idea ;-).

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sway on Max&#39; Blog</title>
+    <link>https://lindemax.ddns.net/tags/sway/</link>
+    <description>Recent content in sway on Max&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Dec 2022 03:30:22 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/tags/sway/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Toggle keyboard backlight using linux input events</title>
+      <link>https://lindemax.ddns.net/linux/backlight_toggle_c/</link>
+      <pubDate>Fri, 30 Dec 2022 03:30:22 +0100</pubDate>
+      
+      <guid>https://lindemax.ddns.net/linux/backlight_toggle_c/</guid>
+      <description>In my previous post i wrote about toggling the keyboard backlight after a certain idle time using swayidle. One major flaw of this attempt is that swayidle is not inhibited while watching movies or videos via web browsers. Firefox and Chromium are sending dbus messages that request screensaver inhibit. But for some reason the swaywm-developers decided to not listen to these :/ One has to invoke &amp;ldquo;/bin/swayidle-inhibit&amp;rdquo; manually to prevent swayidle from doing it&amp;rsquo;s work.</description>
+    </item>
+    
+    <item>
+      <title>Toggle keyboard backlight with swayidle</title>
+      <link>https://lindemax.ddns.net/linux/backlight_toggle/</link>
+      <pubDate>Wed, 28 Dec 2022 03:06:00 +0100</pubDate>
+      
+      <guid>https://lindemax.ddns.net/linux/backlight_toggle/</guid>
+      <description>The keyboard backlight of my notebook can be toggled via the &amp;lsquo;Fn&amp;rsquo;-key. But it will stay on until turned off manually. This is quite annoying when watching movies because it dazzles in dark scenes. Another good reason to automatically turn it off after a certain idle time is to save some energy. Therefore i wrote a script using brightnessctl to toggle the manually set brightness value.
+#!/bin/sh FILE=&amp;#34;brightness.txt&amp;#34; if [[ $1 == &amp;#34;on&amp;#34; ]]; then brightnessctl -d tpacpi::kbd_backlight set $(cat $FILE) fi if [[ $1 == &amp;#34;off&amp;#34; ]]; then brightnessctl -d tpacpi::kbd_backlight get &amp;gt; $FILE brightnessctl -d tpacpi::kbd_backlight set 0 fi As I&amp;rsquo;m using swaywm as window manager, the easiest way to call this script is to call it via swayidle.</description>
+    </item>
+    
+  </channel>
+</rss>

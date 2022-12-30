@@ -2,27 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on Max&#39; Blog</title>
-    <link>https://lindemax.github.io/hugo/</link>
+    <link>https://lindemax.ddns.net/hugo/</link>
     <description>Recent content in Hugo on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Dec 2021 06:56:00 +0100</lastBuildDate><atom:link href="https://lindemax.github.io/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Dec 2022 15:30:51 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Embedded Comments with cactus</title>
+      <link>https://lindemax.ddns.net/hugo/comments/</link>
+      <pubDate>Fri, 30 Dec 2022 15:30:51 +0100</pubDate>
+      
+      <guid>https://lindemax.ddns.net/hugo/comments/</guid>
+      <description>If you&amp;rsquo;re interested in adding a comment section to your own website, take a look at the cactus chat website.
+I followed their quick start guide to write myself a hugo shortcode which looks like this:
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://latest.cactus.chat/style.css&amp;#34; type=&amp;#34;text/css&amp;#34;&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;https://latest.cactus.chat/cactus.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;br&amp;gt; &amp;lt;hr&amp;gt; &amp;lt;/hr&amp;gt; &amp;lt;h3&amp;gt;Comments &amp;lt;i class=&amp;#34;fa fa-comments fa-2x&amp;#34; aria-hidden=&amp;#34;true&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;/h3&amp;gt; &amp;lt;div id=&amp;#34;comment-section&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; initComments({ node: document.getElementById(&amp;#34;comment-section&amp;#34;), defaultHomeserverUrl: &amp;#34;https://matrix.cactus.chat:8448&amp;#34;, serverName: &amp;#34;cactus.chat&amp;#34;, siteName: &amp;#34;MaxBlog&amp;#34;, commentSectionId: &amp;#34;{{ index .Params 0}}&amp;#34; }) &amp;lt;/script&amp;gt; It is named chat.</description>
+    </item>
+    
+    <item>
+      <title>m11c theme cheatsheet</title>
+      <link>https://lindemax.ddns.net/hugo/m11c_cheatsheet/</link>
+      <pubDate>Sat, 01 Oct 2022 21:50:00 +0100</pubDate>
+      
+      <guid>https://lindemax.ddns.net/hugo/m11c_cheatsheet/</guid>
+      <description>Code Highlighting {{&amp;lt; highlight Bash &amp;gt;}} {{&amp;lt; /highlight &amp;gt;}} Escaping shortcodes {{&amp;lt;/* highlight Bash */&amp;gt;}} {{&amp;lt;/* /highlight */&amp;gt;}} Mathjax for LateX Math Just enable Mathjax in the index.md files header: --- title: &amp;#34;m11c theme cheatsheet&amp;#34; date: 2022-10-01T21:50:00+01:00 tags: [&amp;#34;hugo&amp;#34;, &amp;#34;cheatsheet&amp;#34;, &amp;#34;m11c&amp;#34;, &amp;#34;theme&amp;#34;] mathjax: true ---
+Images &amp;lt;div class=&amp;#34;image_container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;two_images&amp;#34;&amp;gt; {{\&amp;lt; img &amp;#34;images/all_parts.jpg&amp;#34; &amp;#34;Overview of the used parts&amp;#34; &amp;#34;Fit&amp;#34; &amp;#34;500x300&amp;#34;/&amp;gt;}} &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;two_images&amp;#34;&amp;gt; {{\&amp;lt; img &amp;#34;images/microfc-60035.jpg&amp;#34; &amp;#34;MicroFC 60035 soldered to a PCB&amp;#34; &amp;#34;Fit&amp;#34; &amp;#34;500x300&amp;#34; /&amp;gt;}} &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; </description>
+    </item>
+    
     <item>
       <title>Great Hugo Tutorial</title>
-      <link>https://lindemax.github.io/hugo/hugo_tutorial/</link>
+      <link>https://lindemax.ddns.net/hugo/hugo_tutorial/</link>
       <pubDate>Sun, 05 Dec 2021 06:56:00 +0100</pubDate>
       
-      <guid>https://lindemax.github.io/hugo/hugo_tutorial/</guid>
+      <guid>https://lindemax.ddns.net/hugo/hugo_tutorial/</guid>
       <description>This is the best hugo-beginners tutorial i have seen so far!
 Comments </description>
     </item>
     
     <item>
       <title>Pretty Icons with Fork Awesome</title>
-      <link>https://lindemax.github.io/hugo/fork_awesome/</link>
+      <link>https://lindemax.ddns.net/hugo/fork_awesome/</link>
       <pubDate>Sun, 05 Dec 2021 06:21:00 +0100</pubDate>
       
-      <guid>https://lindemax.github.io/hugo/fork_awesome/</guid>
+      <guid>https://lindemax.ddns.net/hugo/fork_awesome/</guid>
       <description>Fork Awesome is a fully open source fork of font awesome.
 Check out the icons and get started.
 I simply added
@@ -33,10 +54,10 @@ One thing left to do is to enable rendering of plain html from within the markdo
     
     <item>
       <title>Render LaTeX math expressions in Hugo with MathJax 3</title>
-      <link>https://lindemax.github.io/hugo/latex_in_hugo/</link>
+      <link>https://lindemax.ddns.net/hugo/latex_in_hugo/</link>
       <pubDate>Sat, 04 Dec 2021 18:40:00 +0100</pubDate>
       
-      <guid>https://lindemax.github.io/hugo/latex_in_hugo/</guid>
+      <guid>https://lindemax.ddns.net/hugo/latex_in_hugo/</guid>
       <description>This is juast a simple test:
 $$ \newcommand{\abs}[1]{\left\vert#1\right\vert} \newcommand{\br}[1]{\left ( #1 \right )} $$
 $$ \begin{eqnarray} (f_1 * f_2)(t) &amp;amp;=&amp;amp; \int_{\mathbb{R}} f_1(t-\tau) \cdot f_2(\tau) ~d\tau \newline \end{eqnarray} $$

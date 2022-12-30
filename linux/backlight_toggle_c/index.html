@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Toggle keyboard backlight using linux input events // Max&#39; Blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.108.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Max Lindeman" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://lindemax.ddns.net/css/main.min.d1ddc0c14b1594344efdb7f790a3853979e9834d0eb645cb6e9d04e0400a8f26.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Toggle keyboard backlight using linux input events"/>
+<meta name="twitter:description" content="In my previous post i wrote about toggling the keyboard backlight after a certain idle time using swayidle. One major flaw of this attempt is that swayidle is not inhibited while watching movies or videos via web browsers. Firefox and Chromium are sending dbus messages that request screensaver inhibit. But for some reason the swaywm-developers decided to not listen to these :/ One has to invoke &ldquo;/bin/swayidle-inhibit&rdquo; manually to prevent swayidle from doing it&rsquo;s work."/>
+
+    <meta property="og:title" content="Toggle keyboard backlight using linux input events" />
+<meta property="og:description" content="In my previous post i wrote about toggling the keyboard backlight after a certain idle time using swayidle. One major flaw of this attempt is that swayidle is not inhibited while watching movies or videos via web browsers. Firefox and Chromium are sending dbus messages that request screensaver inhibit. But for some reason the swaywm-developers decided to not listen to these :/ One has to invoke &ldquo;/bin/swayidle-inhibit&rdquo; manually to prevent swayidle from doing it&rsquo;s work." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lindemax.ddns.net/linux/backlight_toggle_c/" /><meta property="article:section" content="linux" />
+<meta property="article:published_time" content="2022-12-30T03:30:22+01:00" />
+<meta property="article:modified_time" content="2022-12-30T03:30:22+01:00" />
+
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body id="body">
+    <div id="fadeshow">
+      <header class="app-header">
+        <a href="https://lindemax.ddns.net/"><img class="app-header-avatar" src="/images/avatar/avatar.jpg" alt="Max Lindeman" /></a>
+        <h1>Max&#39; Blog</h1>
+        <nav class="app-header-menu">
+            <a class="app-header-menu-item" href="/">Home</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/hugo/">Hugo</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/linux/">Linux</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/muon/">MuON</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/pcb/">PCB-Design</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/sas/">SaS</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/about/">About</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/tags/">Tags</a>
+        </nav>
+        <p>I hope the Stuff I am posting here is useful for you.</p>
+        <p>Creating good content is time consuming and not always easy. You can support me by clicking the donation button ;-)</p>
+        <p></p>
+        <div class="app-header-social">
+          
+            <a href="https://github.com/lindeMAX/" target="_blank" rel="noreferrer noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>My Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+            </a>
+          
+          <form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="AD9HGBSS9WDAY" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
+</form>
+        </div>
+        <div id="theme">
+        <input type="checkbox" id="themeToggle"></input>
+        <label for="themeToggle" class="themeToggle"><i class="fa fa-adjust fa-2x" aria-hidden="true"></i></label>
+      </div>
+      </header>
+    </div>
+    <main class="app-container">
+      <div id="burger">
+        <input type="checkbox" id="hamburger" >
+        <label for="hamburger" class="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </label>
+      </div>
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Toggle keyboard backlight using linux input events</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Dec 30, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://lindemax.ddns.net/tags/linux/">linux</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/sway/">sway</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/swayidle/">swayidle</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/toggle/">toggle</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/backlight/">backlight</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/input/">input</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/events/">events</a>
+        </div>
+      </div>
+    </header>
+    <hr> </hr>
+    <br>
+    <div class="post-content">
+      <p>In my previous post i wrote about toggling the keyboard backlight after a certain idle time using swayidle.
+One major flaw of this attempt is that swayidle is not inhibited while watching movies or videos via web browsers.
+Firefox and Chromium are sending dbus messages that request screensaver inhibit.
+But for some reason the swaywm-developers decided to not listen to these :/
+One has to invoke &ldquo;/bin/swayidle-inhibit&rdquo; manually to prevent swayidle from doing it&rsquo;s work.
+But this will also prevent the keyboard backlight toggling from working.
+So I came up with a new solution. A programm written in c that listens to input events:
+<br>
+As soon as an event on the requested input devices is recognized a timestamp is set.
+This is then being compared to an idle time in order to decide whether to turn the backlight on or off.
+<br>
+The idle time and the input devices are handed over as command line arguments:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>./toggle_backlight &lt;idle time&gt; &lt;input devices&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>./toggle_backlight <span style="color:#ff9f43">20</span> /dev/input/event4 /dev/input/event18
+</span></span></code></pre></div><p>In this case the idle time would be 20 seconds and events from devices <em>event4</em> and <em>event18</em> are taken into account.
+<br>
+To get an idea which event devices are of interest, one could have a look into <em>/dev/input/by-path</em>.
+Keyboards do have a <em>&lsquo;kbd&rsquo;</em> in it&rsquo;s name.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>lrwxrwxrwx <span style="color:#ff9f43">1</span> root root   <span style="color:#ff9f43">9</span> Dec <span style="color:#ff9f43">28</span> 03:18 platform-i8042-serio-0-event-kbd -&gt; ../event4
+</span></span><span style="display:flex;"><span>lrwxrwxrwx <span style="color:#ff9f43">1</span> root root  <span style="color:#ff9f43">10</span> Dec <span style="color:#ff9f43">28</span> 03:18 platform-i8042-serio-1-event-mouse -&gt; ../event18
+</span></span></code></pre></div><p>The backlight itself is set via <em>&lsquo;brightnessctl&rsquo;</em>.
+A command line tool to control LEDs, which is in this case called from within the c-code.
+<br>
+One has to specify the device whose brightness shell be altered.
+This is actually hard coded and should definitely be reworked, soon.
+A general remark: This program is acutally a &lsquo;quick and dirty&rsquo; solution.
+There surely are some things to improve.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#78787e">#include</span> <span style="color:#78787e">&lt;stdlib.h&gt;</span><span style="color:#78787e">
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">#include</span> <span style="color:#78787e">&lt;stdio.h&gt;</span><span style="color:#78787e">
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">#include</span> <span style="color:#78787e">&lt;fcntl.h&gt;</span><span style="color:#78787e">
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">#include</span> <span style="color:#78787e">&lt;linux/input.h&gt;</span><span style="color:#78787e">
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">#include</span> <span style="color:#78787e">&lt;unistd.h&gt;</span><span style="color:#78787e">
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">#include</span> <span style="color:#78787e">&lt;poll.h&gt;</span><span style="color:#78787e">
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">#include</span> <span style="color:#78787e">&lt;time.h&gt;</span><span style="color:#78787e">
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">void</span> <span style="color:#57c7ff">printDevName</span>(<span style="color:#9aedfe">char</span> <span style="color:#ff6ac1">*</span>dev) {
+</span></span><span style="display:flex;"><span>   <span style="color:#9aedfe">int</span> fd <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#9aedfe">char</span> name[<span style="color:#ff9f43">256</span>] <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;Unknown&#34;</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">if</span> ((fd <span style="color:#ff6ac1">=</span> <span style="color:#57c7ff">open</span>(dev, O_RDONLY)) <span style="color:#ff6ac1">&lt;</span> <span style="color:#ff9f43">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#57c7ff">perror</span>(<span style="color:#5af78e">&#34;evdev open&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#57c7ff">exit</span>(<span style="color:#ff9f43">1</span>);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">if</span> (<span style="color:#57c7ff">ioctl</span>(fd, <span style="color:#57c7ff">EVIOCGNAME</span>(<span style="color:#ff6ac1">sizeof</span>(name)), name) <span style="color:#ff6ac1">&lt;</span> <span style="color:#ff9f43">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#57c7ff">perror</span>(<span style="color:#5af78e">&#34;evdev ioctl&#34;</span>);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#57c7ff">printf</span>(<span style="color:#5af78e">&#34;Name: %s</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>, name);
+</span></span><span style="display:flex;"><span>   <span style="color:#57c7ff">close</span>(fd);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">int</span> <span style="color:#57c7ff">getKbBrightness</span>(<span style="color:#9aedfe">void</span>) {
+</span></span><span style="display:flex;"><span>   FILE <span style="color:#ff6ac1">*</span>fp;
+</span></span><span style="display:flex;"><span>   <span style="color:#9aedfe">char</span> path[<span style="color:#ff9f43">256</span>];
+</span></span><span style="display:flex;"><span>   <span style="color:#9aedfe">int</span> brightness <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">/* Open the command for reading. */</span>
+</span></span><span style="display:flex;"><span>   fp <span style="color:#ff6ac1">=</span> <span style="color:#57c7ff">popen</span>(<span style="color:#5af78e">&#34;/bin/brightnessctl -d tpacpi::kbd_backlight get 2&gt;&amp;1&#34;</span>, <span style="color:#5af78e">&#34;r&#34;</span>);
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">if</span> (fp <span style="color:#ff6ac1">==</span> <span style="color:#ff5c57">NULL</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#57c7ff">printf</span>(<span style="color:#5af78e">&#34;Failed to run command</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">/* Read the output a line at a time - output it. */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">while</span> (<span style="color:#57c7ff">fgets</span>(path, <span style="color:#ff6ac1">sizeof</span>(path), fp) <span style="color:#ff6ac1">!=</span> <span style="color:#ff5c57">NULL</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#57c7ff">printf</span>(<span style="color:#5af78e">&#34;%s&#34;</span>, path);
+</span></span><span style="display:flex;"><span>      brightness <span style="color:#ff6ac1">=</span> <span style="color:#57c7ff">atoi</span>(path);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">/* close */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#57c7ff">pclose</span>(fp);
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">return</span> brightness;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">int</span> <span style="color:#57c7ff">setKbBrightness</span>(<span style="color:#9aedfe">int</span> brightness) {
+</span></span><span style="display:flex;"><span>   FILE <span style="color:#ff6ac1">*</span>fp;
+</span></span><span style="display:flex;"><span>   <span style="color:#9aedfe">char</span> path[<span style="color:#ff9f43">256</span>];
+</span></span><span style="display:flex;"><span>   <span style="color:#9aedfe">char</span> command[<span style="color:#ff9f43">256</span>];
+</span></span><span style="display:flex;"><span>   <span style="color:#57c7ff">sprintf</span>(command, <span style="color:#5af78e">&#34;/bin/brightnessctl -d tpacpi::kbd_backlight set %d 2&gt;&amp;1&#34;</span>, brightness);
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">/* Open the command for writing. */</span>
+</span></span><span style="display:flex;"><span>   fp <span style="color:#ff6ac1">=</span> <span style="color:#57c7ff">popen</span>(command, <span style="color:#5af78e">&#34;w&#34;</span>);
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">if</span> (fp <span style="color:#ff6ac1">==</span> <span style="color:#ff5c57">NULL</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#57c7ff">printf</span>(<span style="color:#5af78e">&#34;Failed to run command</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">/* Read the output a line at a time - output it. */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">while</span> (<span style="color:#57c7ff">fgets</span>(path, <span style="color:#ff6ac1">sizeof</span>(path), fp) <span style="color:#ff6ac1">!=</span> <span style="color:#ff5c57">NULL</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#57c7ff">printf</span>(<span style="color:#5af78e">&#34;%s&#34;</span>, path);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">/* close */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#57c7ff">pclose</span>(fp);
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">// Argument order is path, idle time, &lt;input devices&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span><span style="color:#9aedfe">int</span> <span style="color:#57c7ff">main</span>(<span style="color:#9aedfe">int</span> argc, <span style="color:#9aedfe">char</span> <span style="color:#ff6ac1">*</span>argv[]) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#57c7ff">printf</span>(<span style="color:#5af78e">&#34;Listening for events on the following devices:</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>);
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">for</span> (<span style="color:#9aedfe">int</span> i <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">2</span>; i <span style="color:#ff6ac1">&lt;</span> argc; i<span style="color:#ff6ac1">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#57c7ff">printDevName</span>(argv[i]);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">// Array of file descriptors to the event devices
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>   <span style="color:#ff6ac1">struct</span> pollfd fds[argc<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>];
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">// Open event devices for reading
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>   <span style="color:#ff6ac1">for</span> (<span style="color:#9aedfe">int</span> i <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">2</span>; i <span style="color:#ff6ac1">&lt;</span> argc; i<span style="color:#ff6ac1">++</span>) {
+</span></span><span style="display:flex;"><span>      fds[i<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>].fd <span style="color:#ff6ac1">=</span> <span style="color:#57c7ff">open</span>(argv[i], O_RDONLY);
+</span></span><span style="display:flex;"><span>      fds[i<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>].events <span style="color:#ff6ac1">=</span> POLLIN <span style="color:#ff6ac1">|</span> POLLRDNORM <span style="color:#ff6ac1">|</span> POLLRDBAND <span style="color:#ff6ac1">|</span> POLLPRI;
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">if</span> (fds[i<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>].fd <span style="color:#ff6ac1">&lt;</span> <span style="color:#ff9f43">0</span>) {
+</span></span><span style="display:flex;"><span>         <span style="color:#57c7ff">fprintf</span>(stderr, <span style="color:#5af78e">&#34;Failed opening event device</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>);
+</span></span><span style="display:flex;"><span>         <span style="color:#57c7ff">exit</span>(<span style="color:#ff9f43">1</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">// Array of structs containing information about events
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>   <span style="color:#ff6ac1">struct</span> input_event event[argc<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">// Timestamp of last activity
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>   <span style="color:#9aedfe">int</span> t0 <span style="color:#ff6ac1">=</span> (<span style="color:#9aedfe">int</span>) <span style="color:#57c7ff">time</span>(<span style="color:#ff5c57">NULL</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#78787e">// Timeout after which keyboard backlight is turned off
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>   <span style="color:#9aedfe">int</span> timeout <span style="color:#ff6ac1">=</span> <span style="color:#57c7ff">atoi</span>(argv[<span style="color:#ff9f43">1</span>]);
+</span></span><span style="display:flex;"><span>   <span style="color:#9aedfe">int</span> asleep <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#9aedfe">int</span> prev_brightness <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff6ac1">while</span> (<span style="color:#ff9f43">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">for</span> (<span style="color:#9aedfe">int</span> i <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>; i <span style="color:#ff6ac1">&lt;</span> argc <span style="color:#ff6ac1">-</span> <span style="color:#ff9f43">1</span>; i<span style="color:#ff6ac1">++</span>) {
+</span></span><span style="display:flex;"><span>         <span style="color:#78787e">// Check if there is some data ready to be read
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>         <span style="color:#ff6ac1">if</span> (<span style="color:#57c7ff">poll</span>(<span style="color:#ff6ac1">&amp;</span>fds[i], <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (fds[i].events <span style="color:#ff6ac1">!=</span> <span style="color:#ff9f43">0</span>) {
+</span></span><span style="display:flex;"><span>               <span style="color:#ff6ac1">if</span> (<span style="color:#57c7ff">read</span>(fds[i].fd, <span style="color:#ff6ac1">&amp;</span>event[i], <span style="color:#ff6ac1">sizeof</span>(<span style="color:#ff6ac1">struct</span> input_event)) <span style="color:#ff6ac1">&lt;</span> <span style="color:#ff9f43">0</span>) {
+</span></span><span style="display:flex;"><span>                  <span style="color:#57c7ff">fprintf</span>(stderr, <span style="color:#5af78e">&#34;failed to read input event from input device %s</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>, argv[i]);
+</span></span><span style="display:flex;"><span>                  <span style="color:#57c7ff">exit</span>(<span style="color:#ff9f43">1</span>);
+</span></span><span style="display:flex;"><span>               }
+</span></span><span style="display:flex;"><span>               <span style="color:#ff6ac1">if</span> (event[i].type <span style="color:#ff6ac1">!=</span> <span style="color:#ff9f43">0</span>) {
+</span></span><span style="display:flex;"><span>                  <span style="color:#78787e">/** printf(&#34;Key event!\n&#34;); */</span>
+</span></span><span style="display:flex;"><span>                  t0 <span style="color:#ff6ac1">=</span> (<span style="color:#9aedfe">int</span>) <span style="color:#57c7ff">time</span>(<span style="color:#ff5c57">NULL</span>);
+</span></span><span style="display:flex;"><span>                  <span style="color:#78787e">/** printf(&#34;Timestamp: %d\n&#34;, t0); */</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#ff6ac1">if</span> (asleep) {
+</span></span><span style="display:flex;"><span>                     asleep <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span>                     <span style="color:#57c7ff">printf</span>(<span style="color:#5af78e">&#34;Time to wake up!</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>);
+</span></span><span style="display:flex;"><span>                     <span style="color:#57c7ff">setKbBrightness</span>(prev_brightness);
+</span></span><span style="display:flex;"><span>                  }
+</span></span><span style="display:flex;"><span>               }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>         }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#78787e">// No Event for &#39;timeout&#39; seconds occoured
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>      <span style="color:#ff6ac1">if</span> ((<span style="color:#9aedfe">int</span>) <span style="color:#57c7ff">time</span>(<span style="color:#ff5c57">NULL</span>) <span style="color:#ff6ac1">-</span> t0 <span style="color:#ff6ac1">&gt;</span> timeout <span style="color:#ff6ac1">&amp;&amp;</span> <span style="color:#ff6ac1">!</span>asleep) {
+</span></span><span style="display:flex;"><span>         <span style="color:#57c7ff">printf</span>(<span style="color:#5af78e">&#34;Time to sleep!</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>);
+</span></span><span style="display:flex;"><span>         asleep <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span>;
+</span></span><span style="display:flex;"><span>         prev_brightness <span style="color:#ff6ac1">=</span> <span style="color:#57c7ff">getKbBrightness</span>();
+</span></span><span style="display:flex;"><span>         <span style="color:#57c7ff">setKbBrightness</span>(<span style="color:#ff9f43">0</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+<br>
+<hr> </hr>
+<h3>Comments <i class="fa fa-comments fa-2x" aria-hidden="true"></i> </h3> 
+<div id="comment-section"></div>
+<script>
+initComments({
+  node: document.getElementById("comment-section"),
+  defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+  serverName: "cactus.chat",
+  siteName: "MaxBlog",
+  commentSectionId: "toggle-backlight-c"
+})
+</script> 
+
+    </div>
+  </article>
+
+    </main>
+    <script src="/base.js"></script>
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>

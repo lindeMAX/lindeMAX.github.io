@@ -2,17 +2,50 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on Max&#39; Blog</title>
-    <link>https://lindemax.github.io/tags/linux/</link>
+    <link>https://lindemax.ddns.net/tags/linux/</link>
     <description>Recent content in linux on Max&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Oct 2022 16:32:37 +0200</lastBuildDate><atom:link href="https://lindemax.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Dec 2022 03:30:22 +0100</lastBuildDate><atom:link href="https://lindemax.ddns.net/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Toggle keyboard backlight using linux input events</title>
+      <link>https://lindemax.ddns.net/linux/backlight_toggle_c/</link>
+      <pubDate>Fri, 30 Dec 2022 03:30:22 +0100</pubDate>
+      
+      <guid>https://lindemax.ddns.net/linux/backlight_toggle_c/</guid>
+      <description>In my previous post i wrote about toggling the keyboard backlight after a certain idle time using swayidle. One major flaw of this attempt is that swayidle is not inhibited while watching movies or videos via web browsers. Firefox and Chromium are sending dbus messages that request screensaver inhibit. But for some reason the swaywm-developers decided to not listen to these :/ One has to invoke &amp;ldquo;/bin/swayidle-inhibit&amp;rdquo; manually to prevent swayidle from doing it&amp;rsquo;s work.</description>
+    </item>
+    
+    <item>
+      <title>Toggle keyboard backlight with swayidle</title>
+      <link>https://lindemax.ddns.net/linux/backlight_toggle/</link>
+      <pubDate>Wed, 28 Dec 2022 03:06:00 +0100</pubDate>
+      
+      <guid>https://lindemax.ddns.net/linux/backlight_toggle/</guid>
+      <description>The keyboard backlight of my notebook can be toggled via the &amp;lsquo;Fn&amp;rsquo;-key. But it will stay on until turned off manually. This is quite annoying when watching movies because it dazzles in dark scenes. Another good reason to automatically turn it off after a certain idle time is to save some energy. Therefore i wrote a script using brightnessctl to toggle the manually set brightness value.
+#!/bin/sh FILE=&amp;#34;brightness.txt&amp;#34; if [[ $1 == &amp;#34;on&amp;#34; ]]; then brightnessctl -d tpacpi::kbd_backlight set $(cat $FILE) fi if [[ $1 == &amp;#34;off&amp;#34; ]]; then brightnessctl -d tpacpi::kbd_backlight get &amp;gt; $FILE brightnessctl -d tpacpi::kbd_backlight set 0 fi As I&amp;rsquo;m using swaywm as window manager, the easiest way to call this script is to call it via swayidle.</description>
+    </item>
+    
+    <item>
+      <title>Hosting a Webpage with Nginx</title>
+      <link>https://lindemax.ddns.net/linux/nginx/</link>
+      <pubDate>Sun, 02 Oct 2022 00:04:00 +0100</pubDate>
+      
+      <guid>https://lindemax.ddns.net/linux/nginx/</guid>
+      <description>Setting up Nginx Install ngingx: apt install nginx
+Enable and start the systemd service: systemctl enable nginx.service systemctl start nginx.service
+Configure and enable the webpage: Under /etc/nginx/ should be two directories listed.
+sites-available and sites-enabled.
+sites-available contains config files for exisitng webpages, while sites-enabled contains softlinks to config files in sites-available.
+Create a config file (e.g. example.com.conf) in sites-available with the following content: server { listen 80; server_name example.com; root path/to/index.</description>
+    </item>
+    
     <item>
       <title>Neovim Config and Cheatsheet</title>
-      <link>https://lindemax.github.io/linux/vim/</link>
+      <link>https://lindemax.ddns.net/linux/vim/</link>
       <pubDate>Sat, 01 Oct 2022 16:32:37 +0200</pubDate>
       
-      <guid>https://lindemax.github.io/linux/vim/</guid>
+      <guid>https://lindemax.ddns.net/linux/vim/</guid>
       <description>My config This is my neovim config. It includes configurations for all plugins listed below.
 If you want to use it you will have to install vim-plug first and then extract the nvim_cfg.zip into ~/.config/nvim/. At lleast at linux systems.
 Here are some screenshots to get an idea of how it could look like:
@@ -22,10 +55,10 @@ coc: Autocompletion</description>
     
     <item>
       <title>Hotplug events with UDEV</title>
-      <link>https://lindemax.github.io/linux/udev/</link>
+      <link>https://lindemax.ddns.net/linux/udev/</link>
       <pubDate>Sat, 17 Sep 2022 17:57:37 +0200</pubDate>
       
-      <guid>https://lindemax.github.io/linux/udev/</guid>
+      <guid>https://lindemax.ddns.net/linux/udev/</guid>
       <description>As I am using a notebook as my main device now, I needed to automate some stuff when changing workplaces.
 I wanted two things to happen:
 Turn off the notebooks internal screen while it is docked to it&amp;rsquo;s docking station Turn on the external keyboards backlight when connected To achieve the first goal one needs two things:
@@ -34,10 +67,10 @@ a script that manages the monitor settings a udev-rule that executes that script
     
     <item>
       <title>Linux Cheatsheet</title>
-      <link>https://lindemax.github.io/linux/cheatsheet/</link>
+      <link>https://lindemax.ddns.net/linux/cheatsheet/</link>
       <pubDate>Sat, 30 Jul 2022 16:32:37 +0200</pubDate>
       
-      <guid>https://lindemax.github.io/linux/cheatsheet/</guid>
+      <guid>https://lindemax.ddns.net/linux/cheatsheet/</guid>
       <description>Have a look at this open book for more information:
 Shell Redirections Redirect STDOUT to file: ls 1&amp;gt; file
 Append STDOUT to existing file: ls 1&amp;gt;&amp;gt; file
@@ -49,22 +82,11 @@ FIFOs FIFOs (First In First Out) are like pipeline but can be used by multiple p
     </item>
     
     <item>
-      <title>Keep your Linux clean</title>
-      <link>https://lindemax.github.io/linux/cleanup/</link>
-      <pubDate>Fri, 10 Dec 2021 15:06:00 +0100</pubDate>
-      
-      <guid>https://lindemax.github.io/linux/cleanup/</guid>
-      <description>Today i found vscode using much space (about 8 GB) in my .config directory. It seems to save all kind of workspace configuration there. It needed to be cleaned up, so i wrote a little script that is easy to extend.
-One can call this via crontabs or a systemd timer.
-#!/bin/sh # Colored output GREEN=&amp;#39;\033[0;32m&amp;#39; RED=&amp;#39;\033[0;31m&amp;#39; NC=&amp;#39;\033[0m&amp;#39; # No Color # Call with two arguments: # - Path to directory which shall be cleaned # - Time wich defines &amp;#39;depricated&amp;#39; delete_depricated () { echo &amp;#34;Deleting everything older than $GREEN $2 $NC days from $GREEN $1 $NC&amp;#34; found=$(find $1 -mtime $2) echo &amp;#34;Found $RED $found $NC&amp;#34; for path in &amp;#34;$found&amp;#34;; do rm -rf &amp;#34;$path&amp;#34;; done } # Remove vscode workspaces older than 30 days delete_depricated &amp;#34;/home/max/.</description>
-    </item>
-    
-    <item>
       <title>Hosting an OpenVPN Server</title>
-      <link>https://lindemax.github.io/linux/openvpn/</link>
+      <link>https://lindemax.ddns.net/linux/openvpn/</link>
       <pubDate>Sun, 05 Dec 2021 14:41:00 +0100</pubDate>
       
-      <guid>https://lindemax.github.io/linux/openvpn/</guid>
+      <guid>https://lindemax.ddns.net/linux/openvpn/</guid>
       <description>OpenVPN is a nice tool to stay connected privately. Could be to play old LAN games with friends , or accessing a network file system on your own server, etc.
 I recently wrote a shell script that creates certificates (using easy-rsa), configuration files and the directory structure needed on the server side in a &amp;lsquo;ready to be used&amp;rsquo; manner. It will ask you for the name of the CA, the VPN-Server, it&amp;rsquo;s remote address and how many client certificates/keys you want to create.</description>
     </item>

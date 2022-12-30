@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Spice Simulation of (not only) Silicon Photomultipliers and Design of a small sized Scintillation Detection Unit // Max&#39; Blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.108.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Max Lindeman" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://lindemax.ddns.net/css/main.min.d1ddc0c14b1594344efdb7f790a3853979e9834d0eb645cb6e9d04e0400a8f26.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spice Simulation of (not only) Silicon Photomultipliers and Design of a small sized Scintillation Detection Unit"/>
+<meta name="twitter:description" content="The idea behind this post is to show you how I build a basic detection unit for ionizing radiation which i then used to derive a spice model from it. The spice model shell then be used to develop additional electronics for further investigation of the detected ionizing radiation.
+But before going into topic, let&rsquo;s get some basics first.
+Plastic Scintillators Scintillators are materials that emit light when hit by ionizing radiation or high energy particles."/>
+
+    <meta property="og:title" content="Spice Simulation of (not only) Silicon Photomultipliers and Design of a small sized Scintillation Detection Unit" />
+<meta property="og:description" content="The idea behind this post is to show you how I build a basic detection unit for ionizing radiation which i then used to derive a spice model from it. The spice model shell then be used to develop additional electronics for further investigation of the detected ionizing radiation.
+But before going into topic, let&rsquo;s get some basics first.
+Plastic Scintillators Scintillators are materials that emit light when hit by ionizing radiation or high energy particles." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lindemax.ddns.net/muon/modelling_sipm/" /><meta property="article:section" content="muon" />
+<meta property="article:published_time" content="2022-10-03T16:35:00+01:00" />
+<meta property="article:modified_time" content="2022-10-03T16:35:00+01:00" />
+
+
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function(x){
+          x.parentElement.classList += 'has-jax'})
+      });
+  
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body id="body">
+    <div id="fadeshow">
+      <header class="app-header">
+        <a href="https://lindemax.ddns.net/"><img class="app-header-avatar" src="/images/avatar/avatar.jpg" alt="Max Lindeman" /></a>
+        <h1>Max&#39; Blog</h1>
+        <nav class="app-header-menu">
+            <a class="app-header-menu-item" href="/">Home</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/hugo/">Hugo</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/linux/">Linux</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/muon/">MuON</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/pcb/">PCB-Design</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/sas/">SaS</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/about/">About</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/tags/">Tags</a>
+        </nav>
+        <p>I hope the Stuff I am posting here is useful for you.</p>
+        <p>Creating good content is time consuming and not always easy. You can support me by clicking the donation button ;-)</p>
+        <p></p>
+        <div class="app-header-social">
+          
+            <a href="https://github.com/lindeMAX/" target="_blank" rel="noreferrer noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>My Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+            </a>
+          
+          <form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="AD9HGBSS9WDAY" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
+</form>
+        </div>
+        <div id="theme">
+        <input type="checkbox" id="themeToggle"></input>
+        <label for="themeToggle" class="themeToggle"><i class="fa fa-adjust fa-2x" aria-hidden="true"></i></label>
+      </div>
+      </header>
+    </div>
+    <main class="app-container">
+      <div id="burger">
+        <input type="checkbox" id="hamburger" >
+        <label for="hamburger" class="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </label>
+      </div>
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Spice Simulation of (not only) Silicon Photomultipliers and Design of a small sized Scintillation Detection Unit</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Oct 3, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://lindemax.ddns.net/tags/spice/">spice</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/model/">model</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/photmultiplier/">photmultiplier</a>
+        </div>
+      </div>
+    </header>
+    <hr> </hr>
+    <br>
+    <div class="post-content">
+      <p>The idea behind this post is to show you how I build a basic detection unit for ionizing radiation which i then used to derive a spice model from it.
+The spice model shell then be used to develop additional electronics for further investigation of the detected ionizing radiation.</p>
+<p>But before going into topic, let&rsquo;s get some basics first.</p>
+<h3 id="plastic-scintillators">Plastic Scintillators</h3>
+<p>Scintillators are materials that emit light when hit by ionizing radiation or high energy particles.
+Plastic scintillators are scintillators in which the primary fluorescent emitter is a polymer.
+The light emitted by this primary emitter is most likely in the UV range has to be shifted in it&rsquo;s spectrum by a secondary fluorescent emitter to not be directly absorbed again.
+The <em>light attenuation length</em> is a property that&rsquo;s often given in the datasheet of scintillators.
+It&rsquo;s the distance a photon of a certain wavelength $\lambda$ has travelled inside the scintillator at which the probability to find this photon there has dropped to $\frac{1}{e}$.</p>
+<p>$$
+\begin{eqnarray}
+P(x) &amp;=&amp; e^{\frac{-x}{\lambda}} \newline
+\frac{1}{e} &amp;=&amp; e^{\frac{- \text{light attenuation length}}{\lambda}}
+\end{eqnarray}
+$$</p>
+<p>The advantage of plastic scintillators is that they have a fairly high light output, a low decay time of $2$ to $4~ns$, they do not cost much and can be shaped easily.</p>
+<h3 id="silicon-photomultipliers">Silicon Photomultipliers</h3>
+<p>Silicon Photomultipliers (SiPMs) are Photomultipliers that make use the avalanche effect to multiply charge carriers generated by the photoelectric effect.
+It&rsquo;s basically a parallel connection of thousands <a href="https://en.wikipedia.org/wiki/Single-photon_avalanche_diode" target="_blank">Single-photon Avalanche Diodes</a> (SPADs).
+The key advantage if SiPMs over traditional photmultiplier tubes is that they are much smaller in space and do not need that much overvoltage.
+But, as always, they bring some disadvantages with them.
+<a href="https://iopscience.iop.org/article/10.1088/1361-6560/ab7b2d/pdf" target="_blank">This article</a> gives a good knowledge about SiPMs.</p>
+<h3 id="scintillation-detection-unit">Scintillation Detection Unit</h3>
+<p>In order to properly model and design a charge measurement for a szintillation detector I had to model the combination of a <a href="https://www.crystals.saint-gobain.com/products/bc-408-bc-412-bc-416" target="_blank">BC-408 scintillator</a> and a <a href="">MicroFC-60035 SiPM</a> first.
+I found <a href="https://iopscience.iop.org/article/10.1088/1361-6560/ab7b2d/pdf" target="_blank">this article</a> explaining the fundamentals of silicon photmultipliers and giving an equivalent electrical circuit on which i based my simulation.
+<a href="https://www.crystals.saint-gobain.com/products/bc-408-bc-412-bc-416" target="_blank">BC-408 scintillator</a>
+As always, the design process takes some iterations to come up with something one is satisfied with.
+The pictures below are showing a stack of to detection units, which could be used to determine whether and event happened in coincidence.
+This is useful to distinguish between events triggered by thermally generated free electrons inside the SiPM or by high energy particles instead.</p>
+<div class="image_container">
+   <div class="two_images">
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure>
+      	<div class="image">
+      		<a href="/muon/modelling_sipm/images/design_kicad_huf1cdef00bc94168ef19a8f9d8e7cabaa_45488_500x300_fit_q75_box.jpg">
+      			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/design_kicad_huf1cdef00bc94168ef19a8f9d8e7cabaa_45488_500x300_fit_q75_box.jpg" width="242" height="300">
+      		</a>
+         		<figcaption>
+      			<small>
+      			    
+      			    <i> PCB design with kicad </i>
+      			    
+      			</small>
+         		</figcaption>
+      	</div>
+      </figure>
+   </div>
+   <div class="two_images">
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure>
+      	<div class="image">
+      		<a href="/muon/modelling_sipm/images/design_freecad_hu85e73a1b56552ab75d410d702ea55a03_296295_500x300_fit_q75_box.jpg">
+      			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/design_freecad_hu85e73a1b56552ab75d410d702ea55a03_296295_500x300_fit_q75_box.jpg" width="401" height="300">
+      		</a>
+         		<figcaption>
+      			<small>
+      			    
+      			    <i> Detector-Stack design with FreeCAD </i>
+      			    
+      			</small>
+         		</figcaption>
+      	</div>
+      </figure>
+   </div>
+</div>
+<div class="image_container">
+   <div class="two_images">
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure>
+      	<div class="image">
+      		<a href="/muon/modelling_sipm/images/all_parts_hua2ce5188d51128612efadcc83fd72890_3650406_500x300_fit_q75_box.jpg">
+      			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/all_parts_hua2ce5188d51128612efadcc83fd72890_3650406_500x300_fit_q75_box.jpg" width="400" height="300">
+      		</a>
+         		<figcaption>
+      			<small>
+      			    
+      			    <i> Overview of the used parts </i>
+      			    
+      			</small>
+         		</figcaption>
+      	</div>
+      </figure>
+   </div>
+   <div class="two_images">
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure>
+      	<div class="image">
+      		<a href="/muon/modelling_sipm/images/microfc-60035_hu8fc05db5417778b1fc136f1a3ff050cb_785181_500x300_fit_q75_box.jpg">
+      			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/microfc-60035_hu8fc05db5417778b1fc136f1a3ff050cb_785181_500x300_fit_q75_box.jpg" width="358" height="300">
+      		</a>
+         		<figcaption>
+      			<small>
+      			    
+      			    <i> MicroFC 60035 soldered to a PCB </i>
+      			    
+      			</small>
+         		</figcaption>
+      	</div>
+      </figure>
+   </div>
+</div>
+<p>I decided to wrap the scintillator in aluminum foil as it has a pretty decent reflectivity for photons with a wavelength of $430~nm$.
+This is the wavelength which most of the photons that are emitted by the scintillator do have.</p>
+<div class="image_container">
+   <div class="two_images">
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure>
+      	<div class="image">
+      		<a href="/muon/modelling_sipm/images/sz_alu_wrap_hu95bcb7c9b4b66ded65a6b93ca6f75ac7_4899790_500x300_fit_q75_box.jpg">
+      			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/sz_alu_wrap_hu95bcb7c9b4b66ded65a6b93ca6f75ac7_4899790_500x300_fit_q75_box.jpg" width="400" height="300">
+      		</a>
+         		<figcaption>
+      			<small>
+      			    
+      			    <i> Scintillator wrapped in aluminum foil </i>
+      			    
+      			</small>
+         		</figcaption>
+      	</div>
+      </figure>
+   </div>
+   <div class="two_images">
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure>
+      	<div class="image">
+      		<a href="/muon/modelling_sipm/images/_hubb2a86c8a96043c2aabd9118dad24533_29543_acee021d121637a5688c0aba4e21718f.png">
+      			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/_hubb2a86c8a96043c2aabd9118dad24533_29543_acee021d121637a5688c0aba4e21718f.png" width="368" height="300">
+      		</a>
+         		<figcaption>
+      			<small>
+      			    
+      			    <i> Refelctivity of aluminum foil </i>
+      			    
+      			</small>
+         		</figcaption>
+      	</div>
+      </figure>
+   </div>
+</div>
+<p>To protect the aluminum foile from mechanical stress, it&rsquo;s additionally wrapped into tape.
+And a small peace of sponge is used to optain a better fitting of the sctintillator on top of the SiPM.</p>
+<div class="image_container">
+   <div class="two_images">
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure>
+      	<div class="image">
+      		<a href="/muon/modelling_sipm/images/sz_wrap_hu8149262c3a92bd53ab4d366551461752_3728155_500x300_fit_q75_box.jpg">
+      			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/sz_wrap_hu8149262c3a92bd53ab4d366551461752_3728155_500x300_fit_q75_box.jpg" width="400" height="300">
+      		</a>
+         		<figcaption>
+      			<small>
+      			    
+      			    <i> Scintillator wrapped in aluminum foil and tape on a PCB </i>
+      			    
+      			</small>
+         		</figcaption>
+      	</div>
+      </figure>
+   </div>
+   <div class="two_images">
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure>
+      	<div class="image">
+      		<a href="/muon/modelling_sipm/images/assambly_hu7ee8b3716ba62d96a63644b87906ec32_153099_500x300_fit_q75_box.jpg">
+      			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/assambly_hu7ee8b3716ba62d96a63644b87906ec32_153099_500x300_fit_q75_box.jpg" width="400" height="300">
+      		</a>
+         		<figcaption>
+      			<small>
+      			    
+      			    <i> Refelctivity of aluminum foil </i>
+      			    
+      			</small>
+         		</figcaption>
+      	</div>
+      </figure>
+   </div>
+</div>
+<h3 id="sipm-spice-model">SIPM Spice Model</h3>
+<p>The following schematic shows the basic model of a SiPM used in the spice simulations.
+It consists out of active and passive SPADs as well as a parasitic capacity in parallel connection.
+In order for the simulation to work, one has to determine some parameters.
+But how does one do this?
+To get a good understanding i would suggest reading the article mentioned above.</p>
+
+
+
+
+
+
+
+
+<figure>
+	<div class="image">
+		<a href="/muon/modelling_sipm/images/sim_sch_sipm_huf909dea2eead632fbe0cdd8574fa90be_44830_700x500_fit_q75_box.jpg">
+			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/sim_sch_sipm_huf909dea2eead632fbe0cdd8574fa90be_44830_700x500_fit_q75_box.jpg" width="700" height="404">
+		</a>
+   		<figcaption>
+			<small>
+			    
+			    <i> Schematic used in Spice Simulation </i>
+			    
+			</small>
+   		</figcaption>
+	</div>
+</figure>
+<p>A Photon that triggers a avalanche break through is simulated by a voltage driven switch which is closed for a very short time in the single digit picoseconds range.
+As long as as the current through the other switch, which is current driven, does not get lower than $I_{th}$, it will stay closed.
+$I_{th}$ is the current down to which an avalanche break through can be self sustainable.</p>
+<p>$$
+\begin{equation}
+I_{th} = \frac{V_{Overvoltage}}{R_d + R_q}
+\end{equation}
+$$</p>
+<p>$R_d$ and $R_q$ are related to the time constants of the rising and falling edges of the pulses.</p>
+<p>$$
+\begin{eqnarray}
+T_{fall} &amp;=&amp; R_q \cdot (C_d + C_q) \newline
+T_{rise} &amp;=&amp; \frac{R_d \cdot R_q}{R_d + R_q} \cdot (C_d + C_q) \newline
+a &amp;=&amp;\frac{T_{rise}}{C_d + C_q} \newline
+\Rightarrow R_d &amp;=&amp; \frac{a \cdot R_q}{R_q - a}
+\end{eqnarray}
+$$</p>
+<p>$$
+\begin{eqnarray}
+\end{eqnarray}
+$$</p>
+<p>The total capacity of a single SPAD $C_{M}$ could in my case be calculated using the <a href="https://www.onsemi.com/pdf/datasheet/microc-series-d.pdf" target="_blank">datasheet</a>.<br>
+The article mentioned above tells us that $C_q$ and $C_d$ are linked to the gain $G$ and overvoltage $V_O$ of the SiPM, what somehow makes sense as the SPADs are reverse biased.
+An increasing reverse bias voltage has to also increase the depletion region, which would result in a lower capacitance of the p-n-junction.</p>
+<p>$$
+\begin{eqnarray}
+G &amp;=&amp; V_{Overvoltage} \cdot \frac{C_q + C_d}{q} \newline
+\Leftrightarrow C_q + C_d &amp;=&amp; \frac{G \cdot q}{V_{Overvoltage}} \newline
+\end{eqnarray}
+$$</p>
+<p>$C_S$ is the total capacity of the SiPM between anode and cathode, $N_t$ the total amount of microcells (SPADs) in the SiPM and $C_m$ the parasitic capactiy of a signel microcell.</p>
+<p>$$
+\begin{eqnarray}
+C^{&rsquo;}_{M} &amp;=&amp; \frac{C_S}{N_t} \newline
+C_M &amp;=&amp; \frac{C_q \cdot C_d}{C_q + C_d} = C^{&rsquo;}_M - C_m \newline
+\Rightarrow C_m &amp;=&amp; C^{&rsquo;}_M - \frac{C_q \cdot C_d}{C_q + C_d}
+\end{eqnarray}
+$$</p>
+<p>The table below shows the final parameters i came up with.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Parameter</th>
+<th style="text-align:center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$Cd$</td>
+<td style="text-align:center">$97.3~fF$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Cm$</td>
+<td style="text-align:center">$131.1~fF$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Cq$</td>
+<td style="text-align:center">$95~fF$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Nt$</td>
+<td style="text-align:center">$18980$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Nf$</td>
+<td style="text-align:center">$[0, 18979]$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Rd$</td>
+<td style="text-align:center">$2507~k\Omega$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Rq$</td>
+<td style="text-align:center">$1165366~k\Omega$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Vbr$</td>
+<td style="text-align:center">$24.45~V$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Vov$</td>
+<td style="text-align:center">$2.5~V$</td>
+</tr>
+</tbody>
+</table>
+<p>At this point it is important to mention that these parameters are measured/calculated for the complete detection unit.
+They are not necessarily representing the SiPM&rsquo;s parameters.
+<br>
+The picture below shows a simulation result with $3468$ firing microcells.</p>
+
+
+
+
+
+
+
+
+<figure>
+	<div class="image">
+		<a href="/muon/modelling_sipm/images/Sim_SiPM_hu257461559c305a2cde9c9a9fdd193ea9_69552_700x500_fit_box_3.png">
+			<img style="max-width: 100%; width: auto; height: auto;" class="content_image" src="/muon/modelling_sipm/images/Sim_SiPM_hu257461559c305a2cde9c9a9fdd193ea9_69552_700x500_fit_box_3.png" width="700" height="351">
+		</a>
+   		<figcaption>
+			<small>
+			    
+			    <i> Simulation result with 3468 firing microcells </i>
+			    
+			</small>
+   		</figcaption>
+	</div>
+</figure>
+<link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+<br>
+<hr> </hr>
+<h3>Comments <i class="fa fa-comments fa-2x" aria-hidden="true"></i> </h3> 
+<div id="comment-section"></div>
+<script>
+initComments({
+  node: document.getElementById("comment-section"),
+  defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+  serverName: "cactus.chat",
+  siteName: "MaxBlog",
+  commentSectionId: "spiceModelSiPM"
+})
+</script> 
+
+    </div>
+  </article>
+
+    </main>
+    <script src="/base.js"></script>
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Embedded Comments with cactus // Max&#39; Blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.108.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Max Lindeman" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://lindemax.ddns.net/css/main.min.d1ddc0c14b1594344efdb7f790a3853979e9834d0eb645cb6e9d04e0400a8f26.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Embedded Comments with cactus"/>
+<meta name="twitter:description" content="If you&rsquo;re interested in adding a comment section to your own website, take a look at the cactus chat website.
+I followed their quick start guide to write myself a hugo shortcode which looks like this:
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://latest.cactus.chat/style.css&#34; type=&#34;text/css&#34;&gt; &lt;script type=&#34;text/javascript&#34; src=&#34;https://latest.cactus.chat/cactus.js&#34;&gt;&lt;/script&gt; &lt;br&gt; &lt;hr&gt; &lt;/hr&gt; &lt;h3&gt;Comments &lt;i class=&#34;fa fa-comments fa-2x&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt; &lt;/h3&gt; &lt;div id=&#34;comment-section&#34;&gt;&lt;/div&gt; &lt;script&gt; initComments({ node: document.getElementById(&#34;comment-section&#34;), defaultHomeserverUrl: &#34;https://matrix.cactus.chat:8448&#34;, serverName: &#34;cactus.chat&#34;, siteName: &#34;MaxBlog&#34;, commentSectionId: &#34;{{ index .Params 0}}&#34; }) &lt;/script&gt; It is named chat."/>
+
+    <meta property="og:title" content="Embedded Comments with cactus" />
+<meta property="og:description" content="If you&rsquo;re interested in adding a comment section to your own website, take a look at the cactus chat website.
+I followed their quick start guide to write myself a hugo shortcode which looks like this:
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://latest.cactus.chat/style.css&#34; type=&#34;text/css&#34;&gt; &lt;script type=&#34;text/javascript&#34; src=&#34;https://latest.cactus.chat/cactus.js&#34;&gt;&lt;/script&gt; &lt;br&gt; &lt;hr&gt; &lt;/hr&gt; &lt;h3&gt;Comments &lt;i class=&#34;fa fa-comments fa-2x&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt; &lt;/h3&gt; &lt;div id=&#34;comment-section&#34;&gt;&lt;/div&gt; &lt;script&gt; initComments({ node: document.getElementById(&#34;comment-section&#34;), defaultHomeserverUrl: &#34;https://matrix.cactus.chat:8448&#34;, serverName: &#34;cactus.chat&#34;, siteName: &#34;MaxBlog&#34;, commentSectionId: &#34;{{ index .Params 0}}&#34; }) &lt;/script&gt; It is named chat." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lindemax.ddns.net/hugo/comments/" /><meta property="article:section" content="hugo" />
+<meta property="article:published_time" content="2022-12-30T15:30:51+01:00" />
+<meta property="article:modified_time" content="2022-12-30T15:30:51+01:00" />
+
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body id="body">
+    <div id="fadeshow">
+      <header class="app-header">
+        <a href="https://lindemax.ddns.net/"><img class="app-header-avatar" src="/images/avatar/avatar.jpg" alt="Max Lindeman" /></a>
+        <h1>Max&#39; Blog</h1>
+        <nav class="app-header-menu">
+            <a class="app-header-menu-item" href="/">Home</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/hugo/">Hugo</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/linux/">Linux</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/muon/">MuON</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/pcb/">PCB-Design</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/sas/">SaS</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/about/">About</a>
+               | 
+            
+            <a class="app-header-menu-item" href="/tags/">Tags</a>
+        </nav>
+        <p>I hope the Stuff I am posting here is useful for you.</p>
+        <p>Creating good content is time consuming and not always easy. You can support me by clicking the donation button ;-)</p>
+        <p></p>
+        <div class="app-header-social">
+          
+            <a href="https://github.com/lindeMAX/" target="_blank" rel="noreferrer noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>My Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+            </a>
+          
+          <form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="AD9HGBSS9WDAY" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
+</form>
+        </div>
+        <div id="theme">
+        <input type="checkbox" id="themeToggle"></input>
+        <label for="themeToggle" class="themeToggle"><i class="fa fa-adjust fa-2x" aria-hidden="true"></i></label>
+      </div>
+      </header>
+    </div>
+    <main class="app-container">
+      <div id="burger">
+        <input type="checkbox" id="hamburger" >
+        <label for="hamburger" class="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </label>
+      </div>
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Embedded Comments with cactus</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Dec 30, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://lindemax.ddns.net/tags/hugo/">hugo</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/comments/">comments</a>
+              <a class="tag" href="https://lindemax.ddns.net/tags/cactus/">cactus</a>
+        </div>
+      </div>
+    </header>
+    <hr> </hr>
+    <br>
+    <div class="post-content">
+      <p>If you&rsquo;re interested in adding a comment section to your own website, take a look at the <a href="https://cactus.chat/" target="_blank">cactus chat website</a>.</p>
+<p>I followed their <a href="https://cactus.chat/docs/getting-started/quick-start/" target="_blank">quick start guide</a> to write myself a hugo shortcode which looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">link</span> <span style="color:#57c7ff">rel</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;stylesheet&#34;</span> <span style="color:#57c7ff">href</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;https://latest.cactus.chat/style.css&#34;</span> <span style="color:#57c7ff">type</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;text/css&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">script</span> <span style="color:#57c7ff">type</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;text/javascript&#34;</span> <span style="color:#57c7ff">src</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;https://latest.cactus.chat/cactus.js&#34;</span>&gt;&lt;/<span style="color:#ff6ac1">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">br</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">hr</span>&gt; &lt;/<span style="color:#ff6ac1">hr</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">h3</span>&gt;Comments &lt;<span style="color:#ff6ac1">i</span> <span style="color:#57c7ff">class</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;fa fa-comments fa-2x&#34;</span> <span style="color:#57c7ff">aria-hidden</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;true&#34;</span>&gt;&lt;/<span style="color:#ff6ac1">i</span>&gt; &lt;/<span style="color:#ff6ac1">h3</span>&gt; 
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">div</span> <span style="color:#57c7ff">id</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;comment-section&#34;</span>&gt;&lt;/<span style="color:#ff6ac1">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">script</span>&gt;
+</span></span><span style="display:flex;"><span>initComments({
+</span></span><span style="display:flex;"><span>  node<span style="color:#ff6ac1">:</span> <span style="color:#ff5c57">document</span>.getElementById(<span style="color:#5af78e">&#34;comment-section&#34;</span>),
+</span></span><span style="display:flex;"><span>  defaultHomeserverUrl<span style="color:#ff6ac1">:</span> <span style="color:#5af78e">&#34;https://matrix.cactus.chat:8448&#34;</span>,
+</span></span><span style="display:flex;"><span>  serverName<span style="color:#ff6ac1">:</span> <span style="color:#5af78e">&#34;cactus.chat&#34;</span>,
+</span></span><span style="display:flex;"><span>  siteName<span style="color:#ff6ac1">:</span> <span style="color:#5af78e">&#34;MaxBlog&#34;</span>,
+</span></span><span style="display:flex;"><span>  commentSectionId<span style="color:#ff6ac1">:</span> <span style="color:#5af78e">&#34;{{ index .Params 0}}&#34;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff6ac1">script</span>&gt; </span></span></code></pre></div>
+<p>It is named <em>chat.html</em> and can be called like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{&lt; <span style="color:#ff6ac1">chat</span> <span style="color:#57c7ff">example-chat</span> &gt;}}</span></span></code></pre></div>
+<p>Feel free to leave a comment :)</p>
+<link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+<br>
+<hr> </hr>
+<h3>Comments <i class="fa fa-comments fa-2x" aria-hidden="true"></i> </h3> 
+<div id="comment-section"></div>
+<script>
+initComments({
+  node: document.getElementById("comment-section"),
+  defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+  serverName: "cactus.chat",
+  siteName: "MaxBlog",
+  commentSectionId: "example-chat"
+})
+</script> 
+
+    </div>
+  </article>
+
+    </main>
+    <script src="/base.js"></script>
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
